@@ -1,10 +1,7 @@
 package com.app.generator;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
 import org.hibernate.HibernateException;
