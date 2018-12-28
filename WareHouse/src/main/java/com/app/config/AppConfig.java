@@ -16,12 +16,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.app.model.ShipmentType;
+
 
 @ComponentScan(basePackages="com.app")
 @EnableTransactionManagement   //it is commit or rollback
 @EnableWebMvc//it is a spring web mvc config
 @Configuration     
-@PropertySource(value="app.properties")
+@PropertySource(value="Classpath:app.properties")
 public class AppConfig {
 
 	@Autowired
@@ -40,7 +42,7 @@ public class AppConfig {
 		bsds.setUrl(env.getProperty("url"));
 		bsds.setUsername(env.getProperty("un"));
 		bsds.setPassword(env.getProperty("pwd"));
-
+        
 		return bsds;
 	}
 
@@ -52,9 +54,14 @@ public class AppConfig {
 
 		lsfb = new LocalSessionFactoryBean();
 
-		//set datasource to to factory bean 
+		//set datasource to Session factory
 		lsfb.setDataSource(dsObj());
-
+		
+		//set Hibernate Properties to Session factory
+        lsfb.setHibernateProperties(props());
+        
+        //set annotated entity class to Session Factory 
+        lsfb.setAnnotatedClasses(ShipmentType.class);
 		return lsfb;
 	}
 
