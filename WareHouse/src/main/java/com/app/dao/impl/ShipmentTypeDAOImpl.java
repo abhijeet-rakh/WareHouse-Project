@@ -14,10 +14,10 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 	private HibernateTemplate ht;
 
 	@Override
-	public Integer saveShipmentType(ShipmentType st) {
-		Integer id = null;
+	public String saveShipmentType(ShipmentType st) {
+		String id = null;
 
-		id = (Integer) ht.save(st);
+		id = (String) ht.save(st);
 
 		return id;
 	}

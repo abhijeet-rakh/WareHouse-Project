@@ -24,7 +24,7 @@ public class ShipmentTypeController {
 	
     @RequestMapping(value="/insert",method=RequestMethod.POST)
     public String addShipmentType(@ModelAttribute ShipmentType shiptype,ModelMap map) {
-		Integer id=null;
+		String id=null;
     	String message=null;
     	
 		id=service.saveShipmentType(shiptype);

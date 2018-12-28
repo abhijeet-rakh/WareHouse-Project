@@ -16,7 +16,7 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 	private IShipmentTypeDAO dao;
 
 	@Transactional
-	public Integer saveShipmentType(ShipmentType st) {
+	public String saveShipmentType(ShipmentType st) {
 		return dao.saveShipmentType(st);
 	}
 

@@ -1,46 +1,65 @@
 package com.app.model;
 
+import java.time.OffsetDateTime;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="shipment_type_tab")
+@Table(name = "shipment_type_tab")
 public class ShipmentType {
-	
-    @Id
-    @GeneratedValue
-    @Column(name="sid")
-	private Integer id;
-    
-    @Column(name="shipmode")
+
+	@Id
+	@GenericGenerator(name = "custom_id", strategy = "com.app.generator.WareHouseIdGenerator")
+	@GeneratedValue(generator = "custom_id")
+	@Column(name = "sid")
+	private String id;
+
+	@Column(name = "shipmode")
 	private String shipmentMode;
-    
-    @Column(name="shipcode")
+
+	@Column(name = "shipcode")
 	private String shipmentCode;
 
-    @Column(name="enableship")
-    private String enableShipment;
-    
-    @Column(name="shipgrade")
+	@Column(name = "enableship")
+	private String enableShipment;
+
+	@Column(name = "shipgrade")
 	private String shipmentGrade;
-    
-    @Column(name="shipdesc")
+
+	@Column(name = "shipdesc")
 	private String ShipmentDesc;
 
-    
-    public ShipmentType() {
-	      System.out.println("ShipmentType:0-param Constructor");
-	}    
-    
-    
-	public Integer getId() {
+	@Version
+	@Column(name = "updatecount")
+	private int shipcount;
+
+	@CreationTimestamp
+	@Column(name = "createdOn")
+	private OffsetDateTime time;
+
+	@UpdateTimestamp
+	@Column(name = "updatedOn")
+	private OffsetDateTime updttime;
+
+	public ShipmentType() {
+		System.out.println("ShipmentType:0-param Constructor");
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -82,6 +101,30 @@ public class ShipmentType {
 
 	public void setShipmentDesc(String shipmentDesc) {
 		ShipmentDesc = shipmentDesc;
+	}
+
+	public int getShipcount() {
+		return shipcount;
+	}
+
+	public void setShipcount(int shipcount) {
+		this.shipcount = shipcount;
+	}
+
+	public OffsetDateTime getTime() {
+		return time;
+	}
+
+	public void setTime(OffsetDateTime time) {
+		this.time = time;
+	}
+
+	public OffsetDateTime getUpdttime() {
+		return updttime;
+	}
+
+	public void setUpdttime(OffsetDateTime updttime) {
+		this.updttime = updttime;
 	}
 
 }

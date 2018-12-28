@@ -4,6 +4,6 @@ import com.app.model.ShipmentType;
 
 public interface IShipmentTypeDAO {
 
-	public Integer saveShipmentType(ShipmentType st);
+	public String saveShipmentType(ShipmentType st);
 
 }
