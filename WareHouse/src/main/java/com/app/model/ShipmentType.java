@@ -14,15 +14,19 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "shipment_type_tab")
+@Data
 public class ShipmentType {
 
 	@Id
-	@GenericGenerator(name = "custom_id", strategy = "com.app.generator.WareHouseIdGenerator")
-	@GeneratedValue(generator = "custom_id")
+//	@GenericGenerator(name = "custom_id", strategy = "com.app.generator.WareHouseIdGenerator")
+//	@GeneratedValue(generator = "custom_id")
+	@GeneratedValue
 	@Column(name = "sid")
-	private String id;
+	private Integer id;
 
 	@Column(name = "shipmode")
 	private String shipmentMode;
@@ -37,94 +41,18 @@ public class ShipmentType {
 	private String shipmentGrade;
 
 	@Column(name = "shipdesc")
-	private String ShipmentDesc;
-
+	private String desc;
+	
 	@Version
 	@Column(name = "updatecount")
 	private int shipcount;
 
 	@CreationTimestamp
 	@Column(name = "createdOn")
-	private OffsetDateTime time;
+	private OffsetDateTime createtime;
 
 	@UpdateTimestamp
 	@Column(name = "updatedOn")
 	private OffsetDateTime updttime;
-
-	public ShipmentType() {
-		System.out.println("ShipmentType:0-param Constructor");
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getShipmentMode() {
-		return shipmentMode;
-	}
-
-	public void setShipmentMode(String shipmentMode) {
-		this.shipmentMode = shipmentMode;
-	}
-
-	public String getShipmentCode() {
-		return shipmentCode;
-	}
-
-	public void setShipmentCode(String shipmentCode) {
-		this.shipmentCode = shipmentCode;
-	}
-
-	public String getEnableShipment() {
-		return enableShipment;
-	}
-
-	public void setEnableShipment(String enableShipment) {
-		this.enableShipment = enableShipment;
-	}
-
-	public String getShipmentGrade() {
-		return shipmentGrade;
-	}
-
-	public void setShipmentGrade(String shipmentGrade) {
-		this.shipmentGrade = shipmentGrade;
-	}
-
-	public String getShipmentDesc() {
-		return ShipmentDesc;
-	}
-
-	public void setShipmentDesc(String shipmentDesc) {
-		ShipmentDesc = shipmentDesc;
-	}
-
-	public int getShipcount() {
-		return shipcount;
-	}
-
-	public void setShipcount(int shipcount) {
-		this.shipcount = shipcount;
-	}
-
-	public OffsetDateTime getTime() {
-		return time;
-	}
-
-	public void setTime(OffsetDateTime time) {
-		this.time = time;
-	}
-
-	public OffsetDateTime getUpdttime() {
-		return updttime;
-	}
-
-	public void setUpdttime(OffsetDateTime updttime) {
-		this.updttime = updttime;
-	}
 
 }

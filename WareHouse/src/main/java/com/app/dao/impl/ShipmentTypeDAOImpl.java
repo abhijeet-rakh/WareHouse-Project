@@ -1,5 +1,7 @@
 package com.app.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -14,12 +16,29 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 	private HibernateTemplate ht;
 
 	@Override
-	public String saveShipmentType(ShipmentType st) {
-		String id = null;
+	public Integer saveShipmentType(ShipmentType st) {
+		Integer id = null;
 
-		id = (String) ht.save(st);
+		id = (Integer) ht.save(st);
 
 		return id;
 	}
+
+	@Override
+	public List<ShipmentType> getAllShipmentType() {
+        List<ShipmentType> list=ht.loadAll(ShipmentType.class);
+		return list;
+	}
+
+	@Override
+	public void deleteShipmentType(Integer id) {
+        ShipmentType st=null;
+        st=new ShipmentType();
+        st.setId(id);
+        
+        ht.delete(st);
+	}
+	
+	
 
 }

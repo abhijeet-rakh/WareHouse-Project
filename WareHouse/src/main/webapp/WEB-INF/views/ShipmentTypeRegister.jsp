@@ -36,6 +36,8 @@ Description :<textarea rows="3" cols="20" name="ShipmentDesc" ></textarea>
 <input type="submit" value="Register Shipment" />
 </pre>
 </form>
-       ${msg} 
+       ${msg} <br><br>
+       
+       <a href="all">Get All Data</a>
 </body>
 </html>
