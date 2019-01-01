@@ -31,7 +31,7 @@ Shipment Grade :<input type="radio" name="shipmentGrade" value="A" />A
                 <input type="radio" name="shipmentGrade" value="B" />B
                 <input type="radio" name="shipmentGrade" value="C" />C
                 
-Description :<textarea rows="3" cols="20" name="ShipmentDesc" ></textarea>
+Description :<textarea rows="3" cols="20" name="desc"></textarea>
 
 <input type="submit" value="Register Shipment" />
 </pre>

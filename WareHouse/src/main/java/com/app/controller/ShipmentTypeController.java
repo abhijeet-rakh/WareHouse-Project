@@ -29,6 +29,9 @@ public class ShipmentTypeController {
     public String addShipmentType(@ModelAttribute ShipmentType shiptype,ModelMap map) {
 		Integer id=null;
     	String message=null;
+
+    	System.out.println("Controller=");
+    	System.out.println("desc="+shiptype.getDesc()+"  "+shiptype.getEnableShipment()+" "+shiptype.getId()+"  "+shiptype.getShipmentCode()+"  "+shiptype.getShipmentGrade()+shiptype.getShipmentMode()+" "+shiptype.getShipmentMode());
     	
 		id=service.saveShipmentType(shiptype);
     	
@@ -61,8 +64,7 @@ public class ShipmentTypeController {
     	
     	//add to map
     	map.addAttribute("data",list);
-    	
     	return "ShipmentTypeData";
     }
-   
+
 }

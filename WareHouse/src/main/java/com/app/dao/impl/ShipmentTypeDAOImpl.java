@@ -19,6 +19,7 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 	public Integer saveShipmentType(ShipmentType st) {
 		Integer id = null;
 
+		System.out.println("desc="+st.getDesc());
 		id = (Integer) ht.save(st);
 
 		return id;
@@ -30,15 +31,13 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 		return list;
 	}
 
+	
 	@Override
 	public void deleteShipmentType(Integer id) {
         ShipmentType st=null;
         st=new ShipmentType();
-        st.setId(id);
-        
+        st.setId(id);   
         ht.delete(st);
-	}
+	}	
 	
-	
-
 }
