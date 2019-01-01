@@ -55,7 +55,6 @@ public class OrderMethodController {
 	    String msg="deleted "+id+" number record";
 	    
 	    map.addAttribute("message",msg);
-	    
 	
 	    //again get element back 
 	    List<OrderMethod> list=service.getAllOrderMethod();
