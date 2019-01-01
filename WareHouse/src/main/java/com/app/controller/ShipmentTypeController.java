@@ -30,8 +30,6 @@ public class ShipmentTypeController {
 		Integer id=null;
     	String message=null;
 
-    	System.out.println("Controller=");
-    	System.out.println("desc="+shiptype.getDesc()+"  "+shiptype.getEnableShipment()+" "+shiptype.getId()+"  "+shiptype.getShipmentCode()+"  "+shiptype.getShipmentGrade()+shiptype.getShipmentMode()+" "+shiptype.getShipmentMode());
     	
 		id=service.saveShipmentType(shiptype);
     	

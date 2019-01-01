@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.app.model.OrderMethod;
 import com.app.model.ShipmentType;
 import com.app.model.UOM;
 
@@ -62,7 +63,7 @@ public class AppConfig {
         lsfb.setHibernateProperties(props());
         
         //set annotated entity class to Session Factory 
-        lsfb.setAnnotatedClasses(ShipmentType.class,UOM.class);
+        lsfb.setAnnotatedClasses(ShipmentType.class,UOM.class,OrderMethod.class);
      
 		return lsfb;
 	}
