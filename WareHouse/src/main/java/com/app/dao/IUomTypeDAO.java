@@ -12,9 +12,12 @@ public interface IUomTypeDAO {
 
 	public void deleteUOMById(Integer id);
 
+	public UOM getUOMtypeById(Integer id);
+	
+	
 	/*
 	 * public void updateUOMtype(UOM uom); 
-	 * public UOM getUOMtypeById(Integer id);
+	 * 
 	 */
 
 }

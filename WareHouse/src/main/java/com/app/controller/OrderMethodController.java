@@ -65,5 +65,15 @@ public class OrderMethodController {
 	    return "OrderMethodData";
 	}
 	
+	@RequestMapping(value="viewOne")
+	public String getOrderMethodById(@RequestParam Integer oid,ModelMap map) {
+		
+		OrderMethod ordermeth=service.getOrderMethodById(oid);
+          		
+		map.addAttribute("om",ordermeth);
+		
+		return "OrderMethodView";
+	}
+	
 	
 }

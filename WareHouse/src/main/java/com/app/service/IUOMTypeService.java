@@ -9,10 +9,11 @@ public interface IUOMTypeService {
 	public Integer saveUOMtype(UOM uom);
 	public List<UOM> getAllUOMtype();
 	public void deleteUOMById(Integer id);
+	public UOM getUOMtypeById(Integer id);
 	
 	/*
 	 * public void updateUOMtype(UOM uom);
-	 * public UOM getUOMtypeById(Integer id);
+	 * 
 	 */
 
 }

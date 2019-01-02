@@ -16,16 +16,25 @@
      <th>uid</th>
      <th>uomtype</th>
      <th>uommodel</th>
-     <th>uomdesc</th>
-     <th>OPERATIONS</th>
+     <!-- <th>uomdesc</th> -->
+     <th colspan="2">OPERATIONS</th>
 </tr>
 <c:forEach items="${data}" var="d">
        <tr>
        <td><c:out value="${d.uomid}"></c:out></td>
        <td><c:out value="${d.uomtype}"></c:out></td>
        <td><c:out value="${d.uommodel}"></c:out></td>
-       <td><c:out value="${d.uomdesc}"></c:out></td>
-       <td><a href="delete?uid=${d.uomid}">DELETE</a></td>
+       <%-- <td><c:out value="${d.uomdesc}"></c:out></td> --%>
+       <td>
+       <a href="delete?uid=${d.uomid}">
+              <img src="../resources/images/delete.png" height="30" width="30">
+       </a>
+       </td>
+       <td>
+       <a href="viewOne?uid=${d.uomid}">
+              <img src="../resources/images/view.png" height="30" width="30">        
+       </a>
+       </td>
        </tr>
 </c:forEach>
 </table>

@@ -31,5 +31,9 @@ public class UOMTypeServiceImpl implements IUOMTypeService {
 	      dao.deleteUOMById(id);
 	}
 
+	@Override
+	public UOM getUOMtypeById(Integer id) {
+		return dao.getUOMtypeById(id);
+	}
 	
 }

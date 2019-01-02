@@ -34,5 +34,10 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 	     om.setOid(id);
 	     ht.delete(om);
 	}
+
+	@Override
+	public OrderMethod getOrderMethodById(Integer id) {
+		return ht.get(OrderMethod.class, id);
+	}
 	
 }

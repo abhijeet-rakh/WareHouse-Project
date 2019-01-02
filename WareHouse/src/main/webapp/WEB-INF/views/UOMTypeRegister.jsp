@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1 style="color: red; text-align: center">Unit of Measurement Registration Form</h1>
+
+
 
 <form action="insert" method="POST">
 <pre>

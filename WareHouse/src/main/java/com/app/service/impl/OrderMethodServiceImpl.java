@@ -31,4 +31,9 @@ public class OrderMethodServiceImpl implements IOrderMethodService {
 	    dao.deleteOrderMethod(id);
 	}
 
+	@Override
+	public OrderMethod getOrderMethodById(Integer id) {
+		return dao.getOrderMethodById(id);
+	}
+
 }

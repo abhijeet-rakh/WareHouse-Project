@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 style="color:red;text-align:center;">Order Method</h1>
+<h1 style="color:red;text-align:center;">Order Method Registration Form</h1>
 
 <form action="insert" method="POST">
 <pre>

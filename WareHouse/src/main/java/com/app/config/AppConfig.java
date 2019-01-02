@@ -14,6 +14,9 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.app.model.OrderMethod;
@@ -26,7 +29,7 @@ import com.app.model.UOM;
 @EnableWebMvc//it is a spring web mvc config
 @Configuration     
 @PropertySource(value="Classpath:app.properties")
-public class AppConfig {
+public class AppConfig implements WebMvcConfigurer{
 
 	@Autowired
 	private Environment env;
@@ -127,5 +130,11 @@ public class AppConfig {
 	    
 	    return irvr;
 	}
-		
+	
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry reg) {
+       reg.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
+	
 }

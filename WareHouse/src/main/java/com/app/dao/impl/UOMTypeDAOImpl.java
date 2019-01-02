@@ -32,7 +32,10 @@ public class UOMTypeDAOImpl implements IUomTypeDAO{
             u.setUomid(id);
             ht.delete(u);
 	}
-	
-	
 
+	@Override
+	public UOM getUOMtypeById(Integer id) {
+		return ht.get(UOM.class,id);
+	}
+	
 }

@@ -67,4 +67,13 @@ public class UOMTypeController {
 		
 	}
 
+	@RequestMapping("viewOne")
+	public String getUOMtypeById(@RequestParam Integer uid,ModelMap map) {
+		UOM uom=service.getUOMtypeById(uid);
+		
+		map.addAttribute("um",uom);
+		
+		return "UOMTypeView";
+	}
+
 }

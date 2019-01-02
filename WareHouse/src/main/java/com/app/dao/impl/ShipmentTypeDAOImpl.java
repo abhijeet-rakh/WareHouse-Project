@@ -38,6 +38,11 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
         st=new ShipmentType();
         st.setId(id);   
         ht.delete(st);
+	}
+
+	@Override
+	public ShipmentType getShipmentTypeById(Integer id) {
+		return ht.get(ShipmentType.class, id);
 	}	
 	
 }

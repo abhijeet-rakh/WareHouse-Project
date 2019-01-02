@@ -19,50 +19,57 @@ public class ShipmentTypeController {
 
 	@Autowired
 	private IShipmentTypeService service;
-	
-    @RequestMapping(value="/register")
+
+	@RequestMapping(value = "/register")
 	public String showRegister() {
 		return "ShipmentTypeRegister";
 	}
-	
-    @RequestMapping(value="/insert",method=RequestMethod.POST)
-    public String addShipmentType(@ModelAttribute ShipmentType shiptype,ModelMap map) {
-		Integer id=null;
-    	String message=null;
 
-    	
-		id=service.saveShipmentType(shiptype);
-    	
-		message="Your registration No is="+id;
-    	
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public String addShipmentType(@ModelAttribute ShipmentType shiptype, ModelMap map) {
+		Integer id = null;
+		String message = null;
+
+		id = service.saveShipmentType(shiptype);
+
+		message = "Your registration No is=" + id;
+
 		map.addAttribute("msg", message);
-		
-    	return "ShipmentTypeRegister";
-    }
-    
-    
-    @RequestMapping(value="/all")
-    public String getAllShipmentType(ModelMap map) {
-    	List<ShipmentType> list=service.getAllShipmentType();
-    	map.addAttribute("data",list);
-    	return "ShipmentTypeData";
-    }
-    
-    @RequestMapping(value="delete")
-    public String deleteShipmentType(@RequestParam("sid") Integer id,ModelMap map) {
-    	service.deleteShipmentType(id);
-    	
-    	String msg="deleted "+id+" number record";
-    	
-    	//add msg to map
-    	map.addAttribute("message",msg);
 
-    	//get record form database
-    	List<ShipmentType> list=service.getAllShipmentType();
-    	
-    	//add to map
-    	map.addAttribute("data",list);
-    	return "ShipmentTypeData";
-    }
+		return "ShipmentTypeRegister";
+	}
+
+	@RequestMapping(value = "/all")
+	public String getAllShipmentType(ModelMap map) {
+		List<ShipmentType> list = service.getAllShipmentType();
+		map.addAttribute("data", list);
+		return "ShipmentTypeData";
+	}
+
+	@RequestMapping(value = "delete")
+	public String deleteShipmentType(@RequestParam("sid") Integer id, ModelMap map) {
+		service.deleteShipmentType(id);
+
+		String msg = "deleted " + id + " number record";
+
+		// add msg to map
+		map.addAttribute("message", msg);
+
+		// get record form database
+		List<ShipmentType> list = service.getAllShipmentType();
+
+		// add to map
+		map.addAttribute("data", list);
+		return "ShipmentTypeData";
+	}
+
+	@RequestMapping("viewOne")
+	public String viewShipmentType(@RequestParam Integer sid, ModelMap map) {
+		ShipmentType shiptype = service.getShipmentTypeById(sid);
+
+		map.addAttribute("st", shiptype);
+
+		return "ShipmentTypeView";
+	}
 
 }
