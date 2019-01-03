@@ -21,7 +21,11 @@ public class UOMTypeController {
 	private IUOMTypeService service;
 	
 	@RequestMapping(value="/register")
-	public String regUOMType() {
+	public String regUOMType(ModelMap map) {
+		
+		//add new Object to map 
+		map.addAttribute("UM",new UOM());
+		
 		return "UOMTypeRegister";
 	}
 	
@@ -36,6 +40,9 @@ public class UOMTypeController {
 		msg="record "+id+" inserted";
 		
 		map.addAttribute("message",msg);
+		
+		//clean previous object and add new to spring form tag map 
+		map.addAttribute("UM",new UOM());
 		
 		return "UOMTypeRegister";
 	}

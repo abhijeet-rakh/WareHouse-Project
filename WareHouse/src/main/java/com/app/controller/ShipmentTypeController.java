@@ -21,7 +21,11 @@ public class ShipmentTypeController {
 	private IShipmentTypeService service;
 
 	@RequestMapping(value = "/register")
-	public String showRegister() {
+	public String showRegister(ModelMap map) {
+
+		//add ShipmentType object to map attribute
+		map.addAttribute("ST",new ShipmentType());
+		
 		return "ShipmentTypeRegister";
 	}
 
@@ -35,6 +39,9 @@ public class ShipmentTypeController {
 		message = "Your registration No is=" + id;
 
 		map.addAttribute("msg", message);
+		
+		//clean the object and send new Object to Spring form
+		map.addAttribute("ST",new ShipmentType());
 
 		return "ShipmentTypeRegister";
 	}

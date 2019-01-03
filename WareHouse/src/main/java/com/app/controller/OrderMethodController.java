@@ -21,7 +21,8 @@ public class OrderMethodController {
 	private IOrderMethodService service;
 	
 	@RequestMapping(value="/register")
-	public String regOrderMethod() {
+	public String regOrderMethod(ModelMap map) {
+		map.addAttribute("OM",new OrderMethod());
 		return "OrderMethodRegister";
 	}
 	
@@ -36,6 +37,9 @@ public class OrderMethodController {
 	
 		//add attribute to map
 		map.addAttribute("message",msg);
+		
+		//clean the object 
+		map.addAttribute("OM",new OrderMethod());
 		
 		return "OrderMethodRegister";
 	}

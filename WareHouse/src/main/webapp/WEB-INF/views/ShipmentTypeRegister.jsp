@@ -7,36 +7,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 style="color: red; text-align: center;">Shipment Type
-		Registration Form</h1>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+	<h1 style="color: red; text-align: center;">Shipment Type Registration Form</h1>
 
-	<form action="insert" method="POST">
-		<pre>
- Shipment Mode :<select name="shipmentMode">
-                <option value="">--select--</option>
-                <option value="AIR">Air</option>
-                <option value="TRUCK">Truck</option>
-                <option value="SHIP">Ship</option>
-                <option value="TRAIN">Train</option>
-                </select>
+<form:form action="insert" method="POST" modelAttribute="ST">
+<pre>
+Shipment Mode:<form:select path="shipmentMode">
+               <form:option value="">--select--</form:option>
+               <form:option value="Air">AIR</form:option>
+               <form:option value="Truck">TRUCK</form:option>
+               <form:option value="Ship">SHIP</form:option>
+               <form:option value="Train">TRAIN</form:option>
+               </form:select>
+
+Shipment Code :<form:input path="shipmentCode" />
+
+
+
+Enable Shipment :<form:select path="enableShipment">
+                   <form:option value="yes">YES</form:option>
+                   <form:option value="no">NO</form:option>
+                 </form:select>
+                 
+Shipment Grade :<form:radiobutton path="shipmentGrade" value="A"/>A
+                <form:radiobutton path="shipmentGrade" value="B"/>B
+                <form:radiobutton path="shipmentGrade" value="C"/>C
                 
- Shipment Code :<input type="text" name="shipmentCode" />
- 
- Enable Shipment :<select name="enableShipment">
-                   <option value="YES">yes</option>
-                   <option value="NO">No</option>
-                  </select>
+Description :<form:textarea path="desc" />
 
-Shipment Grade :<input type="radio" name="shipmentGrade" value="A" />A
-                <input type="radio" name="shipmentGrade" value="B" />B
-                <input type="radio" name="shipmentGrade" value="C" />C
-                
-Description :<textarea rows="3" cols="20" name="desc"></textarea>
-
-<input type="submit" value="Register Shipment" />
+<input type="submit" value="Register Shipment">
 </pre>
-</form>
-       ${msg} <br><br>
+</form:form>
+<br><br>
+       ${msg} 
+    <br><br>
        
        <a href="all">Get All Data</a>
 </body>

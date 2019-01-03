@@ -35,5 +35,6 @@
       
 	</table>
 
+<a href="all">Back</a>
 </body>
 </html>

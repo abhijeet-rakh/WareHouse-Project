@@ -58,5 +58,7 @@
 		</tr>
 
 	</table>
+	<br><br><br>
+	<a href="all">Back</a>
 </body>
 </html>
