@@ -38,5 +38,10 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 	public ShipmentType getShipmentTypeById(Integer id) {
 		return dao.getShipmentTypeById(id);
 	}
+
+	@Transactional
+	public void updateShipmentType(ShipmentType st) {
+	     dao.updateShipmentType(st);	
+	}
 	
 }

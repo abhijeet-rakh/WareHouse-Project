@@ -10,7 +10,7 @@ public interface IShipmentTypeDAO {
 	public List<ShipmentType> getAllShipmentType();
 	public void deleteShipmentType(Integer id);
 	public ShipmentType getShipmentTypeById(Integer id);
-	
+	public void updateShipmentType(ShipmentType st);
 	
 
 }

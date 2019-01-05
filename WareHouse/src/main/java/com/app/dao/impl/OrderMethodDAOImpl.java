@@ -27,7 +27,6 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 		return ht.loadAll(OrderMethod.class);
 	}
 
-
 	@Override
 	public void deleteOrderMethod(Integer id) {
 	     OrderMethod om=new OrderMethod();
@@ -38,6 +37,11 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 	@Override
 	public OrderMethod getOrderMethodById(Integer id) {
 		return ht.get(OrderMethod.class, id);
+	}
+
+	@Override
+	public void updateOrderMethod(OrderMethod om) {
+		ht.update(om);
 	}
 	
 }

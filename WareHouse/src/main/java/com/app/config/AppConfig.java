@@ -22,6 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.app.model.OrderMethod;
 import com.app.model.ShipmentType;
 import com.app.model.UOM;
+import com.app.model.WhUserType;
 
 
 @ComponentScan(basePackages="com.app")
@@ -66,7 +67,7 @@ public class AppConfig implements WebMvcConfigurer{
         lsfb.setHibernateProperties(props());
         
         //set annotated entity class to Session Factory 
-        lsfb.setAnnotatedClasses(ShipmentType.class,UOM.class,OrderMethod.class);
+        lsfb.setAnnotatedClasses(ShipmentType.class,UOM.class,OrderMethod.class,WhUserType.class);
      
 		return lsfb;
 	}

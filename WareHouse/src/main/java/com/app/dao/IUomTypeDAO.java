@@ -14,10 +14,5 @@ public interface IUomTypeDAO {
 
 	public UOM getUOMtypeById(Integer id);
 	
-	
-	/*
-	 * public void updateUOMtype(UOM uom); 
-	 * 
-	 */
-
+	public void updateUOMtype(UOM uom); 
 }

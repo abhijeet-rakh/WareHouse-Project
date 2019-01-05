@@ -21,7 +21,7 @@ public class OrderMethodServiceImpl implements IOrderMethodService {
 		return dao.saveOrderMethod(om);
 	}
 
-	@Override
+	@Transactional(readOnly=true)
 	public List<OrderMethod> getAllOrderMethod() {
 		return dao.getAllOrderMethod();
 	}
@@ -31,9 +31,14 @@ public class OrderMethodServiceImpl implements IOrderMethodService {
 	    dao.deleteOrderMethod(id);
 	}
 
-	@Override
+	@Transactional(readOnly=true)
 	public OrderMethod getOrderMethodById(Integer id) {
 		return dao.getOrderMethodById(id);
+	}
+
+	@Transactional
+	public void updateOrderMethod(OrderMethod om) {
+		dao.updateOrderMethod(om);
 	}
 
 }

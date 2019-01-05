@@ -82,5 +82,28 @@ public class UOMTypeController {
 		
 		return "UOMTypeView";
 	}
+	
+	
+	@RequestMapping("editOne")
+	public String editUOMtype(@RequestParam Integer uid,ModelMap map) {
+		
+		map.addAttribute("UOM",service.getUOMtypeById(uid));
+		
+		return "UOMTypeEdit";
+	}
+	
+	
+	@RequestMapping("update")
+	public String updateUOMtype(@ModelAttribute UOM uom,ModelMap map) {
+		
+		service.updateUOMtype(uom);
+		
+		map.addAttribute("message","updated "+uom.getUomid()+" Record");
+		
+		map.addAttribute("data",service.getAllUOMtype());
+		
+		return "UOMTypeData";
+	}
 
+	
 }

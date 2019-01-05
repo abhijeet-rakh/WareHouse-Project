@@ -6,18 +6,20 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body bgcolor="">
+<body>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <h1 style="color:red;text-align:center;">Order Method Registration Form</h1>
 
- <form:form action="insert" method="POST" modelAttribute="OM">
+ <form:form action="update" method="POST" modelAttribute="OM">
  <pre>
+ 
+ Order Id :<form:input path="oid" readonly="true"/>
  
  OrderMode :<form:radiobutton path="ordermode" value="SALE"/>Sale
             <form:radiobutton path="ordermode" value="PURCHASE"/>Purchase
  
- Order Code :<form:input path="ordercode"/>
+ Order Code :<form:input path="ordercode" readonly="true"/>
  
  Execute Type :<form:select path="executetype">
                <form:option value="">--select--</form:option>
@@ -33,14 +35,10 @@
  
  Description : <form:textarea path="desc"/>
  
- <input type="submit" value="Create Order Method">
+ <input type="submit" value="Update Order Method">
+ 
  </pre>
  </form:form>
- 
- 
- <br>
-${message}<br><br>
 
-<a href="all">View all Order method</a>
 </body>
 </html>

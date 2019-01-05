@@ -37,5 +37,10 @@ public class UOMTypeDAOImpl implements IUomTypeDAO{
 	public UOM getUOMtypeById(Integer id) {
 		return ht.get(UOM.class,id);
 	}
+
+	@Override
+	public void updateUOMtype(UOM uom) {
+         ht.update(uom);		
+	}
 	
 }

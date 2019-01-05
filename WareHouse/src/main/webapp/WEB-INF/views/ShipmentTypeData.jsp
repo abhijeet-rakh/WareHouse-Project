@@ -21,7 +21,7 @@
      <th>UpdateCount</th>
      <th>CreatedOn</th>
      <th>UpdatedOn</th> -->
-     <th colspan="2">OPERATIONS</th>
+     <th colspan="3">OPERATIONS</th>
 </tr>
 <c:forEach items="${data}" var="d">
        <tr>
@@ -34,13 +34,20 @@
        <td><c:out value="${d.shipcount}"></c:out></td>
        <td><c:out value="${d.createtime}"></c:out></td>
        <td><c:out value="${d.updttime}"></c:out></td> --%>
-       <td><a href="delete?sid=${d.id}">
+       <td>
+       <a href="delete?sid=${d.id}">
               <img  src="../resources/images/delete.png" height="30" width="30">
-           </a>
+       </a>
        </td>
-       <td><a href="viewOne?sid=${d.id}">
+       <td>
+       <a href="viewOne?sid=${d.id}">
               <img  src="../resources/images/view.png" height="30" width="30">
-           </a>
+       </a>
+       </td>
+       <td>
+       <a href="editOne?sid=${d.id}">
+              <img  src="../resources/images/edit.png" height="30" width="30">
+       </a>
        </td>
        </tr>
 </c:forEach>

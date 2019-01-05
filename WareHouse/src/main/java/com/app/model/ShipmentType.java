@@ -43,6 +43,7 @@ public class ShipmentType {
 	@Column(name = "shipdesc")
 	private String desc;
 	
+	/*
 	@Version
 	@Column(name = "updatecount")
 	private int shipcount;
@@ -54,5 +55,7 @@ public class ShipmentType {
 	@UpdateTimestamp
 	@Column(name = "updatedOn")
 	private OffsetDateTime updttime;
+*/
 
+	
 }

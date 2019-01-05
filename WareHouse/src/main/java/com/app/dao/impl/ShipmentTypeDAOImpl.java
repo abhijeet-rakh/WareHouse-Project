@@ -43,6 +43,11 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 	@Override
 	public ShipmentType getShipmentTypeById(Integer id) {
 		return ht.get(ShipmentType.class, id);
+	}
+
+	@Override
+	public void updateShipmentType(ShipmentType st) {
+	    ht.update(st);	
 	}	
 	
 }

@@ -17,7 +17,7 @@
      <th>uomtype</th>
      <th>uommodel</th>
      <!-- <th>uomdesc</th> -->
-     <th colspan="2">OPERATIONS</th>
+     <th colspan="3">OPERATIONS</th>
 </tr>
 <c:forEach items="${data}" var="d">
        <tr>
@@ -35,6 +35,12 @@
               <img src="../resources/images/view.png" height="30" width="30">        
        </a>
        </td>
+        <td>
+       <a href="editOne?uid=${d.uomid}">
+              <img src="../resources/images/edit.png" height="30" width="30">        
+       </a>
+       </td>
+       
        </tr>
 </c:forEach>
 </table>

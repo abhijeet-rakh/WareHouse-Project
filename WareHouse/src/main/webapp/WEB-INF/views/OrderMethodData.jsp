@@ -19,7 +19,7 @@
       <th>ExecuteType</th>
       <!-- <th>Desc</th>
       <th>OrderAccept</th> -->
-      <th colspan="2">OPERATION</th>
+      <th colspan="3">OPERATION</th>
 </tr>
 <c:forEach items="${data}" var="d">
       <tr>
@@ -38,6 +38,11 @@
       <td>
       <a href="viewOne?oid=${d.oid}">
          <img src="../resources/images/view.png" height="30" width="30">
+      </a>
+      </td>
+      <td>
+      <a href="editOne?oid=${d.oid}">
+         <img src="../resources/images/edit.png" height="30" width="30">
       </a>
       </td>
      </tr>

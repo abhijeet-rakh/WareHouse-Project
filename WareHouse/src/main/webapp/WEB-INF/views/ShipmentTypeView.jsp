@@ -11,7 +11,6 @@
 	<br>
 	<br>
 	<table border="1">
-
 		<tr>
 			<td>ID</td>
 			<td>${st.id}</td>
@@ -40,21 +39,6 @@
 		<tr>
 			<td>DESCRIPTION</td>
 			<td>${st.desc}</td>
-		</tr>
-
-		<tr>
-			<td>SHIPCOUNT</td>
-			<td>${st.shipcount}</td>
-		</tr>
-
-		<tr>
-			<td>CREATETIME</td>
-			<td>${st.createtime}</td>
-		</tr>
-
-		<tr>
-			<td>UPDATETIME</td>
-			<td>${st.updttime}</td>
 		</tr>
 
 	</table>

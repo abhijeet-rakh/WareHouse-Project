@@ -79,5 +79,27 @@ public class OrderMethodController {
 		return "OrderMethodView";
 	}
 	
+	@RequestMapping(value="editOne")
+	public String editOrderMethod(@RequestParam Integer oid,ModelMap map) {
+		
+		map.addAttribute("OM",service.getOrderMethodById(oid));
+		
+		return "OrderMethodEdit";
+	}
+	
+	@RequestMapping(value="update")
+	public String updateOrderMethod(@ModelAttribute OrderMethod om,ModelMap map) {
+		
+		//call service
+		service.updateOrderMethod(om);
+		
+		//add to map attribute
+		map.addAttribute("message","Record "+om.getOid()+" updated");
+		
+		//add many record to map
+		map.addAttribute("data",service.getAllOrderMethod());
+		
+		return "OrderMethodData";
+	}
 	
 }

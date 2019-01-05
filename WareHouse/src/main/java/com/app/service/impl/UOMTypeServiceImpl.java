@@ -31,9 +31,14 @@ public class UOMTypeServiceImpl implements IUOMTypeService {
 	      dao.deleteUOMById(id);
 	}
 
-	@Override
+	@Transactional(readOnly=true)
 	public UOM getUOMtypeById(Integer id) {
 		return dao.getUOMtypeById(id);
+	}
+
+	@Transactional
+ 	public void updateUOMtype(UOM uom) {
+		dao.updateUOMtype(uom);
 	}
 	
 }

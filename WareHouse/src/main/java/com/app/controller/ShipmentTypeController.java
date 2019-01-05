@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ public class ShipmentTypeController {
 	@Autowired
 	private IShipmentTypeService service;
 
+	
 	@RequestMapping(value = "/register")
 	public String showRegister(ModelMap map) {
 
@@ -29,6 +31,7 @@ public class ShipmentTypeController {
 		return "ShipmentTypeRegister";
 	}
 
+	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String addShipmentType(@ModelAttribute ShipmentType shiptype, ModelMap map) {
 		Integer id = null;
@@ -70,6 +73,7 @@ public class ShipmentTypeController {
 		return "ShipmentTypeData";
 	}
 
+	
 	@RequestMapping("viewOne")
 	public String viewShipmentType(@RequestParam Integer sid, ModelMap map) {
 		ShipmentType shiptype = service.getShipmentTypeById(sid);
@@ -77,6 +81,30 @@ public class ShipmentTypeController {
 		map.addAttribute("st", shiptype);
 
 		return "ShipmentTypeView";
+	}
+
+	
+	@RequestMapping(value="editOne")
+	public String editShipmentType(@RequestParam Integer sid,ModelMap map) {
+	
+		ShipmentType st=service.getShipmentTypeById(sid);
+		
+		map.addAttribute("shipmentType",st);
+		
+		return "ShipmentTypeEdit";
+	}
+	
+	@RequestMapping(value="update",method=RequestMethod.POST)
+	public String updateShipmentType(@ModelAttribute ShipmentType shipmenttype,ModelMap map) {
+		
+		//update record
+		service.updateShipmentType(shipmenttype);
+		
+		map.addAttribute("message","updated "+shipmenttype.getId()+" Record");
+		
+		map.addAttribute("data",service.getAllShipmentType());
+		
+		return "ShipmentTypeData";
 	}
 
 }
