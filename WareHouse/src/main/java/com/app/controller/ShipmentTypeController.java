@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.model.ShipmentType;
 import com.app.service.IShipmentTypeService;
+import com.nt.excelview.ShipmentTypeExcelView;
+import com.nt.excelview.ShipmentTypeExcelViewById;
 
 @Controller
 @RequestMapping("/shipmenttype")
@@ -106,5 +110,20 @@ public class ShipmentTypeController {
 		
 		return "ShipmentTypeData";
 	}
+	
+	@RequestMapping(value="excelExp")
+	public ModelAndView getAllShipmentinExcel() {
+          List<ShipmentType> list=service.getAllShipmentType();
+		
+          return new ModelAndView(new ShipmentTypeExcelView(),"excellist",list);
+	}
+	
+	@RequestMapping("excelOne")
+	public ModelAndView getShipmentExcelById(@RequestParam Integer sid) {
+		ShipmentType shipment=service.getShipmentTypeById(sid);
+		
+		return new ModelAndView(new ShipmentTypeExcelViewById(),"excel",Arrays.asList(shipment));
+	} 
+	
 
 }

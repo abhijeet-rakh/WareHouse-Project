@@ -10,6 +10,8 @@
 <h1 style="color:red;text-align:center;">All ShipmentType Data</h1>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<a href="excelExp">Export all record in Excel</a>
 <table border="1">
 <tr>
      <th>ShipId</th>
@@ -21,7 +23,7 @@
      <th>UpdateCount</th>
      <th>CreatedOn</th>
      <th>UpdatedOn</th> -->
-     <th colspan="3">OPERATIONS</th>
+     <th colspan="4">OPERATIONS</th>
 </tr>
 <c:forEach items="${data}" var="d">
        <tr>
@@ -49,6 +51,13 @@
               <img  src="../resources/images/edit.png" height="30" width="30">
        </a>
        </td>
+       
+       <td>
+       <a href="excelOne?sid=${d.id}">
+              <img  src="../resources/images/excel.png" height="30" width="30">
+       </a>
+       </td>
+              
        </tr>
 </c:forEach>
 

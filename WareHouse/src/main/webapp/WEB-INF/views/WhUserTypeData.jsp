@@ -18,7 +18,7 @@
 <th>User For</th>
 <th>User Email</th>
 <th>User Contact</th>
-<th colspan="3">OPERATIONS</th> 
+<th colspan="4">OPERATIONS</th> 
 </tr>
 <c:forEach items="${data}" var="d">
 
@@ -39,6 +39,12 @@
     <td>
      <a href="viewOne?wid=${d.whid}">
         <img src="../resources/images/view.png" height="30" width="30">
+    </a>
+    </td>
+    
+    <td>
+    <a href="editOne?wid=${d.whid}">
+        <img src="../resources/images/edit.png" height="30" width="30">
     </a>
     </td>
     
