@@ -38,11 +38,11 @@ public class ShipmentTypeExcelViewById extends AbstractXlsxView {
 			private void setHead(Sheet sheet) {
 				Row row=sheet.createRow(0);
 			    row.createCell(0).setCellValue("ShipId");
-			    row.createCell(0).setCellValue("ShipMode");
-			    row.createCell(0).setCellValue("ShipCode");
-			    row.createCell(0).setCellValue("EnableShip");
-			    row.createCell(0).setCellValue("ShipGrade");
-			    row.createCell(0).setCellValue("ShipDesc");
+			    row.createCell(1).setCellValue("ShipMode");
+			    row.createCell(2).setCellValue("ShipCode");
+			    row.createCell(3).setCellValue("EnableShip");
+			    row.createCell(4).setCellValue("ShipGrade");
+			    row.createCell(5).setCellValue("ShipDesc");
 			}
 			
 			private void setBody(Sheet sheet,List<ShipmentType> list) {

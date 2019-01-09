@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.app.excelview.OrderMethodExcelView;
+import com.app.excelview.OrderMethodExcelViewById;
 import com.app.model.OrderMethod;
 import com.app.service.IOrderMethodService;
 
@@ -100,6 +104,23 @@ public class OrderMethodController {
 		map.addAttribute("data",service.getAllOrderMethod());
 		
 		return "OrderMethodData";
+	}
+	
+	
+	@RequestMapping("excelall")
+	public ModelAndView getAllOrderMethodExcel() {
+		
+		List<OrderMethod> list=service.getAllOrderMethod();
+		
+	    return new ModelAndView(new OrderMethodExcelView(),"list",list);
+	}
+	
+
+	@RequestMapping("excelOne")
+	public ModelAndView getOrderMethodById(@RequestParam Integer oid) {
+           OrderMethod om=service.getOrderMethodById(oid);
+           
+           return new ModelAndView(new OrderMethodExcelViewById(),"onedata",Arrays.asList(om));
 	}
 	
 }

@@ -9,6 +9,7 @@
 <body>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<a href="excelAll">Get All WhUserType Data</a>
 <table border="1">
 
 <tr>
@@ -49,11 +50,11 @@
     </td>
     
     <td>
-    <a href="editOne?wid=${d.whid}">
-        <img src="../resources/images/edit.png" height="30" width="30">
+    <a href="excelOne?wid=${d.whid}">
+        <img src="../resources/images/excel.png" height="30" width="30">
     </a>
     </td>
-    
+   
 </tr>
 </c:forEach>
 </table>

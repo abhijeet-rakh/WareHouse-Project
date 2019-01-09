@@ -12,6 +12,9 @@
 <h1 style="color:red;text-align:center;">Order Method Detail</h1>
 
 <table border="1">
+
+<a href="excelall">Get all OrderMethod in Excel</a>
+
 <tr>
       <th>Orderid</th>
       <th>OrderMode</th>
@@ -19,7 +22,7 @@
       <th>ExecuteType</th>
       <!-- <th>Desc</th>
       <th>OrderAccept</th> -->
-      <th colspan="3">OPERATION</th>
+      <th colspan="4">OPERATION</th>
 </tr>
 <c:forEach items="${data}" var="d">
       <tr>
@@ -29,6 +32,7 @@
       <td><c:out value="${d.executetype}"></c:out></td>
       <%-- <td><c:out value="${d.desc}"></c:out></td>
       <td><c:out value="${d.orderaccept}"></c:out></td> --%>
+      
       <td>
       <a href="delete?oid=${d.oid}">
          <img src="../resources/images/delete.png" height="30" width="30">
@@ -40,11 +44,20 @@
          <img src="../resources/images/view.png" height="30" width="30">
       </a>
       </td>
+      
       <td>
       <a href="editOne?oid=${d.oid}">
          <img src="../resources/images/edit.png" height="30" width="30">
       </a>
       </td>
+      
+      <td>
+      <a href="excelOne?oid=${d.oid}">
+         <img src="../resources/images/excel.png" height="30" width="30">
+      </a>
+      </td>
+      
+      
      </tr>
 </c:forEach>
 </table>

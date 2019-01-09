@@ -36,9 +36,9 @@ public class UOMTypeExcelViewById extends AbstractXlsxView {
 	private void setHead(Sheet sheet) {
 		Row row=sheet.createRow(0);
 		row.createCell(0).setCellValue("ID");
-		row.createCell(0).setCellValue("Type");
-	    row.createCell(0).setCellValue("Model");
-	    row.createCell(0).setCellValue("Desc");
+		row.createCell(1).setCellValue("Type");
+	    row.createCell(2).setCellValue("Model");
+	    row.createCell(3).setCellValue("Desc");
 	}
 	
 	private void setBody(Sheet sheet,List<UOM> list) {

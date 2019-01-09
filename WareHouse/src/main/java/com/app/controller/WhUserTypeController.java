@@ -1,5 +1,8 @@
 package com.app.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -7,7 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.app.excelview.WhUserTypeUserTypeExcelView;
+import com.app.excelview.WhUserTypeUserTypeExcelViewById;
+import com.app.model.OrderMethod;
 import com.app.model.WhUserType;
 import com.app.service.IWhuserTypeService;
 
@@ -85,4 +92,22 @@ public class WhUserTypeController {
 		 
 		 return "WhUserTypeData";
 	 }
+	 
+	 
+	 @RequestMapping("excelAll")
+	 public ModelAndView getAllWhUserType() {
+		List<WhUserType> list=service.getAllWhuserType();
+		 
+		return new ModelAndView(new WhUserTypeUserTypeExcelView(),"list",list);
+	 }
+	 
+	 
+	 @RequestMapping("excelOne")
+	 public ModelAndView getWhUserTypeById(@RequestParam Integer wid) {
+		WhUserType wut=service.getWhusertypeById(wid);
+		 
+		return new ModelAndView(new WhUserTypeUserTypeExcelViewById(),"wut", Arrays.asList(wut)); 
+	 }
+	
+	 
 }
