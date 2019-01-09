@@ -1,4 +1,4 @@
-package com.nt.excelview;
+package com.app.excelview;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,8 @@ public class ShipmentTypeExcelView extends AbstractXlsxView {
 	public void buildExcelDocument(Map<String, Object> model, 
 			Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		   
+		
+		
 		//set header
 		response.setHeader("Content-Disposition","attachment;filename-SHIPMENTS.xlsx");
 		
@@ -51,8 +52,7 @@ public class ShipmentTypeExcelView extends AbstractXlsxView {
 		
 		int rowNum=1;
 		
-		for(ShipmentType s:list) {
-			
+		for(ShipmentType s:list) {	
 			Row row=sheet.createRow(rowNum++);
 			row.createCell(0).setCellValue(s.getId());
 			row.createCell(1).setCellValue(s.getShipmentMode());
@@ -61,6 +61,5 @@ public class ShipmentTypeExcelView extends AbstractXlsxView {
 			row.createCell(4).setCellValue(s.getShipmentGrade());
 			row.createCell(5).setCellValue(s.getDesc());
 		}
-		            	
 	}
 }

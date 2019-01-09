@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.app.excelview.ShipmentTypeExcelView;
+import com.app.excelview.ShipmentTypeExcelViewById;
 import com.app.model.ShipmentType;
 import com.app.service.IShipmentTypeService;
-import com.nt.excelview.ShipmentTypeExcelView;
-import com.nt.excelview.ShipmentTypeExcelViewById;
 
 @Controller
 @RequestMapping("/shipmenttype")
 public class ShipmentTypeController {
 
+	
 	@Autowired
 	private IShipmentTypeService service;
 
@@ -60,6 +61,7 @@ public class ShipmentTypeController {
 		return "ShipmentTypeData";
 	}
 
+	
 	@RequestMapping(value = "delete")
 	public String deleteShipmentType(@RequestParam("sid") Integer id, ModelMap map) {
 		service.deleteShipmentType(id);
@@ -118,12 +120,12 @@ public class ShipmentTypeController {
           return new ModelAndView(new ShipmentTypeExcelView(),"excellist",list);
 	}
 	
+	
 	@RequestMapping("excelOne")
 	public ModelAndView getShipmentExcelById(@RequestParam Integer sid) {
 		ShipmentType shipment=service.getShipmentTypeById(sid);
-		
+	
 		return new ModelAndView(new ShipmentTypeExcelViewById(),"excel",Arrays.asList(shipment));
 	} 
 	
-
 }

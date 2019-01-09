@@ -11,13 +11,15 @@
 <h1 style="color:red;text-align:center;">All UOMtype Data</h1>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<a href="excelExp">Get All UOM Type Data</a>
+<br><br>
 <table border="1">
 <tr>
      <th>uid</th>
      <th>uomtype</th>
      <th>uommodel</th>
      <!-- <th>uomdesc</th> -->
-     <th colspan="3">OPERATIONS</th>
+     <th colspan="4">OPERATIONS</th>
 </tr>
 <c:forEach items="${data}" var="d">
        <tr>
@@ -41,6 +43,11 @@
        </a>
        </td>
        
+       <td>
+       <a href="excelOne?uid=${d.uomid}">
+              <img src="../resources/images/excel.png" height="30" width="30">        
+       </a>
+       </td>
        </tr>
 </c:forEach>
 </table>
