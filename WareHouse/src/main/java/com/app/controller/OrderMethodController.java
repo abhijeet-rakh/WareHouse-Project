@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.app.excelview.OrderMethodExcelView;
 import com.app.excelview.OrderMethodExcelViewById;
 import com.app.model.OrderMethod;
+import com.app.pdfview.OrderMethodPdfView;
+import com.app.pdfview.OrderMethodPdfViewById;
 import com.app.service.IOrderMethodService;
 
 @Controller
@@ -115,12 +117,26 @@ public class OrderMethodController {
 	    return new ModelAndView(new OrderMethodExcelView(),"list",list);
 	}
 	
-
 	@RequestMapping("excelOne")
 	public ModelAndView getOrderMethodById(@RequestParam Integer oid) {
            OrderMethod om=service.getOrderMethodById(oid);
            
            return new ModelAndView(new OrderMethodExcelViewById(),"onedata",Arrays.asList(om));
 	}
+	
+	@RequestMapping("pdfExp")
+    public ModelAndView getAllOrderMethodforPdf() {
+		List<OrderMethod> list=service.getAllOrderMethod();
+		
+		return new ModelAndView(new OrderMethodPdfView(),"list",list);
+	}
+	
+	@RequestMapping("pdfOne")
+	public ModelAndView getOrderMethodPdfById(@RequestParam Integer oid) {
+		OrderMethod om=service.getOrderMethodById(oid);
+		       
+		return new ModelAndView(new OrderMethodPdfViewById(),"onedata",Arrays.asList(om));
+	}
+	
 	
 }

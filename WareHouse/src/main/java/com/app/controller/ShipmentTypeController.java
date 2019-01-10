@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.app.excelview.ShipmentTypeExcelView;
 import com.app.excelview.ShipmentTypeExcelViewById;
 import com.app.model.ShipmentType;
+import com.app.pdfview.ShipmentTypePdfView;
+import com.app.pdfview.ShipmentTypePdfViewById;
 import com.app.service.IShipmentTypeService;
 
 @Controller
@@ -127,5 +129,20 @@ public class ShipmentTypeController {
 	
 		return new ModelAndView(new ShipmentTypeExcelViewById(),"excel",Arrays.asList(shipment));
 	} 
+	
+	@RequestMapping("pdfExp")
+	public ModelAndView getAllShipmentTypePdf() {
+		List<ShipmentType> list=service.getAllShipmentType();
+		
+		return new ModelAndView(new ShipmentTypePdfView(),"list",list);
+	}
+
+	@RequestMapping("pdfOne")
+	public ModelAndView getShipmentTypePdfById(@RequestParam Integer sid) {
+		    ShipmentType shipment=service.getShipmentTypeById(sid);
+		    
+		return new ModelAndView(new ShipmentTypePdfViewById(),"onedata",Arrays.asList(shipment));
+	}
+	
 	
 }

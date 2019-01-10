@@ -16,6 +16,8 @@ import com.app.excelview.WhUserTypeUserTypeExcelView;
 import com.app.excelview.WhUserTypeUserTypeExcelViewById;
 import com.app.model.OrderMethod;
 import com.app.model.WhUserType;
+import com.app.pdfview.WhUserTypePdfView;
+import com.app.pdfview.WhUserTypePdfViewById;
 import com.app.service.IWhuserTypeService;
 
 @Controller
@@ -95,7 +97,7 @@ public class WhUserTypeController {
 	 
 	 
 	 @RequestMapping("excelAll")
-	 public ModelAndView getAllWhUserType() {
+	 public ModelAndView getAllWhUserTypeforExcel() {
 		List<WhUserType> list=service.getAllWhuserType();
 		 
 		return new ModelAndView(new WhUserTypeUserTypeExcelView(),"list",list);
@@ -103,11 +105,24 @@ public class WhUserTypeController {
 	 
 	 
 	 @RequestMapping("excelOne")
-	 public ModelAndView getWhUserTypeById(@RequestParam Integer wid) {
+	 public ModelAndView getWhUserTypeByIdforExcel(@RequestParam Integer wid) {
 		WhUserType wut=service.getWhusertypeById(wid);
 		 
 		return new ModelAndView(new WhUserTypeUserTypeExcelViewById(),"wut", Arrays.asList(wut)); 
 	 }
-	
+
+	 @RequestMapping("pdfExp")
+	 public ModelAndView getAllWhUserTypeforPdf() {
+		 List<WhUserType> list=service.getAllWhuserType();
+		 
+		 return new ModelAndView(new WhUserTypePdfView(),"list",list);
+	 }
 	 
+	 @RequestMapping("pdfOne")
+	 public ModelAndView getWhUserTypeByIdById(@RequestParam Integer wid) {
+		 WhUserType wut=service.getWhusertypeById(wid);
+		 
+		 return new ModelAndView(new WhUserTypePdfViewById(),"onedata", Arrays.asList(wut));
+	 }
+	
 }

@@ -9,7 +9,8 @@
 <body>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<a href="excelAll">Get All WhUserType Data</a>
+<a href="excelAll">Get All WhUserType Data in Excel</a>|
+<a href="pdfExp">Get All WhUserType Data in Pdf</a>
 <table border="1">
 
 <tr>
@@ -19,7 +20,7 @@
 <th>User For</th>
 <th>User Email</th>
 <th>User Contact</th>
-<th colspan="4">OPERATIONS</th> 
+<th colspan="5">OPERATIONS</th> 
 </tr>
 <c:forEach items="${data}" var="d">
 
@@ -52,6 +53,12 @@
     <td>
     <a href="excelOne?wid=${d.whid}">
         <img src="../resources/images/excel.png" height="30" width="30">
+    </a>
+    </td>
+    
+    <td>
+    <a href="pdfOne?wid=${d.whid}">
+        <img src="../resources/images/pdf.png" height="30" width="30">
     </a>
     </td>
    

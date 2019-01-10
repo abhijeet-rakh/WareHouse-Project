@@ -11,10 +11,10 @@
 
 <h1 style="color:red;text-align:center;">Order Method Detail</h1>
 
+
+<a href="excelall">Get all OrderMethod in Excel</a> |
+<a href="pdfExp">Get all OrderMethod in pdf</a>
 <table border="1">
-
-<a href="excelall">Get all OrderMethod in Excel</a>
-
 <tr>
       <th>Orderid</th>
       <th>OrderMode</th>
@@ -22,7 +22,7 @@
       <th>ExecuteType</th>
       <!-- <th>Desc</th>
       <th>OrderAccept</th> -->
-      <th colspan="4">OPERATION</th>
+      <th colspan="5">OPERATION</th>
 </tr>
 <c:forEach items="${data}" var="d">
       <tr>
@@ -57,6 +57,11 @@
       </a>
       </td>
       
+      <td>
+      <a href="pdfOne?oid=${d.oid}">
+         <img src="../resources/images/excel.png" height="30" width="30">
+      </a>
+      </td>
       
      </tr>
 </c:forEach>

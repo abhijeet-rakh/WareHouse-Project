@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.app.excelview.UOMTypeExcelView;
 import com.app.excelview.UOMTypeExcelViewById;
 import com.app.model.UOM;
+import com.app.pdfview.UOMTypePdfView;
+import com.app.pdfview.UOMTypePdfViewById;
 import com.app.service.IUOMTypeService;
 
 @Controller
@@ -107,18 +109,31 @@ public class UOMTypeController {
 	}
 
 	@RequestMapping("excelExp")
-	public ModelAndView getAllUOMType() {
+	public ModelAndView getAllUOMTypeforExcel() {
 		List<UOM> list = service.getAllUOMtype();
 
 		return new ModelAndView(new UOMTypeExcelView(), "list", list);
 	}
 
 	@RequestMapping("excelOne")
-	public ModelAndView getUOMTypeById(@RequestParam Integer uid) {
+	public ModelAndView getUOMTypeByIdforExcel(@RequestParam Integer uid) {
 		UOM uom = service.getUOMtypeById(uid);
 
-		return new ModelAndView(new UOMTypeExcelViewById(),"onedata", Arrays.asList(uom));
+		return new ModelAndView(new UOMTypeExcelViewById(), "onedata", Arrays.asList(uom));
 	}
 
-	
+	@RequestMapping("pdfExp")
+	public ModelAndView getAllUOMTypeforPdf() {
+		List<UOM> list = service.getAllUOMtype();
+
+		return new ModelAndView(new UOMTypePdfView(), "list", list);
+	}
+
+	@RequestMapping("pdfOne")
+	public ModelAndView getUOMTypeByIdforPdf(@RequestParam Integer uid) {
+		UOM uom = service.getUOMtypeById(uid);
+
+		return new ModelAndView(new UOMTypePdfViewById(),"onedata",Arrays.asList(uom));
+	}
+
 }
