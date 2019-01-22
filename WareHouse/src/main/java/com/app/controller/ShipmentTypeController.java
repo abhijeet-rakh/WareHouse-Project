@@ -24,10 +24,8 @@ import com.app.service.IShipmentTypeService;
 @RequestMapping("/shipmenttype")
 public class ShipmentTypeController {
 
-	
 	@Autowired
 	private IShipmentTypeService service;
-
 	
 	@RequestMapping(value = "/register")
 	public String showRegister(ModelMap map) {
@@ -121,8 +119,7 @@ public class ShipmentTypeController {
 		
           return new ModelAndView(new ShipmentTypeExcelView(),"excellist",list);
 	}
-	
-	
+		
 	@RequestMapping("excelOne")
 	public ModelAndView getShipmentExcelById(@RequestParam Integer sid) {
 		ShipmentType shipment=service.getShipmentTypeById(sid);

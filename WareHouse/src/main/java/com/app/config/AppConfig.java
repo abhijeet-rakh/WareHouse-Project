@@ -13,30 +13,31 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.app.model.Document;
 import com.app.model.OrderMethod;
 import com.app.model.ShipmentType;
 import com.app.model.UOM;
 import com.app.model.User;
 import com.app.model.WhUserType;
 
-
-@ComponentScan(basePackages="com.app")
-@EnableTransactionManagement   //it is commit or rollback
-@EnableWebMvc//it is a spring web mvc config
-@Configuration     
-@PropertySource(value="Classpath:app.properties")
-public class AppConfig implements WebMvcConfigurer{
+@ComponentScan(basePackages = "com.app")
+@EnableTransactionManagement // it is commit or rollback
+@EnableWebMvc // it is a spring web mvc config
+@Configuration
+@PropertySource(value = "Classpath:app.properties")
+public class AppConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private Environment env;
 
-	//1.DataSource
+	// 1.DataSource
 	@Bean
 	public BasicDataSource dsObj() {
 
@@ -49,11 +50,11 @@ public class AppConfig implements WebMvcConfigurer{
 		bsds.setUrl(env.getProperty("url"));
 		bsds.setUsername(env.getProperty("un"));
 		bsds.setPassword(env.getProperty("pwd"));
-        
+
 		return bsds;
 	}
 
-	//2.SessionFactory
+	// 2.SessionFactory
 	@Bean
 	public LocalSessionFactoryBean sfObj() {
 
@@ -61,82 +62,89 @@ public class AppConfig implements WebMvcConfigurer{
 
 		lsfb = new LocalSessionFactoryBean();
 
-		//set datasource to Session factory
+		// set datasource to Session factory
 		lsfb.setDataSource(dsObj());
-		
-		//set Hibernate Properties to Session factory
-        lsfb.setHibernateProperties(props());
-        
-        //set annotated entity class to Session Factory 
-        lsfb.setAnnotatedClasses(ShipmentType.class,UOM.class,OrderMethod.class,WhUserType.class,User.class);
-     
+
+		// set Hibernate Properties to Session factory
+		lsfb.setHibernateProperties(props());
+
+		// set annotated entity class to Session Factory
+		lsfb.setAnnotatedClasses(ShipmentType.class, UOM.class, OrderMethod.class, WhUserType.class, User.class,
+				Document.class);
+
 		return lsfb;
 	}
 
-	//3.Properties
+	// 3.Properties
 	@Bean
 	public Properties props() {
-		
-		Properties prop=null;
-		
-		prop=new Properties();
-		
-		prop.setProperty("hibernate.dialect",env.getProperty("dialect"));
-		prop.setProperty("hibernate.show_sql",env.getProperty("showsql"));
-		prop.setProperty("hibernate.format_sql",env.getProperty("fmtsql"));
-		prop.setProperty("hibernate.hbm2ddl.auto",env.getProperty("ddlauto"));
-		
+
+		Properties prop = null;
+
+		prop = new Properties();
+
+		prop.setProperty("hibernate.dialect", env.getProperty("dialect"));
+		prop.setProperty("hibernate.show_sql", env.getProperty("showsql"));
+		prop.setProperty("hibernate.format_sql", env.getProperty("fmtsql"));
+		prop.setProperty("hibernate.hbm2ddl.auto", env.getProperty("ddlauto"));
+
 		return prop;
-		
+
 	}
-	
-	//4.HibernateTemplate
+
+	// 4.HibernateTemplate
 	@Bean
 	public HibernateTemplate htObj() {
-		HibernateTemplate ht=null;
-		
-		ht=new HibernateTemplate();
-		
-		//set factory bean to hibernate template
+		HibernateTemplate ht = null;
+
+		ht = new HibernateTemplate();
+
+		// set factory bean to hibernate template
 		ht.setSessionFactory(sfObj().getObject());
 
-	    return ht;
+		return ht;
 	}
-	
-	//5.HibernateTransactionManager
+
+	// 5.HibernateTransactionManager
 	@Bean
 	public HibernateTransactionManager hthObj() {
-		
-		HibernateTransactionManager htm=null;
-		
-		htm=new HibernateTransactionManager();
-		
+
+		HibernateTransactionManager htm = null;
+
+		htm = new HibernateTransactionManager();
+
 		htm.setSessionFactory(sfObj().getObject());
-		
+
 		return htm;
 	}
-	
-	//6.InternalResourceViewResolver
+
+	// 6.InternalResourceViewResolver
 	@Bean
 	public InternalResourceViewResolver ivr() {
-		
-		InternalResourceViewResolver irvr=null;
-		
-		irvr=new InternalResourceViewResolver();
-		
-		//location of UI file
+
+		InternalResourceViewResolver irvr = null;
+
+		irvr = new InternalResourceViewResolver();
+
+		// location of UI file
 		irvr.setPrefix(env.getProperty("mvc.prefix"));
-	
-		//extension of UI file
-	    irvr.setSuffix(env.getProperty("mvc.suffix"));
-	    
-	    return irvr;
+
+		// extension of UI file
+		irvr.setSuffix(env.getProperty("mvc.suffix"));
+
+		return irvr;
 	}
-	
-	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry reg) {
-       reg.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		reg.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 	
+	//Configure CommonsMultipartResolver 
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver cm = new CommonsMultipartResolver();
+		return cm;
+	}
+		
 }

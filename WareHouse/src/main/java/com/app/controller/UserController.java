@@ -141,5 +141,4 @@ public class UserController {
 		return new ModelAndView(new UserPdfViewById(),"onedata",Arrays.asList(user));
 	}
 
-
 }
