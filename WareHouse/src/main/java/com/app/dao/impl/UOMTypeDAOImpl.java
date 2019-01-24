@@ -42,5 +42,11 @@ public class UOMTypeDAOImpl implements IUomTypeDAO{
 	public void updateUOMtype(UOM uom) {
          ht.update(uom);		
 	}
+
+	@Override
+	public List<Object[]> getUOMtypeCount() {
+	  String hql="select uomtype,count(uomtype) from "+UOM.class.getName()+" group by uomtype ";
+	  return (List<Object[]>) ht.find(hql);
+	}
 	
 }

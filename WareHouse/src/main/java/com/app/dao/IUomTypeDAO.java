@@ -7,12 +7,10 @@ import com.app.model.UOM;
 public interface IUomTypeDAO {
 
 	public Integer saveUOMtype(UOM uom);
-
 	public List<UOM> getAllUOMtype();
-
 	public void deleteUOMById(Integer id);
-
 	public UOM getUOMtypeById(Integer id);
-	
 	public void updateUOMtype(UOM uom); 
+	public List<Object[]> getUOMtypeCount();
+	
 }

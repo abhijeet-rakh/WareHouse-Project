@@ -3,6 +3,8 @@ package com.app.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +21,7 @@ import com.app.model.ShipmentType;
 import com.app.pdfview.ShipmentTypePdfView;
 import com.app.pdfview.ShipmentTypePdfViewById;
 import com.app.service.IShipmentTypeService;
+import com.app.util.ShipmentTypeUtility;
 
 @Controller
 @RequestMapping("/shipmenttype")
@@ -26,6 +29,14 @@ public class ShipmentTypeController {
 
 	@Autowired
 	private IShipmentTypeService service;
+	
+	@Autowired
+	private ServletContext context;
+	
+	@Autowired
+	private ShipmentTypeUtility utility;
+	
+	
 	
 	@RequestMapping(value = "/register")
 	public String showRegister(ModelMap map) {
@@ -116,29 +127,33 @@ public class ShipmentTypeController {
 	@RequestMapping(value="excelExp")
 	public ModelAndView getAllShipmentinExcel() {
           List<ShipmentType> list=service.getAllShipmentType();
-		
           return new ModelAndView(new ShipmentTypeExcelView(),"excellist",list);
 	}
 		
 	@RequestMapping("excelOne")
 	public ModelAndView getShipmentExcelById(@RequestParam Integer sid) {
 		ShipmentType shipment=service.getShipmentTypeById(sid);
-	
 		return new ModelAndView(new ShipmentTypeExcelViewById(),"excel",Arrays.asList(shipment));
 	} 
 	
 	@RequestMapping("pdfExp")
 	public ModelAndView getAllShipmentTypePdf() {
 		List<ShipmentType> list=service.getAllShipmentType();
-		
 		return new ModelAndView(new ShipmentTypePdfView(),"list",list);
 	}
 
 	@RequestMapping("pdfOne")
 	public ModelAndView getShipmentTypePdfById(@RequestParam Integer sid) {
 		    ShipmentType shipment=service.getShipmentTypeById(sid);
-		    
 		return new ModelAndView(new ShipmentTypePdfViewById(),"onedata",Arrays.asList(shipment));
+	}
+	
+	@RequestMapping("report")
+	public String getShipmentTypeCount() {
+		String path=context.getRealPath("/");
+		List<Object[]> list=service.getShipmentTypeCount();
+        utility.generate(path, list);
+		return "ShipmentTypeCountReport";
 	}
 	
 	

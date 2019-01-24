@@ -19,7 +19,7 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 	public Integer saveShipmentType(ShipmentType st) {
 		Integer id = null;
 
-		System.out.println("desc="+st.getDesc());
+		System.out.println("desc=" + st.getDesc());
 		id = (Integer) ht.save(st);
 
 		return id;
@@ -27,17 +27,16 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 
 	@Override
 	public List<ShipmentType> getAllShipmentType() {
-        List<ShipmentType> list=ht.loadAll(ShipmentType.class);
+		List<ShipmentType> list = ht.loadAll(ShipmentType.class);
 		return list;
 	}
 
-	
 	@Override
 	public void deleteShipmentType(Integer id) {
-        ShipmentType st=null;
-        st=new ShipmentType();
-        st.setId(id);   
-        ht.delete(st);
+		ShipmentType st = null;
+		st = new ShipmentType();
+		st.setId(id);
+		ht.delete(st);
 	}
 
 	@Override
@@ -47,7 +46,14 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 
 	@Override
 	public void updateShipmentType(ShipmentType st) {
-	    ht.update(st);	
-	}	
-	
+		ht.update(st);
+	}
+
+	@Override
+	public List<Object[]> getShipmentTypeCount() {
+		String hql = " select shipmentMode,count(shipmentMode) from " + ShipmentType.class.getName()
+				+ " group by shipmentMode ";
+		return (List<Object[]>) ht.find(hql);
+	}
+
 }

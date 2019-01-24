@@ -43,5 +43,11 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 	public void updateShipmentType(ShipmentType st) {
 	     dao.updateShipmentType(st);	
 	}
+
+	@Transactional(readOnly=true)
+	public List<Object[]> getShipmentTypeCount() {        
+		return dao.getShipmentTypeCount();
+	}
+
 	
 }

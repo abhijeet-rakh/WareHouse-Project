@@ -3,6 +3,8 @@ package com.app.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +20,7 @@ import com.app.model.UOM;
 import com.app.pdfview.UOMTypePdfView;
 import com.app.pdfview.UOMTypePdfViewById;
 import com.app.service.IUOMTypeService;
+import com.app.util.UOMtypeUtility;
 
 @Controller
 @RequestMapping(value = "/uomtype")
@@ -25,6 +28,13 @@ public class UOMTypeController {
 
 	@Autowired
 	private IUOMTypeService service;
+
+	@Autowired
+	private ServletContext context;
+	
+	@Autowired
+	private UOMtypeUtility utility;
+	
 
 	@RequestMapping(value = "/register")
 	public String regUOMType(ModelMap map) {
@@ -111,29 +121,33 @@ public class UOMTypeController {
 	@RequestMapping("excelExp")
 	public ModelAndView getAllUOMTypeforExcel() {
 		List<UOM> list = service.getAllUOMtype();
-
 		return new ModelAndView(new UOMTypeExcelView(), "list", list);
 	}
 
 	@RequestMapping("excelOne")
 	public ModelAndView getUOMTypeByIdforExcel(@RequestParam Integer uid) {
 		UOM uom = service.getUOMtypeById(uid);
-
 		return new ModelAndView(new UOMTypeExcelViewById(), "onedata", Arrays.asList(uom));
 	}
 
 	@RequestMapping("pdfExp")
 	public ModelAndView getAllUOMTypeforPdf() {
 		List<UOM> list = service.getAllUOMtype();
-
 		return new ModelAndView(new UOMTypePdfView(), "list", list);
 	}
 
 	@RequestMapping("pdfOne")
 	public ModelAndView getUOMTypeByIdforPdf(@RequestParam Integer uid) {
 		UOM uom = service.getUOMtypeById(uid);
-
 		return new ModelAndView(new UOMTypePdfViewById(),"onedata",Arrays.asList(uom));
+	}
+	
+	@RequestMapping("report")
+	public String getUOMTypeCount() {
+		String path=context.getRealPath("/");
+		List<Object[]> list=service.getUOMtypeCount();
+        utility.generate(path, list);
+	    return "UOMtypeCountReport";
 	}
 
 }

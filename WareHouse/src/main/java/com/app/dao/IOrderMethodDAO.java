@@ -11,6 +11,8 @@ public interface IOrderMethodDAO {
 	public void deleteOrderMethod(Integer id);
 	public OrderMethod getOrderMethodById(Integer id);
 	public void updateOrderMethod(OrderMethod om);
+	public List<Object[]> getOrderModeByCount();
+	
 	
 	
 }

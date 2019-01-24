@@ -14,13 +14,11 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 
 	@Autowired
 	private HibernateTemplate ht;
-	
-	
+
 	@Override
-	public Integer saveOrderMethod(OrderMethod om) {	
+	public Integer saveOrderMethod(OrderMethod om) {
 		return (Integer) ht.save(om);
 	}
-
 
 	@Override
 	public List<OrderMethod> getAllOrderMethod() {
@@ -29,9 +27,9 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 
 	@Override
 	public void deleteOrderMethod(Integer id) {
-	     OrderMethod om=new OrderMethod();
-	     om.setOid(id);
-	     ht.delete(om);
+		OrderMethod om = new OrderMethod();
+		om.setOid(id);
+		ht.delete(om);
 	}
 
 	@Override
@@ -43,5 +41,11 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 	public void updateOrderMethod(OrderMethod om) {
 		ht.update(om);
 	}
-	
+
+	@Override
+	public List<Object[]> getOrderModeByCount() {
+		String hql = "select ordermode,count(ordermode) from " + OrderMethod.class.getName() + " group by ordermode ";
+		return (List<Object[]>) ht.find(hql);
+	}
+
 }
