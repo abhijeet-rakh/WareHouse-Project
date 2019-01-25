@@ -11,6 +11,7 @@ public interface IWhuserTypeDAO {
 	public void updateWhusertype(WhUserType wut);
 	public WhUserType getWhusertypeById(Integer id);
     public List<WhUserType> getAllWhuserType();
+    public List<Object[]> getWhUserTypeCount();
     
     
 }

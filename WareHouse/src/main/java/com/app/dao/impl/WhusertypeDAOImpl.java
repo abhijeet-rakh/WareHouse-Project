@@ -43,4 +43,10 @@ public class WhusertypeDAOImpl implements IWhuserTypeDAO {
 		return ht.loadAll(WhUserType.class);
 	}
 
+	@Override
+	public List<Object[]> getWhUserTypeCount() {
+	String hql=" select userType,count(userType) from "+WhUserType.class.getName()+" group by userType ";
+		return (List<Object[]>) ht.find(hql);
+	}
+
 }

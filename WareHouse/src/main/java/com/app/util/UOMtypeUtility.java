@@ -27,7 +27,7 @@ public class UOMtypeUtility {
 
 		// Convert JFreeChart into image by using ChartUtilities
 		try {
-			ChartUtils.saveChartAsJPEG(new File(path + "/resources/PieChart/UOMTypePie.jpg"), jfc, 250, 250);
+			ChartUtils.saveChartAsJPEG(new File(path + "resources/PieChart/UOMTypePie.jpg"), jfc, 250, 250);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

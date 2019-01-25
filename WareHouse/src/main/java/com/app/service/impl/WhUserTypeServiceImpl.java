@@ -12,7 +12,7 @@ import com.app.service.IWhuserTypeService;
 
 @Service
 public class WhUserTypeServiceImpl implements IWhuserTypeService{
-
+	
 	@Autowired
 	private IWhuserTypeDAO dao;
 
@@ -41,5 +41,9 @@ public class WhUserTypeServiceImpl implements IWhuserTypeService{
 		return dao.getAllWhuserType();
 	}
 
+	@Transactional(readOnly=true)
+	public List<Object[]> getWhUserTypeCount() {
+		return dao.getWhUserTypeCount();
+	}
 	
 }

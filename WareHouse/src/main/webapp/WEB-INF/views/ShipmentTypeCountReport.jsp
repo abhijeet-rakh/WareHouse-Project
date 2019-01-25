@@ -1,1 +1,1 @@
-<img src="/resources/PieChart/ShipmentTypePie.jpg" >
+<img src="../resources/PieChart/ShipmentTypePie.jpg" >
