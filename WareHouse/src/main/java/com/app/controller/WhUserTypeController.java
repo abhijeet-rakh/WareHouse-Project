@@ -35,8 +35,7 @@ public class WhUserTypeController {
 
 	@Autowired
 	private WhUserTypeUtility utility;
-	
-	
+
 	@RequestMapping(value = "register")
 	public String showregformWhUserType(ModelMap map) {
 		map.addAttribute("WUT", new WhUserType());
@@ -119,7 +118,6 @@ public class WhUserTypeController {
 	@RequestMapping("pdfExp")
 	public ModelAndView getAllWhUserTypeforPdf() {
 		List<WhUserType> list = service.getAllWhuserType();
-
 		return new ModelAndView(new WhUserTypePdfView(), "list", list);
 	}
 
@@ -134,9 +132,9 @@ public class WhUserTypeController {
 	public String getWhUserType() {
 		String path = context.getRealPath("/");
 		List<Object[]> list = service.getWhUserTypeCount();
-        utility.generate(path, list);
+		utility.generatePieChart(path, list);
+		utility.generateBarChart(path, list);
 		return "WhUserTypeReport";
 	}
 
-	
 }

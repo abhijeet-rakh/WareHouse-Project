@@ -152,9 +152,9 @@ public class ShipmentTypeController {
 	public String getShipmentTypeCount() {
 		String path=context.getRealPath("/");
 		List<Object[]> list=service.getShipmentTypeCount();
-        utility.generate(path, list);
+        utility.generatePieChart(path, list);
+        utility.generateBarChart(path, list);
 		return "ShipmentTypeCountReport";
 	}
-	
 	
 }

@@ -150,6 +150,7 @@ public class OrderMethodController {
 		String path = context.getRealPath("/");
 		List<Object[]> list = service.getOrderModeByCount();
 		utility.generatePieChart(path, list);
+	    utility.generateBarChart(path, list);
 		return "OrderMethodCountReport";
 	}
 

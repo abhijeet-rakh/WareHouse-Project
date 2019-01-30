@@ -7,12 +7,14 @@ import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ShipmentTypeUtility {
-	public void generate(String path, List<Object[]> list) {
+	public void generatePieChart(String path, List<Object[]> list) {
 		
 		// Convert list Object array into DataSet
 		DefaultPieDataset dpiedataset = new DefaultPieDataset();
@@ -26,10 +28,29 @@ public class ShipmentTypeUtility {
 
 		// Convert JFreeChart into image by using ChartUtilities
 		try {
-			ChartUtils.saveChartAsJPEG(new File(path + "/resources/PieChart/ShipmentTypePie.jpg"), jfc, 250, 250);
+			ChartUtils.saveChartAsJPEG(new File(path + "/resources/PieChart/ShipmentTypePieChart.jpg"), jfc, 250, 250);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}//generatePieChart
+	
+	public void generateBarChart(String path,List<Object[]> list) {
 		
-	}
+	     //1.Create Object of DefaultCategoryDataset
+         DefaultCategoryDataset bardataset=new DefaultCategoryDataset();
+         
+         for(Object[] bd:list) {
+        	 bardataset.setValue(new Double(bd[1].toString()),bd[0].toString(), "Shipment Type Bar Chart");
+         }
+	
+	     //2.Convert dataset to JfreeChart Using ChartFactory
+         JFreeChart barchart=ChartFactory.createBarChart("Shipment Type Bar Chart","Shipment Type", "Count", bardataset, PlotOrientation.HORIZONTAL, true, true, false);
+         
+         //3.Convert JFreeChart to image
+         try {
+			ChartUtils.saveChartAsJPEG(new File(path+"/resources/PieChart/ShipmentTypeBarChart.jpg"), barchart,250,250);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}//generateBarChart
 }

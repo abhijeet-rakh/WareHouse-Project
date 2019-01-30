@@ -146,7 +146,8 @@ public class UOMTypeController {
 	public String getUOMTypeCount() {
 		String path=context.getRealPath("/");
 		List<Object[]> list=service.getUOMtypeCount();
-        utility.generate(path, list);
+        utility.generatePieChart(path, list);
+        utility.generateBarChart(path, list);
 	    return "UOMtypeCountReport";
 	}
 
