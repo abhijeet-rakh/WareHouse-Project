@@ -13,6 +13,4 @@ public interface IOrderMethodService {
 	public void updateOrderMethod(OrderMethod om);
 	public List<Object[]> getOrderModeByCount();
 	
-	
-	
 }
