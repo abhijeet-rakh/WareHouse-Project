@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.app.excelview.WhUserTypeUserTypeExcelView;
 import com.app.excelview.WhUserTypeUserTypeExcelViewById;
-import com.app.model.OrderMethod;
 import com.app.model.WhUserType;
 import com.app.pdfview.WhUserTypePdfView;
 import com.app.pdfview.WhUserTypePdfViewById;

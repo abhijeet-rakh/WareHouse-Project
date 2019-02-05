@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.app.model.OrderMethod;
+
 import com.app.model.User;
 import com.lowagie.text.Document;
 import com.lowagie.text.Paragraph;
