@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,44 +22,53 @@ import com.app.pdfview.UOMTypePdfView;
 import com.app.pdfview.UOMTypePdfViewById;
 import com.app.service.IUOMTypeService;
 import com.app.util.UOMtypeUtility;
+import com.app.validator.UOMTypeValidator;
 
 @Controller
-@RequestMapping(value = "/uomtype")
+@RequestMapping(value="/uom")
 public class UOMTypeController {
+
+	//@Autowired
+	//private UOMTypeValidator validator;
 
 	@Autowired
 	private IUOMTypeService service;
 
 	@Autowired
 	private ServletContext context;
-	
+
 	@Autowired
 	private UOMtypeUtility utility;
-	
 
 	@RequestMapping(value = "/register")
 	public String regUOMType(ModelMap map) {
 
 		// add new Object to map
-		map.addAttribute("UM", new UOM());
+		map.addAttribute("uom", new UOM());
 
 		return "UOMTypeRegister";
 	}
 
-	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String saveUOMType(@ModelAttribute UOM uom, ModelMap map) {
+	@RequestMapping(value="/insert",method =RequestMethod.POST)
+	public String saveUOMType(@ModelAttribute UOM uom, Errors errors, ModelMap map) {
 
-		String msg = null;
+		//validate the UOM
+		//validator.validate(uom, errors);
 
-		Integer id = service.saveUOMtype(uom);
+		if (errors.hasErrors()) {
+             //If Error is there
+			map.addAttribute("message","Please Check Errors.......");
+		} else {
+             //If Error is not there
+			Integer id = service.saveUOMtype(uom);
 
-		msg = "record " + id + " inserted";
+			String msg = "record '"+id+"'inserted";
 
-		map.addAttribute("message", msg);
+			map.addAttribute("message", msg);
 
-		// clean previous object and add new to spring form tag map
-		map.addAttribute("UM", new UOM());
-
+			// clean previous object and add new to spring form tag map
+			map.addAttribute("uom", new UOM());
+		}
 		return "UOMTypeRegister";
 	}
 
@@ -139,16 +149,16 @@ public class UOMTypeController {
 	@RequestMapping("pdfOne")
 	public ModelAndView getUOMTypeByIdforPdf(@RequestParam Integer uid) {
 		UOM uom = service.getUOMtypeById(uid);
-		return new ModelAndView(new UOMTypePdfViewById(),"onedata",Arrays.asList(uom));
+		return new ModelAndView(new UOMTypePdfViewById(), "onedata", Arrays.asList(uom));
 	}
-	
+
 	@RequestMapping("report")
 	public String getUOMTypeCount() {
-		String path=context.getRealPath("/");
-		List<Object[]> list=service.getUOMtypeCount();
-        utility.generatePieChart(path, list);
-        utility.generateBarChart(path, list);
-	    return "UOMtypeCountReport";
+		String path = context.getRealPath("/");
+		List<Object[]> list = service.getUOMtypeCount();
+		utility.generatePieChart(path, list);
+		utility.generateBarChart(path, list);
+		return "UOMtypeCountReport";
 	}
 
 }

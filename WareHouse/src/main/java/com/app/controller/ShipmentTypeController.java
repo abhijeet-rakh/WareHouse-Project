@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,45 +22,50 @@ import com.app.pdfview.ShipmentTypePdfView;
 import com.app.pdfview.ShipmentTypePdfViewById;
 import com.app.service.IShipmentTypeService;
 import com.app.util.ShipmentTypeUtility;
+import com.app.validator.ShipmentTypeValidator;
 
 @Controller
 @RequestMapping("/shipmenttype")
 public class ShipmentTypeController {
 
 	@Autowired
+	private ShipmentTypeValidator validator;
+
+	@Autowired
 	private IShipmentTypeService service;
-	
+
 	@Autowired
 	private ServletContext context;
-	
+
 	@Autowired
 	private ShipmentTypeUtility utility;
-	
-	
-	
+
 	@RequestMapping(value = "/register")
 	public String showRegister(ModelMap map) {
-
-		//add ShipmentType object to map attribute
-		map.addAttribute("ST",new ShipmentType());
-		
+		// add ShipmentType object to map attribute
+		map.addAttribute("shipmentType", new ShipmentType());
 		return "ShipmentTypeRegister";
 	}
 
-	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String addShipmentType(@ModelAttribute ShipmentType shiptype, ModelMap map) {
-		Integer id = null;
-		String message = null;
+	public String addShipmentType(@ModelAttribute ShipmentType shipmentType, Errors errors, ModelMap map) {
 
-		id = service.saveShipmentType(shiptype);
+		validator.validate(shipmentType, errors);
 
-		message = "Your registration No is=" + id;
+		if (errors.hasErrors()) {
+			//If Error is there
+             map.addAttribute("msg","Please Check Error........");
+		} else {
+			//If Error is not there
+			Integer id = service.saveShipmentType(shipmentType);
 
-		map.addAttribute("msg", message);
-		
-		//clean the object and send new Object to Spring form
-		map.addAttribute("ST",new ShipmentType());
+			String message = "Your registration No is=" + id;
+
+			map.addAttribute("msg", message);
+
+			// clean the object and send new Object to Spring form
+			map.addAttribute("shipmentType", new ShipmentType());
+		}
 
 		return "ShipmentTypeRegister";
 	}
@@ -71,7 +77,6 @@ public class ShipmentTypeController {
 		return "ShipmentTypeData";
 	}
 
-	
 	@RequestMapping(value = "delete")
 	public String deleteShipmentType(@RequestParam("sid") Integer id, ModelMap map) {
 		service.deleteShipmentType(id);
@@ -89,7 +94,6 @@ public class ShipmentTypeController {
 		return "ShipmentTypeData";
 	}
 
-	
 	@RequestMapping("viewOne")
 	public String viewShipmentType(@RequestParam Integer sid, ModelMap map) {
 		ShipmentType shiptype = service.getShipmentTypeById(sid);
@@ -99,61 +103,60 @@ public class ShipmentTypeController {
 		return "ShipmentTypeView";
 	}
 
-	
-	@RequestMapping(value="editOne")
-	public String editShipmentType(@RequestParam Integer sid,ModelMap map) {
-	
-		ShipmentType st=service.getShipmentTypeById(sid);
-		
-		map.addAttribute("shipmentType",st);
-		
+	@RequestMapping(value = "editOne")
+	public String editShipmentType(@RequestParam Integer sid, ModelMap map) {
+
+		ShipmentType st = service.getShipmentTypeById(sid);
+
+		map.addAttribute("shipmentType", st);
+
 		return "ShipmentTypeEdit";
 	}
-	
-	@RequestMapping(value="update",method=RequestMethod.POST)
-	public String updateShipmentType(@ModelAttribute ShipmentType shipmenttype,ModelMap map) {
-		
-		//update record
-		service.updateShipmentType(shipmenttype);
-		
-		map.addAttribute("message","updated "+shipmenttype.getId()+" Record");
-		
-		map.addAttribute("data",service.getAllShipmentType());
-		
+
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateShipmentType(@ModelAttribute ShipmentType shipmentType, ModelMap map) {
+
+		// update record
+		service.updateShipmentType(shipmentType);
+
+		map.addAttribute("message", "updated " + shipmentType.getId() + " Record");
+
+		map.addAttribute("data", service.getAllShipmentType());
+
 		return "ShipmentTypeData";
 	}
-	
-	@RequestMapping(value="excelExp")
+
+	@RequestMapping(value = "excelExp")
 	public ModelAndView getAllShipmentinExcel() {
-          List<ShipmentType> list=service.getAllShipmentType();
-          return new ModelAndView(new ShipmentTypeExcelView(),"excellist",list);
+		List<ShipmentType> list = service.getAllShipmentType();
+		return new ModelAndView(new ShipmentTypeExcelView(), "excellist", list);
 	}
-		
+
 	@RequestMapping("excelOne")
 	public ModelAndView getShipmentExcelById(@RequestParam Integer sid) {
-		ShipmentType shipment=service.getShipmentTypeById(sid);
-		return new ModelAndView(new ShipmentTypeExcelViewById(),"excel",Arrays.asList(shipment));
-	} 
-	
+		ShipmentType shipment = service.getShipmentTypeById(sid);
+		return new ModelAndView(new ShipmentTypeExcelViewById(), "excel", Arrays.asList(shipment));
+	}
+
 	@RequestMapping("pdfExp")
 	public ModelAndView getAllShipmentTypePdf() {
-		List<ShipmentType> list=service.getAllShipmentType();
-		return new ModelAndView(new ShipmentTypePdfView(),"list",list);
+		List<ShipmentType> list = service.getAllShipmentType();
+		return new ModelAndView(new ShipmentTypePdfView(), "list", list);
 	}
 
 	@RequestMapping("pdfOne")
 	public ModelAndView getShipmentTypePdfById(@RequestParam Integer sid) {
-		    ShipmentType shipment=service.getShipmentTypeById(sid);
-		return new ModelAndView(new ShipmentTypePdfViewById(),"onedata",Arrays.asList(shipment));
+		ShipmentType shipment = service.getShipmentTypeById(sid);
+		return new ModelAndView(new ShipmentTypePdfViewById(), "onedata", Arrays.asList(shipment));
 	}
-	
+
 	@RequestMapping("report")
 	public String getShipmentTypeCount() {
-		String path=context.getRealPath("/");
-		List<Object[]> list=service.getShipmentTypeCount();
-        utility.generatePieChart(path, list);
-        utility.generateBarChart(path, list);
+		String path = context.getRealPath("/");
+		List<Object[]> list = service.getShipmentTypeCount();
+		utility.generatePieChart(path, list);
+		utility.generateBarChart(path, list);
 		return "ShipmentTypeCountReport";
 	}
-	
+
 }

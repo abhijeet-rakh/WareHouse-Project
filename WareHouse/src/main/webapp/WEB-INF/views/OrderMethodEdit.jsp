@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@include file="UserMenu.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Order Method</title>
 </head>
 <body>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<h1 style="color:red;text-align:center;">Order Method Registration Form</h1>
+<h1 style="color:red;text-align:center;">Order Method Edit Form</h1>
 
  <form:form action="update" method="POST" modelAttribute="OM">
  <pre>

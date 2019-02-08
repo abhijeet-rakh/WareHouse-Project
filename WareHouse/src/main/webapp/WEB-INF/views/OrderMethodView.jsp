@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Order Method View</title>
 </head>
 <body>
 	<h1 style="color: red; text-align: center;">OrderMethod Detail</h1>

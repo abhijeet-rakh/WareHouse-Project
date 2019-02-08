@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="UserMenu.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +10,6 @@
 <title>Order Method Data</title>
 </head>
 <body>
-	<%@include file="UserMenu.jsp"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<div class="container">
 
 		<div class="card">

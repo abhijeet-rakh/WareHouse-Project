@@ -1,23 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@include file="UserMenu.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Order Method Registration Form</title>
+<style type="text/css">
+.err {
+	color: Red;
+}
+</style>
 </head>
-<body bgcolor="">
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<body>
 
-<h1 style="color:red;text-align:center;">Order Method Registration Form</h1>
+	<h1 style="color: red; text-align: center;">Order Method
+		Registration Form</h1>
 
- <form:form action="insert" method="POST" modelAttribute="OM">
- <pre>
+	<form:form action="insert" method="post" modelAttribute="orderMethod">
+		<pre>
+  
+     
+ OrderMode :<form:radiobutton path="ordermode" value="SALE" />Sale
+            <form:radiobutton path="ordermode" value="PURCHASE" />Purchase
+            <form:errors path="ordermode" cssClass="err" />
+           
  
- OrderMode :<form:radiobutton path="ordermode" value="SALE"/>Sale
-            <form:radiobutton path="ordermode" value="PURCHASE"/>Purchase
- 
- Order Code :<form:input path="ordercode"/>
+  Order Code : <form:input path="ordercode" />
+               <form:errors path="ordercode" cssClass="err" /> 
+            
  
  Execute Type :<form:select path="executetype">
                <form:option value="">--select--</form:option>
@@ -26,21 +39,25 @@
                <form:option value="FEFO">FEFO</form:option>
                <form:option value="FCFO">FCFO</form:option>
                </form:select>
+              
+ <form:errors path="executetype" cssClass="err" />
  
- <form:checkbox path="orderaccept" value="MULTI-MODEL"/>Multi-Model
- <form:checkbox path="orderaccept" value="ACCEPT-RETURN"/>Accept-Return
- <form:checkbox path="orderaccept" value="SERVICE-EXTEND"/>Service-Return
+ <form:checkbox path="orderaccept" value="MULTI-MODEL" />Multi-Model
+ <form:checkbox path="orderaccept" value="ACCEPT-RETURN" />Accept-Return
+ <form:checkbox path="orderaccept" value="SERVICE-EXTEND" />Service-Return
+<form:errors path="orderaccept" cssClass="err" />
  
- Description : <form:textarea path="desc"/>
+ Description : <form:textarea path="desc" />
+               <form:errors path="desc" cssClass="err" />
  
- <input type="submit" value="Create Order Method">
+ <input type="submit" value="CreateOrderMethod">
  </pre>
- </form:form>
- 
- <br>
- <br>
-${message}<br><br>
+	</form:form>
 
-<a href="all">View all Order method</a>
+
+	<br> ${message}
+	<br>
+	
+	<a href="all">View all Order method</a>
 </body>
 </html>

@@ -15,11 +15,13 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="order_tab")
 @Getter
 @Setter
+@ToString
 public class OrderMethod {
 	
 	@Id
@@ -39,9 +41,7 @@ public class OrderMethod {
     @Column(name="description")
     private String desc;
     
-    
-    
-    @ElementCollection(fetch=FetchType.EAGER)
+   @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name="order_accept",
       joinColumns=@JoinColumn(name="oid"))
     @OrderColumn(name="pos")

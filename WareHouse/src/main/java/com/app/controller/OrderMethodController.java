@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,10 +22,14 @@ import com.app.pdfview.OrderMethodPdfView;
 import com.app.pdfview.OrderMethodPdfViewById;
 import com.app.service.IOrderMethodService;
 import com.app.util.OrderMethodUtility;
+import com.app.validator.OrderMethodValidator;
 
 @Controller
-@RequestMapping(value = "/ordermethod")
+@RequestMapping(value="/order")
 public class OrderMethodController {
+
+	@Autowired
+	private OrderMethodValidator validator;
 
 	@Autowired
 	private IOrderMethodService service;
@@ -37,26 +42,32 @@ public class OrderMethodController {
 
 	@RequestMapping(value = "/register")
 	public String regOrderMethod(ModelMap map) {
-		map.addAttribute("OM", new OrderMethod());
+		map.addAttribute("orderMethod", new OrderMethod());
 		return "OrderMethodRegister";
 	}
 
-	@RequestMapping(value = "insert", method = RequestMethod.POST)
-	public String saveOrderMethod(@ModelAttribute OrderMethod om, ModelMap map) {
+	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	public String saveOrderMethod(@ModelAttribute OrderMethod orderMethod, Errors errors, ModelMap map) {
 
-		System.out.println(" " + om.getDesc() + "  " + om.getExecutetype() + " " + om.getOrdercode() + "  "
-				+ om.getOrdermode() + "  " + om.getOrderaccept() + " " + om.getOid());
+		validator.validate(orderMethod, errors);
+		if (errors.hasErrors()) {
+			//if Error Exists
+			map.addAttribute("message", "Please Check all Errors......");
+		} else {
+			
+			//if Error is not there
+			Integer id = service.saveOrderMethod(orderMethod);
 
-		Integer id = service.saveOrderMethod(om);
+			String msg = "record inserted no is " + id;
 
-		String msg = "record inserted no is " + id;
+			// add attribute to map
+			map.addAttribute("message", msg);
 
-		// add attribute to map
-		map.addAttribute("message", msg);
-
-		// clean the object
-		map.addAttribute("OM", new OrderMethod());
-
+			// clean the object
+			map.addAttribute("orderMethod", new OrderMethod());
+					
+		}
+			
 		return "OrderMethodRegister";
 	}
 
@@ -67,7 +78,6 @@ public class OrderMethodController {
 		map.addAttribute("data", list);
 		return "OrderMethodData";
 	}
-	
 
 	@RequestMapping(value = "delete")
 	public String deleteOrderMethod(@RequestParam("oid") Integer id, ModelMap map) {
@@ -90,7 +100,7 @@ public class OrderMethodController {
 	public String getOrderMethodById(@RequestParam Integer oid, ModelMap map) {
 
 		OrderMethod ordermeth = service.getOrderMethodById(oid);
-		
+
 		map.addAttribute("om", ordermeth);
 
 		return "OrderMethodView";
@@ -105,13 +115,13 @@ public class OrderMethodController {
 	}
 
 	@RequestMapping(value = "update")
-	public String updateOrderMethod(@ModelAttribute OrderMethod om, ModelMap map) {
+	public String updateOrderMethod(@ModelAttribute OrderMethod orderMethod, ModelMap map) {
 
 		// call service
-		service.updateOrderMethod(om);
+		service.updateOrderMethod(orderMethod);
 
 		// add to map attribute
-		map.addAttribute("message", "Record " + om.getOid() + " updated");
+		map.addAttribute("message", "Record " + orderMethod.getOid() + " updated");
 
 		// add many record to map
 		map.addAttribute("data", service.getAllOrderMethod());
@@ -119,20 +129,18 @@ public class OrderMethodController {
 		return "OrderMethodData";
 	}
 
-	
 	@RequestMapping("excelall")
 	public ModelAndView getAllOrderMethodExcel() {
 		List<OrderMethod> list = service.getAllOrderMethod();
 		return new ModelAndView(new OrderMethodExcelView(), "list", list);
 	}
 
-	
 	@RequestMapping("excelOne")
 	public ModelAndView getOrderMethodById(@RequestParam Integer oid) {
 		OrderMethod om = service.getOrderMethodById(oid);
 		return new ModelAndView(new OrderMethodExcelViewById(), "onedata", Arrays.asList(om));
 	}
-	
+
 	@RequestMapping("pdfExp")
 	public ModelAndView getAllOrderMethodforPdf() {
 		List<OrderMethod> list = service.getAllOrderMethod();
@@ -150,7 +158,7 @@ public class OrderMethodController {
 		String path = context.getRealPath("/");
 		List<Object[]> list = service.getOrderModeByCount();
 		utility.generatePieChart(path, list);
-	    utility.generateBarChart(path, list);
+		utility.generateBarChart(path, list);
 		return "OrderMethodCountReport";
 	}
 
