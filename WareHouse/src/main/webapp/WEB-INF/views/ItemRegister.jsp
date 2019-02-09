@@ -28,17 +28,8 @@
 			<div class="card-body">
 				<form:form action="insert" method="post" modelAttribute="item">
 					
-               	<div class="row">
-				<div class="col-4">
-				<label for="itemId">Item Id :</label>
-				</div>
-				<div class="col-6">
-               	<form:input path="itemId" readonly="true"/>
-               	<form:errors path="itemId" cssClass="err" /> 
-				</div>
-				</div>
-		
-		         <br>
+      
+		         
 				<div class="row">
 				<div class="col-4">
 				<label for="itemCode">Item Code :</label>
@@ -124,6 +115,7 @@
 				</div>
 		         <br>
                  <br>
+ 				
  				<div class="row">
 				<div class="col-4"></div>
 				<div class="col-6">

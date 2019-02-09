@@ -21,17 +21,17 @@ public class UOMTypeValidator implements Validator {
 		UOM uom = (UOM) target;
 
 		if (StringUtils.isEmpty(uom.getUomtype())) {
-			errors.rejectValue("uomtype", null, "Please Enter UOM Type......");
+			errors.rejectValue("uomtype", null, "Please Enter UOM Type...");
 		}
 
 		if (StringUtils.isEmpty(uom.getUommodel())) {
-			errors.rejectValue("uommodel", null, "Please Enter UOM Model......");
+			errors.rejectValue("uommodel", null, "Please Enter UOM Model...");
 		}
 
 		if (StringUtils.isEmpty(uom.getUomdesc())) {
-			errors.rejectValue("uomdesc", null, "Enter data in Description......");
+			errors.rejectValue("uomdesc", null, "Enter data in Description...");
 		} else if (uom.getUomdesc().length() > 10 && uom.getUomdesc().length() < 50) {
-			errors.rejectValue("uomdesc", null, "Enter 10 to 50 letters in Description....");
+			errors.rejectValue("uomdesc", null, "Enter 10 to 50 letters in Description...");
 		}
 
 	}

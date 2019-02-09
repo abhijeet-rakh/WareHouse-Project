@@ -109,7 +109,7 @@ public class OrderMethodController {
 	@RequestMapping(value = "editOne")
 	public String editOrderMethod(@RequestParam Integer oid, ModelMap map) {
 
-		map.addAttribute("OM", service.getOrderMethodById(oid));
+		map.addAttribute("orderMethod", service.getOrderMethodById(oid));
 
 		return "OrderMethodEdit";
 	}

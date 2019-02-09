@@ -39,7 +39,7 @@ public class OrderMethod {
 	private String executetype;
     
     @Column(name="description")
-    private String desc;
+    private String orderdesc;
     
    @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name="order_accept",

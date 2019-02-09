@@ -25,25 +25,25 @@ public class ItemValidator implements Validator {
 		if (StringUtils.isEmpty(im.getItemCode())) {
 			errors.rejectValue("itemCode", null, "Please Enter Item Code...");
 		} else if (Pattern.matches("{A-Z}[4-6]", im.getItemCode())) {
-			errors.rejectValue("itemCode", null, "Enter Item Code in Uppercase in between 0 to 5");
+			errors.rejectValue("itemCode", null, "Enter Item Code in Uppercase in between 0 to 5...");
 		}
 
 		if (StringUtils.isEmpty(im.getItemLength())) {
-			errors.rejectValue("itemLength", null, "Please Enter Item Length..");
+			errors.rejectValue("itemLength", null, "Please Enter Item Length...");
 		} else if (im.getItemLength() > 10 && im.getItemLength() < 50) {
-			errors.rejectValue("itemLength", null, "Don't Enter Item Length between 10 to 50..");
+			errors.rejectValue("itemLength", null, "Don't Enter Item Length between 10 to 50...");
 		}
 
 		if (StringUtils.isEmpty(im.getItemWidth())) {
 			errors.rejectValue("itemWidth", null, "Please Enter ItemWidth...");
 		} else if (im.getItemWidth() > 10 && im.getItemWidth() < 50) {
-			errors.rejectValue("itemWidth", null, "Don't Enter Item Width between 10 t0 50");
+			errors.rejectValue("itemWidth", null, "Don't Enter Item Width between 10 t0 50...");
 		}
 
 		if (StringUtils.isEmpty(im.getItemHeight())) {
-			errors.rejectValue("itemHeight", null, "Please Enter Item Height.....");
+			errors.rejectValue("itemHeight", null, "Please Enter Item Height...");
 		} else if (im.getItemHeight() > 10 && im.getItemHeight() < 50) {
-			errors.rejectValue("itemHeight", null, "Donn't Enter Height between 10 to 50....");
+			errors.rejectValue("itemHeight", null, "Donn't Enter Height between 10 to 50...");
 		}
 
 		if (StringUtils.isEmpty(im.getBaseCost())) {

@@ -23,31 +23,31 @@ public class OrderMethodValidator implements Validator {
 
 		/*Order Mode*/
 		if (StringUtils.isEmpty(orderMethod.getOrdermode())) {
-			errors.rejectValue("ordermode", null, "Please Enter OrderMode.....");
+			errors.rejectValue("ordermode", null, "Please Enter OrderMode...");
 		}
 
 		/*Order Method*/
 	    if(!StringUtils.hasText(orderMethod.getOrdercode())) {
-	    	errors.rejectValue("ordercode",null,"Please Enter Code !!");
+	    	errors.rejectValue("ordercode",null,"Please Enter Code...");
 	    }else if(!Pattern.matches("[A-Z]{3,5}",orderMethod.getOrdercode())){
-	    	errors.rejectValue("ordercode",null,"Please Enter in Uppercase and numbering in 3 to 5......");
+	    	errors.rejectValue("ordercode",null,"Please Enter in Uppercase and numbering in 3 to 5...");
 	    }
         
 	    /*Execute Type*/
 	    if(StringUtils.isEmpty(orderMethod.getExecutetype())) {
-	    	errors.rejectValue("executetype",null,"Please Enter Execution Type.......");
+	    	errors.rejectValue("executetype",null,"Please Enter Execution Type...");
 	    }
 	    
 	    /*Order Accept*/
 	    if(orderMethod.getOrderaccept()== null || orderMethod.getOrderaccept().isEmpty()) {
-	        errors.rejectValue("orderaccept",null,"Please Enter OrderAccept..........");	
+	        errors.rejectValue("orderaccept",null,"Please Enter OrderAccept...");	
 	    }
 	    
 	    /*Description */
-	    if(StringUtils.hasText(orderMethod.getDesc())) {
-	    	errors.rejectValue("dsc",null,"Please Enter Description.........");
-	    }else if(orderMethod.getDesc().length()>10 && orderMethod.getDesc().length()<50) {
-	    	errors.rejectValue("",null,"");
+	    if(!StringUtils.hasText(orderMethod.getOrderdesc())) {
+	    	errors.rejectValue("orderdesc",null,"Please Enter Description...");
+	    }else if(orderMethod.getOrderdesc().length()>10 && orderMethod.getOrderdesc().length()<50) {
+	    	errors.rejectValue("orderdesc",null,"Please Enter Order Description in 10 to 50 letters...");
 	    }
 	    
 	}

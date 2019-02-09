@@ -30,17 +30,6 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="orderId">Order Id :</label>
-						</div>
-						<div class="col-6">
-							<form:input path="orderId" readonly="true" />
-							<form:errors path="orderId" cssClass="err" />
-						</div>
-					</div>
-
-					<br>
-					<div class="row">
-						<div class="col-4">
 							<label for="orderCode">Order Code :</label>
 						</div>
 						<div class="col-6">
@@ -62,7 +51,7 @@
 								<form:option value="SHIP">SHIP</form:option>
 								<form:option value="TRAIN">TRAIN</form:option>
 							</form:select>
-							<form:errors path="shipmentMode" cssClass="err"/>
+							<form:errors path="shipmentMode" cssClass="err" />
 						</div>
 					</div>
 
@@ -80,7 +69,7 @@
 								<form:option value="C">C</form:option>
 								<form:option value="D">D</form:option>
 							</form:select>
-						<form:errors path="vendor" cssClass="err"/>
+							<form:errors path="vendor" cssClass="err" />
 						</div>
 					</div>
 
@@ -116,8 +105,8 @@
 							<label for="ordStatus">Order Status :</label>
 						</div>
 						<div class="col-6">
-							<form:input path="ordStatus"/>
-							<form:errors path="ordStatus" cssClass="err"/>
+							<form:input path="ordStatus" />
+							<form:errors path="ordStatus" cssClass="err" />
 						</div>
 					</div>
 

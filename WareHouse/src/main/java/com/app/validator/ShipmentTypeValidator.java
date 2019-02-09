@@ -21,26 +21,26 @@ public class ShipmentTypeValidator implements Validator {
 		ShipmentType st=(ShipmentType) target;
 		
 		if(StringUtils.isEmpty(st.getShipmentMode())) {
-			errors.rejectValue("shipmentMode",null,"Enter Shipment Code....");
+			errors.rejectValue("shipmentMode",null,"Enter Shipment Code...");
 		}
 		
 		if(StringUtils.isEmpty(st.getShipmentCode())) {
-			errors.rejectValue("shipmentCode",null,"Enter Shipment Code......");
+			errors.rejectValue("shipmentCode",null,"Enter Shipment Code...");
 		}
 		
 		
 		if(StringUtils.isEmpty(st.getEnableShipment())) {
-			errors.rejectValue("enableShipment",null,"Enable or Disable Shipment......");
+			errors.rejectValue("enableShipment",null,"Enable or Disable Shipment...");
 		}
 		
 		if(StringUtils.isEmpty(st.getShipmentGrade())) {
-			errors.rejectValue("shipmentGrade",null,"Enter the Grade here....");
+			errors.rejectValue("shipmentGrade",null,"Enter the Grade here...");
 		}
 		
 		if(StringUtils.isEmpty(st.getDesc())) {
-			errors.rejectValue("desc",null,"Enter the Description.......");
+			errors.rejectValue("desc",null,"Enter the Description...");
 		}else if(st.getDesc().length()>10 && st.getDesc().length()<50) {
-			errors.rejectValue("desc",null,"Enter 10 to 50 letters in text.....");
+			errors.rejectValue("desc",null,"Enter 10 to 50 letters in text...");
 		}
 		
 

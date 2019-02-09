@@ -28,8 +28,8 @@ import com.app.validator.UOMTypeValidator;
 @RequestMapping(value="/uom")
 public class UOMTypeController {
 
-	//@Autowired
-	//private UOMTypeValidator validator;
+// 	@Autowired
+// 	private UOMTypeValidator validator;
 
 	@Autowired
 	private IUOMTypeService service;
@@ -44,34 +44,35 @@ public class UOMTypeController {
 	public String regUOMType(ModelMap map) {
 
 		// add new Object to map
-		map.addAttribute("uom", new UOM());
+		map.addAttribute("unitmeasure", new UOM());
 
 		return "UOMTypeRegister";
 	}
 
 	@RequestMapping(value="/insert",method =RequestMethod.POST)
-	public String saveUOMType(@ModelAttribute UOM uom, Errors errors, ModelMap map) {
+	public String saveUOMType(@ModelAttribute UOM unitmeasure, Errors errors, ModelMap map) {
 
 		//validate the UOM
-		//validator.validate(uom, errors);
+	//	validator.validate(unitmeasure, errors);
 
 		if (errors.hasErrors()) {
              //If Error is there
 			map.addAttribute("message","Please Check Errors.......");
 		} else {
              //If Error is not there
-			Integer id = service.saveUOMtype(uom);
+			Integer id = service.saveUOMtype(unitmeasure);
 
 			String msg = "record '"+id+"'inserted";
 
 			map.addAttribute("message", msg);
 
 			// clean previous object and add new to spring form tag map
-			map.addAttribute("uom", new UOM());
+			map.addAttribute("unitmeasure", new UOM());
 		}
 		return "UOMTypeRegister";
 	}
 
+	
 	@RequestMapping(value = "/all")
 	public String getAllUOMtype(ModelMap map) {
 		List<UOM> list = service.getAllUOMtype();
@@ -82,6 +83,7 @@ public class UOMTypeController {
 
 	}
 
+	
 	@RequestMapping("/delete")
 	public String deleteUOMtypeById(@RequestParam("uid") Integer id, ModelMap map) {
 		service.deleteUOMById(id);
@@ -89,6 +91,7 @@ public class UOMTypeController {
 		String msg = id + " number record deleted";
 
 		map.addAttribute("message", msg);
+		
 		// get record again
 		List<UOM> list = service.getAllUOMtype();
 
@@ -103,7 +106,7 @@ public class UOMTypeController {
 	public String getUOMtypeById(@RequestParam Integer uid, ModelMap map) {
 		UOM uom = service.getUOMtypeById(uid);
 
-		map.addAttribute("um", uom);
+		map.addAttribute("unitmeasure", uom);
 
 		return "UOMTypeView";
 	}
@@ -111,17 +114,17 @@ public class UOMTypeController {
 	@RequestMapping("editOne")
 	public String editUOMtype(@RequestParam Integer uid, ModelMap map) {
 
-		map.addAttribute("UOM", service.getUOMtypeById(uid));
+		map.addAttribute("unitmeasure", service.getUOMtypeById(uid));
 
 		return "UOMTypeEdit";
 	}
 
 	@RequestMapping("update")
-	public String updateUOMtype(@ModelAttribute UOM uom, ModelMap map) {
+	public String updateUOMtype(@ModelAttribute UOM unitmeasure, ModelMap map) {
 
-		service.updateUOMtype(uom);
+		service.updateUOMtype(unitmeasure);
 
-		map.addAttribute("message", "updated " + uom.getUomid() + " Record");
+		map.addAttribute("message", "updated " + unitmeasure.getUomid() + " Record..");
 
 		map.addAttribute("data", service.getAllUOMtype());
 

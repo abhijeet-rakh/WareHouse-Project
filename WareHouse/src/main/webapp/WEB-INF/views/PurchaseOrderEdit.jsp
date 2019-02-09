@@ -17,7 +17,7 @@
 
 
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Item Updation Form</h1>
+				<h1 style="color: red; text-align: center;">Purchase Order Edit Form</h1>
 			</div>
 
 			<div class="card-body">
