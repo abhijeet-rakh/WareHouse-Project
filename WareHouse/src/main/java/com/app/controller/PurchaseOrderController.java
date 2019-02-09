@@ -26,8 +26,8 @@ import com.app.validator.PurchaseOrderValidator;
 public class PurchaseOrderController {
 
 
-//	@Autowired
-//	private PurchaseOrderValidator validator;
+	@Autowired
+	private PurchaseOrderValidator validator;
 
 	@Autowired
 	private IPurchaseOrderService service;
@@ -47,7 +47,7 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
 	public String savePurchaseOrder(@ModelAttribute PurchaseOrder purchaseOrder, Errors errors, ModelMap map) {
 
-	//	validator.validate(purchaseOrder, errors);
+		validator.validate(purchaseOrder, errors);
 		if (errors.hasErrors()) {
 			//if Error Exists
 			map.addAttribute("message", "Please Check all Errors......");
