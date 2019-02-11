@@ -19,6 +19,7 @@ import com.app.model.PurchaseOrder;
 import com.app.pdfview.PurchaseOrderPdfView;
 import com.app.pdfview.PurchaseOrderPdfViewById;
 import com.app.service.IPurchaseOrderService;
+import com.app.service.IWhuserTypeService;
 import com.app.validator.PurchaseOrderValidator;
 
 @Controller
@@ -32,6 +33,9 @@ public class PurchaseOrderController {
 	@Autowired
 	private IPurchaseOrderService service;
 
+	@Autowired
+	private IWhuserTypeService whuserservice;
+	
 //	@Autowired
 //	private ServletContext context;
 
@@ -40,7 +44,12 @@ public class PurchaseOrderController {
 
 	@RequestMapping(value = "/register")
 	public String regPurchaseOrder(ModelMap map) {
+		
 		map.addAttribute("purchaseOrder", new PurchaseOrder());
+		
+		//get all WareHouseusertype in Purchase order
+		map.addAttribute("whusertype",whuserservice.getAllWhuserType());
+		
 		return "PurchaseOrderRegister";
 	}
 
@@ -48,6 +57,7 @@ public class PurchaseOrderController {
 	public String savePurchaseOrder(@ModelAttribute PurchaseOrder purchaseOrder, Errors errors, ModelMap map) {
 
 		validator.validate(purchaseOrder, errors);
+
 		if (errors.hasErrors()) {
 			//if Error Exists
 			map.addAttribute("message", "Please Check all Errors......");
@@ -60,9 +70,13 @@ public class PurchaseOrderController {
 			// add attribute to map
 			map.addAttribute("message", msg);
 
+			//get all WareHouseusertype in Purchase order
+			map.addAttribute("whusertype",whuserservice.getAllWhuserType());
+			
 			// clean the object
 			map.addAttribute("purchaseOrder", new PurchaseOrder());
 		}
+	
 		return "PurchaseOrderRegister";
 	}
 
@@ -110,6 +124,9 @@ public class PurchaseOrderController {
 
 		map.addAttribute("purchaseOrder", service.getPurchaseOrderById(orderId));
 
+		//get all WareHouseusertype in Purchase order
+		map.addAttribute("whusertype",whuserservice.getAllWhuserType());
+		
 		return "PurchaseOrderEdit";
 	}
 

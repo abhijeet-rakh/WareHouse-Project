@@ -39,6 +39,7 @@
 					</div>
 
 					<br>
+
 					<div class="row">
 						<div class="col-4">
 							<label for="shipmentMode">Shipment Mode :</label>
@@ -74,6 +75,7 @@
 					</div>
 
 					<br>
+
 					<div class="row">
 						<div class="col-4">
 							<label for="refNum">Reference Number :</label>
@@ -100,6 +102,7 @@
 					</div>
 
 					<br>
+
 					<div class="row">
 						<div class="col-4">
 							<label for="ordStatus">Order Status :</label>
@@ -111,6 +114,22 @@
 					</div>
 
 					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="UserCode">User Code :</label>
+						</div>
+						<div class="col-6">
+						    <form:select path="whusertype.whid">
+							<form:option value="">--SELECT--</form:option>
+							<form:options items="${whusertype}" itemLabel="userCode"
+								itemValue="whid" />
+							</form:select>
+						</div>
+					</div>
+
+					<br>
+
 					<div class="row">
 						<div class="col-4">
 							<label for="ordDesc">Order Desc :</label>
@@ -120,7 +139,6 @@
 							<form:errors path="ordDesc" cssClass="err" />
 						</div>
 					</div>
-					<br>
 					<br>
 
 					<div class="row">

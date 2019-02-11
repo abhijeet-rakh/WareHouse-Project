@@ -48,8 +48,13 @@
 		</tr>
         
         <tr>
+			<td>Purchase Order</td>
+			<td>${po.ordStatus}</td>
+		</tr>
+        
+        <tr>
 			<td>Order Description</td>
-			<td>${po.ordDesc}</td>
+			<td>${po.whusertype.whid}</td>
 		</tr>
         
 	</table>

@@ -17,7 +17,8 @@
 
 
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Purchase Order Edit Form</h1>
+				<h1 style="color: red; text-align: center;">Purchase Order Edit
+					Form</h1>
 			</div>
 
 			<div class="card-body">
@@ -118,6 +119,22 @@
 					</div>
 
 					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="UserCode">User Code :</label>
+						</div>
+						<div class="col-6">
+							<form:select path="whusertype.whid">
+								<form:option value="">--SELECT--</form:option>
+								<form:options items="${whusertype}" itemLabel="userCode"
+									itemValue="whid" />
+							</form:select>
+						</div>
+					</div>
+
+					<br>
+
 					<div class="row">
 						<div class="col-4">
 							<label for="ordDesc">Order Desc :</label>
