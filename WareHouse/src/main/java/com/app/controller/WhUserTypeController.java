@@ -49,7 +49,7 @@ public class WhUserTypeController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String savedataWhUserType(@ModelAttribute WhUserType whuserType,Errors errors, ModelMap map) {
 		
-	//	validator.validate(whuserType, errors);
+		//validator.validate(whuserType, errors);
 		
 		System.out.println("Errors="+errors.hasErrors());
 		System.out.println("Error count="+errors.getErrorCount());
@@ -82,7 +82,7 @@ public class WhUserTypeController {
 	@RequestMapping(value = "/viewOne")
 	public String viewUserType(@RequestParam Integer wid, ModelMap map) {
 
-		map.addAttribute("wut", service.getWhusertypeById(wid));
+		map.addAttribute("whuserType", service.getWhusertypeById(wid));
 
 		return "WhUserTypeView";
 	}
@@ -90,7 +90,7 @@ public class WhUserTypeController {
 	@RequestMapping("/editOne")
 	public String editUserType(@RequestParam Integer wid, ModelMap map) {
 
-		map.addAttribute("WUT", service.getWhusertypeById(wid));
+		map.addAttribute("whuserType", service.getWhusertypeById(wid));
 
 		return "WhUserTypeEdit";
 	}

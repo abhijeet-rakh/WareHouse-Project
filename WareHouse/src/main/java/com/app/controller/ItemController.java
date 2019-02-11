@@ -18,9 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.app.excelview.ItemExcelView;
 import com.app.excelview.ItemExcelViewById;
 import com.app.model.Item;
+import com.app.model.UOM;
 import com.app.pdfview.ItemPdfView;
 import com.app.pdfview.ItemPdfViewById;
 import com.app.service.IItemService;
+import com.app.service.IOrderMethodService;
+import com.app.service.IUOMTypeService;
 import com.app.util.ItemUtility;
 import com.app.validator.ItemValidator;
 
@@ -33,16 +36,30 @@ public class ItemController {
 
 	@Autowired
 	private IItemService service;
+	
+	@Autowired
+	private IOrderMethodService ordservice;
+	
+	@Autowired
+	private IUOMTypeService uomservice;
+	
 
 //	@Autowired
 //	private ServletContext context;
 
 //	@Autowired
-//	private ItemUtility utility;
+//	private ItemUtility utility
 
 	@RequestMapping(value = "/register")
 	public String regItem(ModelMap map) {
-		map.addAttribute("item", new Item());
+		map.addAttribute("item",new Item());
+
+		//Show uom model in registration page(Module Integration) 
+		map.addAttribute("uoms",uomservice.getAllUOMtype());
+		
+		//show OrderMethod model in registration page(Module Integration)
+		map.addAttribute("ordermethods",ordservice.getAllOrderMethod());
+		
 		return "ItemRegister";
 	}
 
@@ -62,8 +79,17 @@ public class ItemController {
 			// add attribute to map
 			map.addAttribute("message", msg);
 
+			//Show uom model in registration page(Module Integration) 
+			map.addAttribute("uoms",uomservice.getAllUOMtype());
+		
+			
+			//show OrderMethod model in registration page(Module Integration)
+			map.addAttribute("ordermethods",ordservice.getAllOrderMethod());
+			
+			
 			// clean the object
 			map.addAttribute("item", new Item());
+			
 		}
 		return "ItemRegister";
 	}
@@ -102,7 +128,7 @@ public class ItemController {
 
 		Item itemmeth = service.getItemById(itemId);
 
-		map.addAttribute("it", itemmeth);
+		map.addAttribute("item", itemmeth);
 
 		return "ItemView";
 	}
@@ -113,6 +139,13 @@ public class ItemController {
 
 		map.addAttribute("item", service.getItemById(itemId));
 
+		//Show uom model in registration page(Module Integration) 
+		map.addAttribute("uoms",uomservice.getAllUOMtype());
+
+		//show OrderMethod model in registration page(Module Integration)
+		map.addAttribute("ordermethods",ordservice.getAllOrderMethod());
+		
+		
 		return "ItemEdit";
 	}
 
@@ -169,6 +202,5 @@ public class ItemController {
 		return "ItemCountReport";
 	}
 */
-	
-	
+		
 }

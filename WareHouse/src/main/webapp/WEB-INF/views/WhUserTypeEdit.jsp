@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" %>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@include file="UserMenu.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,47 +10,139 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="container">
 
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+		<div class="card">
 
-<h1 style="color:red;text-align:center">Edit form of Warehouse UserType</h1>
+			<div class="card-header bg-info text-white">
+				<h1 style="color: red; text-align: center">Registration form of
+					Warehouse UserType</h1>
+			</div>
 
-<form:form action="update" method="POST" modelAttribute="WUT">
-<pre>
 
-User Id :<form:input path="whid" readonly="true"/>
+			<div class="card-body">
+				<form:form action="update" method="POST" modelAttribute="whuserType">
 
-User Type :
-<form:radiobutton path="userType" value="VENDOR"/>Vendor
-<form:radiobutton path="userType" value="WhUserType"/>WhUserType
 
-User Code :<form:input path="userCode" readonly="true"/>
+					<div class="row">
+						<div class="col-4">
+							<label for="whid">User Id:</label>
+						</div>
+						<div class="col-6">
+							<form:input path="whid" readonly="true" />
+							<form:errors path="whid" />
+						</div>
+					</div>
 
-User For :<form:input path="userFor"/>
 
-User Email :<form:input path="userEmail"/>
+					<div class="row">
+						<div class="col-4">
+							<label for="userType">User Type :</label>
+						</div>
+						<div class="col-6">
+							<form:radiobutton path="userType" value="VENDOR" />
+							Vendor
+							<form:radiobutton path="userType" value="WhUserType" />
+							WhUserType
+							<form:errors path="userType" />
+						</div>
+					</div>
 
-User Contact :<form:input path="userContact"/>
+					<br>
 
-User IDType :<form:select path="userIdType">
-             <form:option value="">--select--</form:option>
-             <form:option value="PAN CARD">PAN CARD</form:option>
-             <form:option value="AADHAR">AADHAR</form:option>
-             <form:option value="VOTERID">VOTERID</form:option>
-             <form:option value="OTHER">OTHER</form:option>
-             </form:select>
-             
-ID Number :<form:input path="idnumber"/>
+					<div class="row">
+						<div class="col-4">
+							<label for="userCode">User Code :</label>
+						</div>
+						<div class="col-6">
+							<form:input path="userCode" />
+							<form:errors path="userCode" />
+						</div>
+					</div>
 
-<input type="submit" value="UPDATE WAREHOUSE USER TYPE">
+					<br>
 
-</pre>
-</form:form>
+					<div class="row">
+						<div class="col-4">
+							<label for="userFor">User For :</label>
+						</div>
+						<div class="col-6">
+							<form:input path="userFor" />
+							<form:errors path="userFor" />
+						</div>
+					</div>
 
-${message}
+					<br>
 
-<br><br>
+					<div class="row">
+						<div class="col-4">
+							<label for="userEmail">User Email :</label>
+						</div>
+						<div class="col-6">
+							<form:input path="userEmail" />
+							<form:errors path="userEmail" />
+						</div>
+					</div>
 
-<a href=""></a>
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="userContact">User Contact :</label>
+						</div>
+						<div class="col-6">
+							<form:input path="userContact" />
+							<form:errors path="userContact" />
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="userContact">User IDType :</label>
+						</div>
+						<div class="col-6">
+							<form:select path="userIdType">
+								<form:option value="">--select--</form:option>
+								<form:option value="PAN CARD">PAN CARD</form:option>
+								<form:option value="AADHAR">AADHAR</form:option>
+								<form:option value="VOTERID">VOTERID</form:option>
+								<form:option value="OTHER">OTHER</form:option>
+							</form:select>
+							<form:errors path="userIdType" />
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="userContact">ID Number :</label>
+						</div>
+						<div class="col-6">
+							<form:input path="idnumber" />
+							<form:errors path="idnumber" />
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-4"></div>
+						<div class="col-6">
+							<input class="btn btn-primary" type="submit"
+								value="EDIT WAREHOUSE USER TYPE">
+						</div>
+					</div>
+				</form:form>
+			</div>
+
+
+		</div>
+		<!-- card Ended -->
+
+	</div>
+	<!-- container ended -->
 </body>
 </html>

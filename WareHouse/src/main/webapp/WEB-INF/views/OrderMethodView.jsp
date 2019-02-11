@@ -13,32 +13,32 @@
 
 		<tr>
 			<td>ID</td>
-			<td>${om.oid}</td>
+			<td>${orderMethod.oid}</td>
 		</tr>
 
 		<tr>
 			<td>MODE</td>
-			<td>${om.ordermode}</td>
+			<td>${orderMethod.ordermode}</td>
 		</tr>
 
 		<tr>
 			<td>CODE</td>
-			<td>${om.ordercode}</td>
+			<td>${orderMethod.ordercode}</td>
 		</tr>
 
 		<tr>
 			<td>EXECUTETYPE</td>
-			<td>${om.executetype}</td>
+			<td>${orderMethod.executetype}</td>
 		</tr>
 
 		<tr>
 			<td>DESCRIPTION</td>
-			<td>${om.desc}</td>
+			<td>${orderMethod.orderdesc}</td>
 		</tr>
 
 		<tr>
 			<td>ORDERACCEPT</td>
-			<td>${om.orderaccept}</td>
+			<td>${orderMethod.orderaccept}</td>
 		</tr>
 
 	</table>

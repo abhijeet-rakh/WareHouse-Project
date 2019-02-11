@@ -54,14 +54,14 @@ public class ShipmentTypeController {
 
 		if (errors.hasErrors()) {
 			//If Error is there
-             map.addAttribute("msg","Please Check Error........");
+             map.addAttribute("message","Please Check Error........");
 		} else {
 			//If Error is not there
 			Integer id = service.saveShipmentType(shipmentType);
 
 			String message = "Your registration No is=" + id;
 
-			map.addAttribute("msg", message);
+			map.addAttribute("message", message);
 
 			// clean the object and send new Object to Spring form
 			map.addAttribute("shipmentType", new ShipmentType());

@@ -13,43 +13,54 @@
 
 		<tr>
 			<td>ID</td>
-			<td>${it.itemId}</td>
+			<td>${item.itemId}</td>
 		</tr>
 
 		<tr>
 			<td>CODE</td>
-			<td>${it.itemCode}</td>
+			<td>${item.itemCode}</td>
 		</tr>
 
 		<tr>
 			<td>Length</td>
-			<td>${it.itemLength}</td>
+			<td>${item.itemLength}</td>
 		</tr>
 
 		<tr>
 			<td>Width</td>
-			<td>${it.itemWidth}</td>
+			<td>${item.itemWidth}</td>
 		</tr>
 
 		<tr>
 			<td>Height</td>
-			<td>${it.itemHeight}</td>
+			<td>${item.itemHeight}</td>
 		</tr>
 
 		<tr>
 			<td>BaseCost</td>
-			<td>${it.baseCost}</td>
+			<td>${item.baseCost}</td>
 		</tr>
 
         <tr>
 			<td>BaseCurrency</td>
-			<td>${it.baseCurrency}</td>
+			<td>${item.baseCurrency}</td>
 		</tr>
         
         <tr>
 			<td>Description</td>
-			<td>${it.itemDesc}</td>
+			<td>${item.itemDesc}</td>
 		</tr>
+        
+          <tr>
+			<td>uomid</td>
+			<td>${item.uom.uomid}</td>
+		</tr>
+        
+         <tr>
+			<td>ordid</td>
+			<td>${item.om.oid}</td>
+		</tr>
+        
         
 	</table>
 

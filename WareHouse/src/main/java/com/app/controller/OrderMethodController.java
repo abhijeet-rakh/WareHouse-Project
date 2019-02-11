@@ -101,7 +101,7 @@ public class OrderMethodController {
 
 		OrderMethod ordermeth = service.getOrderMethodById(oid);
 
-		map.addAttribute("om", ordermeth);
+		map.addAttribute("orderMethod", ordermeth);
 
 		return "OrderMethodView";
 	}

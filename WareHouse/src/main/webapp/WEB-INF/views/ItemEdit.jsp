@@ -13,7 +13,6 @@
 
 		<div class="card">
 
-
 			<div class="card-header bg-info text-white">
 				<h1 style="color: red; text-align: center;">Item Edit Form</h1>
 			</div>
@@ -115,7 +114,39 @@
 						</div>
 					</div>
 					<br>
+
+					
+					<div class="row">
+						<div class="col-4">
+							<label for="ItemUom">Item Uom :</label>
+						</div>
+						<div class="col-6">
+							<form:select path="uom.uomid">
+								<form:option value="">--SELECT--</form:option>
+								<form:options items="${uoms}" itemLabel="uommodel"
+									itemValue="uomid" />
+							</form:select>
+						</div>
+					</div>
+
 					<br>
+					
+					<div class="row">
+						<div class="col-4">
+							<label for="ordercode">Order Code :</label>
+						</div>
+						<div class="col-6">
+							<form:select path="om.oid">
+								<form:option value="">--SELECT--</form:option>
+								<form:options items="${ordermethods}" itemLabel="ordercode"
+									itemValue="oid" />
+							</form:select>
+							<form:errors path="om" cssClass="err" />
+						</div>
+					</div>
+					
+					<br>
+
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">

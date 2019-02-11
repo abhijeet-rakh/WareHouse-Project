@@ -29,10 +29,8 @@ public class OrderMethodValidator implements Validator {
 		/*Order Method*/
 	    if(!StringUtils.hasText(orderMethod.getOrdercode())) {
 	    	errors.rejectValue("ordercode",null,"Please Enter Code...");
-	    }else if(!Pattern.matches("[A-Z]{3,5}",orderMethod.getOrdercode())){
-	    	errors.rejectValue("ordercode",null,"Please Enter in Uppercase and numbering in 3 to 5...");
 	    }
-        
+	    
 	    /*Execute Type*/
 	    if(StringUtils.isEmpty(orderMethod.getExecutetype())) {
 	    	errors.rejectValue("executetype",null,"Please Enter Execution Type...");
@@ -46,8 +44,6 @@ public class OrderMethodValidator implements Validator {
 	    /*Description */
 	    if(!StringUtils.hasText(orderMethod.getOrderdesc())) {
 	    	errors.rejectValue("orderdesc",null,"Please Enter Description...");
-	    }else if(orderMethod.getOrderdesc().length()>10 && orderMethod.getOrderdesc().length()<50) {
-	    	errors.rejectValue("orderdesc",null,"Please Enter Order Description in 10 to 50 letters...");
 	    }
 	    
 	}

@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -38,5 +41,13 @@ public class Item {
 
 	 @Column(name="idesc")
 	 private String itemDesc;
+	 	 
+	 @ManyToOne
+	 @JoinColumn(name="uomid")
+	 private UOM uom;
+	 
+	 @OneToOne
+	 @JoinColumn(name="ordid")
+	 private OrderMethod om;
 	 
 }

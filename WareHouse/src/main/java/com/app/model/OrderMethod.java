@@ -48,5 +48,4 @@ public class OrderMethod {
     @Column(name="data")
 	private List<String> orderaccept;
     
-
 }

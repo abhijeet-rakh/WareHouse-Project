@@ -11,42 +11,42 @@
 
 <tr>
 <td>ID</td>
-<td>${wut.whid}</td>
+<td>${whuserType.whid}</td>
 </tr>
 
 <tr>
 <td>User Type</td>
-<td>${wut.userType}</td>
+<td>${whuserType.userType}</td>
 </tr>
 
 <tr>
 <td>User Code</td>
-<td>${wut.userCode}</td>
+<td>${whuserType.userCode}</td>
 </tr>
 
 <tr>
 <td>User For</td>
-<td>${wut.userFor}</td>
+<td>${whuserType.userFor}</td>
 </tr>
 
 <tr>
 <td>User Email</td>
-<td>${wut.userEmail}</td>
+<td>${whuserType.userEmail}</td>
 </tr>
 
 <tr>
 <td>User Contact</td>
-<td>${wut.userContact}</td>
+<td>${whuserType.userContact}</td>
 </tr>
 
 <tr>
 <td>User Id Type</td>
-<td>${wut.userIdType}</td>
+<td>${whuserType.userIdType}</td>
 </tr>
 
 <tr>
 <td>IdNumber</td>
-<td>${wut.idnumber}</td>
+<td>${whuserType.idnumber}</td>
 </tr>
 
 </table>

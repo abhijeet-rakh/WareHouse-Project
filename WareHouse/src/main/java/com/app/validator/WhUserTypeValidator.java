@@ -19,9 +19,13 @@ public class WhUserTypeValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-          
+        
 		WhUserType wht=(WhUserType) target;
-				
+		
+		if(StringUtils.isEmpty(wht.getWhid())) {
+			errors.rejectValue("idnumber",null,"Please Enter WareHouse User Id...");
+		}
+		
 		if(StringUtils.hasText(wht.getUserCode())) {
 			errors.rejectValue("userCode",null,"Please Enter Code of User...");
 		}else if(Pattern.matches("[A-Z]{5,7}",wht.getUserCode())) {
@@ -43,11 +47,7 @@ public class WhUserTypeValidator implements Validator {
 		if(StringUtils.isEmpty(wht.getUserIdType())) {
 			errors.rejectValue("userIdType",null,"Please Enter UserId Type...");
 		}
-		
-		if(StringUtils.isEmpty(wht.getWhid())) {
-			errors.rejectValue("idnumber",null,"Please Enter WareHouse User Id...");
-		}
-		
+			
 	}
 
 }

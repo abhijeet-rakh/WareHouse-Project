@@ -33,6 +33,7 @@ public class ShipmentTypeValidator implements Validator {
 			errors.rejectValue("enableShipment",null,"Enable or Disable Shipment...");
 		}
 		
+		
 		if(StringUtils.isEmpty(st.getShipmentGrade())) {
 			errors.rejectValue("shipmentGrade",null,"Enter the Grade here...");
 		}
@@ -42,8 +43,7 @@ public class ShipmentTypeValidator implements Validator {
 		}else if(st.getDesc().length()>10 && st.getDesc().length()<50) {
 			errors.rejectValue("desc",null,"Enter 10 to 50 letters in text...");
 		}
-		
-
+	
 	}
 
 }
