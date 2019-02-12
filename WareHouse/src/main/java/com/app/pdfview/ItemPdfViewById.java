@@ -30,7 +30,7 @@ public class ItemPdfViewById extends AbstractPdfView {
 
 		document.add(ph);
 
-		PdfPTable table = new PdfPTable(8);
+		PdfPTable table = new PdfPTable(10);
 
 		table.addCell("ID");
 		table.addCell("Code");
@@ -39,6 +39,8 @@ public class ItemPdfViewById extends AbstractPdfView {
 		table.addCell("Height");
 		table.addCell("Cost");
 		table.addCell("Currency");
+		table.addCell("UomModel");
+		table.addCell("OrderCode");
 		table.addCell("Desc");
 
 		for (Item item : list) {
@@ -49,7 +51,10 @@ public class ItemPdfViewById extends AbstractPdfView {
 			table.addCell(item.getItemHeight().toString());
 			table.addCell(item.getBaseCost().toString());
 			table.addCell(item.getBaseCurrency().toString());
+			table.addCell(item.getUom().getUommodel());
+			table.addCell(item.getOm().getOrdercode());
 			table.addCell(item.getItemDesc());
+			
 		}
 		// add table to document
 		document.add(table);

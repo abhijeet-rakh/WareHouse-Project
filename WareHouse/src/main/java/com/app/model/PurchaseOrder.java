@@ -2,6 +2,7 @@ package com.app.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -45,4 +46,8 @@ public class PurchaseOrder {
 	@JoinColumn(name="Whuserid")
     private WhUserType whusertype;
     
+	@ManyToOne
+	@JoinColumn(name="ship_id")
+	private ShipmentType shiptype;
+	
 }

@@ -17,13 +17,12 @@ public class PurchaseOrderServiceImpl implements IPurchaseOrderService {
 	@Autowired
 	private IPurchaseOrderDAO dao;
 	
-	
 	@Transactional
 	public Integer savePurchaseOrder(PurchaseOrder po) {
 		return dao.savePurchaseOrder(po);
 	}
 
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<PurchaseOrder> getAllPurchaseOrder() {
 		return dao.getAllPurchaseOrder();
 	}
@@ -33,7 +32,7 @@ public class PurchaseOrderServiceImpl implements IPurchaseOrderService {
          dao.deletePurchaseOrder(id);
 	}
 
-	@Transactional
+	@Transactional(readOnly=true)
 	public PurchaseOrder getPurchaseOrderById(Integer id) {
 		return dao.getPurchaseOrderById(id);
 	}

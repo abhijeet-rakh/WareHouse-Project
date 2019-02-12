@@ -19,6 +19,7 @@ import com.app.model.PurchaseOrder;
 import com.app.pdfview.PurchaseOrderPdfView;
 import com.app.pdfview.PurchaseOrderPdfViewById;
 import com.app.service.IPurchaseOrderService;
+import com.app.service.IShipmentTypeService;
 import com.app.service.IWhuserTypeService;
 import com.app.validator.PurchaseOrderValidator;
 
@@ -26,16 +27,18 @@ import com.app.validator.PurchaseOrderValidator;
 @RequestMapping(value="/purchaseorder")
 public class PurchaseOrderController {
 
-
-	@Autowired
-	private PurchaseOrderValidator validator;
+//	@Autowired
+//	private PurchaseOrderValidator validator;
 
 	@Autowired
 	private IPurchaseOrderService service;
 
 	@Autowired
+	private IShipmentTypeService shipservice;
+
+	@Autowired
 	private IWhuserTypeService whuserservice;
-	
+
 //	@Autowired
 //	private ServletContext context;
 
@@ -50,14 +53,17 @@ public class PurchaseOrderController {
 		//get all WareHouseusertype in Purchase order
 		map.addAttribute("whusertype",whuserservice.getAllWhuserType());
 		
+		//get all Shipmenttype Mode in purchase order
+		map.addAttribute("shipmenttype",shipservice.getAllShipmentType());
+		
+		
 		return "PurchaseOrderRegister";
 	}
 
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
 	public String savePurchaseOrder(@ModelAttribute PurchaseOrder purchaseOrder, Errors errors, ModelMap map) {
 
-		validator.validate(purchaseOrder, errors);
-
+	//	validator.validate(purchaseOrder, errors);
 		if (errors.hasErrors()) {
 			//if Error Exists
 			map.addAttribute("message", "Please Check all Errors......");
@@ -65,33 +71,35 @@ public class PurchaseOrderController {
 			//if Error is not there
 			Integer id = service.savePurchaseOrder(purchaseOrder);
 
-			String msg = "record inserted no is " + id;
+			String msg = "record inserted no is" + id;
 
 			// add attribute to map
 			map.addAttribute("message", msg);
 
 			//get all WareHouseusertype in Purchase order
 			map.addAttribute("whusertype",whuserservice.getAllWhuserType());
+	
+			//get all Shipmenttype Mode in purchase order
+			map.addAttribute("shipmenttype",shipservice.getAllShipmentType());
 			
 			// clean the object
 			map.addAttribute("purchaseOrder", new PurchaseOrder());
 		}
-	
 		return "PurchaseOrderRegister";
 	}
 
-	
-	
 	@RequestMapping(value = "/all")
 	public String getAllPurchaseOrder(ModelMap map) {
+		System.out.println("data all.........................");
 		List<PurchaseOrder> list = service.getAllPurchaseOrder();
 		map.addAttribute("data", list);
-		return "PurchaseOrderData";
+        return "PurchaseOrderData";
 	}
 
 	
 	@RequestMapping(value = "/delete")
 	public String deletePurchaseOrder(@RequestParam("orderId") Integer id, ModelMap map) {
+		
 		service.deletePurchaseOrder(id);
 
 		String msg = "deleted " + id + " number record";
@@ -106,7 +114,6 @@ public class PurchaseOrderController {
 
 		return "PurchaseOrderData";
 	}
-
 	
 	@RequestMapping(value = "/viewOne")
 	public String getPurchaseOrderById(@RequestParam Integer orderId, ModelMap map) {
@@ -126,6 +133,9 @@ public class PurchaseOrderController {
 
 		//get all WareHouseusertype in Purchase order
 		map.addAttribute("whusertype",whuserservice.getAllWhuserType());
+		
+		//get all Shipmenttype Mode in purchase order
+		map.addAttribute("shipmenttype",shipservice.getAllShipmentType());
 		
 		return "PurchaseOrderEdit";
 	}
@@ -172,6 +182,8 @@ public class PurchaseOrderController {
 		PurchaseOrder PurchaseOrder = service.getPurchaseOrderById(orderId);
 		return new ModelAndView(new PurchaseOrderPdfViewById(), "onedata", Arrays.asList(PurchaseOrder));
 	}
+
+
 /*
 	@RequestMapping("report")
 	public String getPurchaseOrderByCount() {

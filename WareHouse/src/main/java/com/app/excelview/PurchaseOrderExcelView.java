@@ -44,7 +44,9 @@ public class PurchaseOrderExcelView extends AbstractXlsxView{
 		row.createCell(4).setCellValue("RefNum");
 		row.createCell(5).setCellValue("QualityCheck");
 		row.createCell(6).setCellValue("OrdStatus");
-		row.createCell(7).setCellValue("Description");
+		row.createCell(7).setCellValue("UserCode");
+		row.createCell(8).setCellValue("shipCode");
+		row.createCell(9).setCellValue("Description");
 	}// setHead
 
 	private void setBody(Sheet sheet, List<PurchaseOrder> list) {
@@ -59,7 +61,9 @@ public class PurchaseOrderExcelView extends AbstractXlsxView{
 			row.createCell(4).setCellValue(po.getRefNum());
 			row.createCell(5).setCellValue(po.getQualityCheck());
 			row.createCell(6).setCellValue(po.getOrdStatus());
-			row.createCell(7).setCellValue(po.getOrdDesc());
+			row.createCell(7).setCellValue(po.getWhusertype().getUserCode());
+			row.createCell(8).setCellValue(po.getShiptype().getShipmentCode());
+			row.createCell(9).setCellValue(po.getOrdDesc());
 		}
 
 	}// setBody

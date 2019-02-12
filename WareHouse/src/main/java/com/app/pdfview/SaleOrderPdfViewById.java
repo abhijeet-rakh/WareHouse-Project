@@ -9,59 +9,59 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.app.model.Item;
-import com.app.model.OrderMethod;
+import com.app.model.SaleOrder;
 import com.lowagie.text.Document;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class ItemPdfView extends AbstractPdfView {
+public class SaleOrderPdfViewById extends AbstractPdfView{
 
 	@Override
 	public void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 
 		// set response
 		response.setHeader("Content-Disposition", "attachment;filename=item.pdf");
 
-		List<Item> list = (List<Item>) model.get("list");
+		List<SaleOrder> list = (List<SaleOrder>) model.get("onedata");
 
 		Paragraph ph = new Paragraph("Item Detail");
 
 		document.add(ph);
 
-		PdfPTable table = new PdfPTable(10);
+		PdfPTable table = new PdfPTable(9);
 
-		table.addCell("ID");
-		table.addCell("Code");
-		table.addCell("Length");
-		table.addCell("Width");
-		table.addCell("Height");
-		table.addCell("Cost");
-		table.addCell("Currency");
-		table.addCell("UomModel");
+		table.addCell("OrderID");
 		table.addCell("OrderCode");
-		table.addCell("Desc");
+		table.addCell("ShipmentMode");
+		table.addCell("Customer");
+		table.addCell("RefNumber");
+		table.addCell("StockMode");
+		table.addCell("StockSource");
+		table.addCell("DefaultStatus");
+		table.addCell("SaleOrdDesc");
 		
 
-		for (Item item : list) {
-			table.addCell(item.getItemId().toString());
-			table.addCell(item.getItemCode());
-			table.addCell(item.getItemLength().toString());
-			table.addCell(item.getItemWidth().toString());
-			table.addCell(item.getItemHeight().toString());
-			table.addCell(item.getBaseCost().toString());
-			table.addCell(item.getBaseCurrency().toString());
-			table.addCell(item.getUom().getUommodel());
-			table.addCell(item.getOm().getOrdercode());
-			table.addCell(item.getItemDesc());
+		for (SaleOrder so : list) {
+			table.addCell(so.getOrderId().toString());
+			table.addCell(so.getOrderCode());
+			table.addCell(so.getShipmentMode());
+			table.addCell(so.getCustomer());
+			table.addCell(so.getRefNumber().toString());
+			table.addCell(so.getStockMode());
+			table.addCell(so.getStockSource());
+			table.addCell(so.getDefaultStatus());
+			table.addCell(so.getSaleOrdDesc());
 		}
 		// add table to document
 		document.add(table);
 
 		// add date to document
 		document.add(new Paragraph(new Date().toString()));
+		
 	}
-
+		
+		
 }

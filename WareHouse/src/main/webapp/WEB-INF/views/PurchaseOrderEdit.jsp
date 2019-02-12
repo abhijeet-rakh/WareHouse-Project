@@ -10,12 +10,8 @@
 <title>Item Edit Page</title>
 </head>
 <body>
-
 	<div class="container">
-
 		<div class="card">
-
-
 			<div class="card-header bg-info text-white">
 				<h1 style="color: red; text-align: center;">Purchase Order Edit
 					Form</h1>
@@ -47,19 +43,18 @@
 					</div>
 
 					<br>
+				
 					<div class="row">
 						<div class="col-4">
 							<label for="shipmentMode">Shipment Mode :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="shipmentMode">
+							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="AIR">AIR</form:option>
-								<form:option value="TRUCK">TRUCK</form:option>
-								<form:option value="SHIP">SHIP</form:option>
-								<form:option value="TRAIN">TRAIN</form:option>
+		                        <form:options items="${shipmenttype}" itemLabel="shipmentMode" itemValue="id" />
 							</form:select>
 							<form:errors path="shipmentMode" cssClass="err" />
+
 						</div>
 					</div>
 
@@ -132,6 +127,21 @@
 							</form:select>
 						</div>
 					</div>
+				
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="ShipmentMode">Shipment Code :</label>
+						</div>
+						<div class="col-6">
+							<form:select path="shiptype.id">
+								<form:option value="">--SELECT--</form:option>
+								<form:options items="${shipmenttype}" itemLabel="shipmentCode"
+									itemValue="id" />
+							</form:select>
+						</div>
+					</div>
 
 					<br>
 
@@ -150,8 +160,7 @@
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">
-							<input class="btn btn-primary" type="submit"
-								value="Register Item" />
+							<input class="btn btn-primary" type="submit" value="Edit Item" />
 						</div>
 					</div>
 
@@ -161,8 +170,5 @@
 		</div>
 
 	</div>
-
-
-
 </body>
 </html>

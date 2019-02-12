@@ -128,6 +128,21 @@
 						</div>
 					</div>
 
+                   <br>
+
+                    <div class="row">
+						<div class="col-4">
+							<label for="ShipmentCode">Shipment Code :</label>
+						</div>
+						<div class="col-6">
+						    <form:select path="shiptype.id">
+							<form:option value="">--SELECT--</form:option>
+							<form:options items="${shipmenttype}" itemLabel="shipmentCode"
+								itemValue="id" />
+							</form:select>
+						</div>
+					</div>
+                     
 					<br>
 
 					<div class="row">

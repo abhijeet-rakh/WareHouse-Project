@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="UserMenu.jsp"%>
-
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Order Method Data</title>
+<title>Sale Order Data</title>
 </head>
 <body>
 	<div class="container">
@@ -15,13 +15,13 @@
 		<div class="card">
 
 			<div class="card-header bg-primary text-white">
-				<h1 style="text-align: center;">Order Method Detail</h1>
+				<h1 style="text-align: center;">Sale Order Detail</h1>
 			</div>
 			<!-- Card header end -->
 
-			<a style="text-align: right;" href="excelall">Get all OrderMethod
+			<a style="text-align: right;" href="excelall">Get all Sale Order
 				in Excel</a> <a style="text-align: right;" href="pdfExp">Get all
-				OrderMethod in pdf</a> <br>
+				Sale Order in pdf</a> <br>
 
 			<div class="card-body">
 				<c:choose>
@@ -32,39 +32,46 @@
 						<table class="table table-bordered table-hover table-striped">
 							<tr>
 								<th>Orderid</th>
-								<th>OrderMode</th>
-								<th>OrdercCode</th>
+								<th>OrderCode</th>
+								<th>ShipmentMode</th>
 								<th>ExecuteType</th>
-								<!-- <th>Desc</th>
-                     <th>OrderAccept</th> -->
+								<th>Customer</th>
+								<th>RefNumber</th>
+								<th>StockMode</th>
+								<!-- <th>stockSource</th>
+                                <th>defaultStatus</th>
+                                 <th>saleOrdDesc</th>-->
 								<th colspan="5">OPERATION</th>
 							</tr>
 							<c:forEach items="${data}" var="d">
 								<tr>
-									<td><c:out value="${d.oid}"></c:out></td>
-									<td><c:out value="${d.ordermode}"></c:out></td>
-									<td><c:out value="${d.ordercode}"></c:out></td>
-									<td><c:out value="${d.executetype}"></c:out></td>
-									<%-- <td><c:out value="${d.desc}"></c:out></td>
-      <td><c:out value="${d.orderaccept}"></c:out></td> --%>
+									<td><c:out value="${d.orderId}"></c:out></td>
+									<td><c:out value="${d.orderCode}"></c:out></td>
+									<td><c:out value="${d.shipmentMode}"></c:out></td>
+									<td><c:out value="${d.customer}"></c:out></td>
+									<td><c:out value="${d.refNumber}"></c:out></td>
+									<td><c:out value="${d.stockMode}"></c:out></td>
+									<%-- <td><c:out value="${d.stockSource}"></c:out></td>
+      								<td><c:out value="${d.defaultStatus}"></c:out></td>
+      								<td><c:out value="${d.saleOrdDesc}"></c:out></td> --%>
 
-									<td><a href="delete?oid=${d.oid}"> <img
+									<td><a href="delete?orderId=${d.orderId}"> <img
 											src="../resources/images/delete.png" height="30" width="30">
 									</a></td>
 
-									<td><a href="viewOne?oid=${d.oid}"> <img
+									<td><a href="viewOne?orderId=${d.orderId}"> <img
 											src="../resources/images/view.png" height="30" width="30">
 									</a></td>
 
-									<td><a href="editOne?oid=${d.oid}"> <img
+									<td><a href="editOne?orderId=${d.orderId}"> <img
 											src="../resources/images/edit.png" height="30" width="30">
 									</a></td>
 
-									<td><a href="excelOne?oid=${d.oid}"> <img
+									<td><a href="excelOne?orderId=${d.orderId}"> <img
 											src="../resources/images/excel.png" height="30" width="30">
 									</a></td>
 
-									<td><a href="pdfOne?oid=${d.oid}"> <img
+									<td><a href="pdfOne?orderId=${d.orderId}"> <img
 											src="../resources/images/pdf.png" height="30" width="30">
 									</a></td>
 

@@ -29,7 +29,7 @@ public class PurchaseOrderPdfViewById extends AbstractPdfView{
 
 		document.add(ph);
 
-		PdfPTable table = new PdfPTable(8);
+		PdfPTable table = new PdfPTable(10);
 
 		table.addCell("ID");
 		table.addCell("Code");
@@ -38,6 +38,8 @@ public class PurchaseOrderPdfViewById extends AbstractPdfView{
 		table.addCell("RefNum");
 		table.addCell("QualityCheck");
 		table.addCell("OrdStatus");
+		table.addCell("Userid");
+		table.addCell("Shipid");
 		table.addCell("Desc");
 
 		for (PurchaseOrder po : list) {
@@ -48,6 +50,8 @@ public class PurchaseOrderPdfViewById extends AbstractPdfView{
 			table.addCell(po.getRefNum());
 			table.addCell(po.getQualityCheck());
 			table.addCell(po.getOrdStatus());
+			table.addCell(po.getWhusertype().getUserCode());
+			table.addCell(po.getShiptype().getShipmentCode());
 			table.addCell(po.getOrdDesc());
 		}
 		// add table to document

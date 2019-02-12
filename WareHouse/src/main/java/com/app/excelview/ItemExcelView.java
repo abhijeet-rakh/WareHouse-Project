@@ -43,7 +43,9 @@ public class ItemExcelView extends AbstractXlsxView {
 		row.createCell(4).setCellValue("Height");
 		row.createCell(5).setCellValue("Cost");
 		row.createCell(6).setCellValue("Currency");
-		row.createCell(7).setCellValue("Description");
+		row.createCell(7).setCellValue("UOMid");
+		row.createCell(8).setCellValue("Oid");
+		row.createCell(9).setCellValue("Description");
 	}// setHead
 
 	private void setBody(Sheet sheet, List<Item> list) {
@@ -58,7 +60,10 @@ public class ItemExcelView extends AbstractXlsxView {
 			row.createCell(4).setCellValue(item.getItemHeight());
 			row.createCell(5).setCellValue(item.getBaseCost());
 			row.createCell(6).setCellValue(item.getBaseCurrency());
-			row.createCell(7).setCellValue(item.getItemDesc());
+			row.createCell(7).setCellValue(item.getUom().getUommodel());
+			row.createCell(8).setCellValue(item.getOm().getOrdercode());
+			row.createCell(9).setCellValue(item.getItemDesc());
+			
 		}
 
 	}// setBody

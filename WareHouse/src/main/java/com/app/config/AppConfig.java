@@ -23,6 +23,7 @@ import com.app.model.Document;
 import com.app.model.Item;
 import com.app.model.OrderMethod;
 import com.app.model.PurchaseOrder;
+import com.app.model.SaleOrder;
 import com.app.model.ShipmentType;
 import com.app.model.UOM;
 import com.app.model.User;
@@ -71,7 +72,7 @@ public class AppConfig implements WebMvcConfigurer {
 
 		// set annotated entity class to Session Factory
 		lsfb.setAnnotatedClasses(ShipmentType.class, UOM.class, OrderMethod.class, WhUserType.class, User.class,
-				Document.class,Item.class,PurchaseOrder.class);
+				Document.class,Item.class,PurchaseOrder.class,SaleOrder.class);
 
 		return lsfb;
 	}
