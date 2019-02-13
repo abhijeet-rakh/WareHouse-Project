@@ -55,8 +55,7 @@ public class PurchaseOrderController {
 		
 		//get all Shipmenttype Mode in purchase order
 		map.addAttribute("shipmenttype",shipservice.getAllShipmentType());
-		
-		
+				
 		return "PurchaseOrderRegister";
 	}
 
@@ -194,8 +193,5 @@ public class PurchaseOrderController {
 		return "PurchaseOrderCountReport";
 	}
 */
-
-	
-	
 	
 }

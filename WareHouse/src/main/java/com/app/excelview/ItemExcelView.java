@@ -60,7 +60,7 @@ public class ItemExcelView extends AbstractXlsxView {
 			row.createCell(4).setCellValue(item.getItemHeight());
 			row.createCell(5).setCellValue(item.getBaseCost());
 			row.createCell(6).setCellValue(item.getBaseCurrency());
-			row.createCell(7).setCellValue(item.getUom().getUommodel());
+			row.createCell(7).setCellValue(item.getUom().getUomModel());
 			row.createCell(8).setCellValue(item.getOm().getOrdercode());
 			row.createCell(9).setCellValue(item.getItemDesc());
 			

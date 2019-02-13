@@ -23,12 +23,16 @@ public class PurchaseOrder {
 	
 	@Column(name="o_code")
 	private String orderCode;
+
+	@ManyToOne
+	@JoinColumn(name="ship_id")
+	private ShipmentType shiptype;
+
 	
-	@Column(name="ship_mode")
-	private String shipmentMode;
-	
-	@Column(name="vendor")
-	private String vendor;
+	@ManyToOne
+	@JoinColumn(name="Whuserid")
+    private WhUserType whusertype;
+    
 	
 	@Column(name="refNum")
 	private String refNum;
@@ -42,12 +46,6 @@ public class PurchaseOrder {
 	@Column(name="ord_desc")
     private String ordDesc;
     
-	@ManyToOne
-	@JoinColumn(name="Whuserid")
-    private WhUserType whusertype;
-    
-	@ManyToOne
-	@JoinColumn(name="ship_id")
-	private ShipmentType shiptype;
+	
 	
 }

@@ -7,13 +7,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>UOM Registration Form</title>
+<title>UOM Edit Form</title>
 <style type="text/css">
 .err {
 	color: Red;
 }
 </style>
-
 </head>
 <body>
 
@@ -23,35 +22,48 @@
 
 			<div class="card-header bg-info text-white">
 				<h1 style="color: red; text-align: center">Unit of Measurement
-					Registration Form</h1>
+					Edit Form</h1>
 			</div>
 
 			<div class="card-body">
-				<form:form action="insert" method="post" modelAttribute="unitmeasure">
+				<form:form action="update" method="post" modelAttribute="unitmeasure">
+
 
 					<div class="row">
 						<div class="col-4">
-							<label for="uomtype">UOM Type :</label>
+							<label for="uomId">UOM Id :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="uomtype">
+							<form:input path="uomId" readonly="true"/>
+							<form:errors path="uomId" />
+						</div>
+					</div>
+
+                    <br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="uomType">UOM Type :</label>
+						</div>
+						<div class="col-6">
+							<form:select path="uomType">
 								<form:option value="">--select--</form:option>
 								<form:option value="PACKING">PACKING</form:option>
 								<form:option value="NO PACKING">NO PACKING</form:option>
 								<form:option value="NA">-NA-</form:option>
 							</form:select>
-							<form:errors path="uomtype" />
+							<form:errors path="uomType" />
 						</div>
 					</div>
 					<br>
 
 					<div class="row">
 						<div class="col-4">
-							<label for="uommodel">UOM MODEL :</label>
+							<label for="uomModel">UOM MODEL :</label>
 						</div>
 						<div class="col-6">
-							<form:input path="uommodel" />
-							<form:errors path="uommodel" />
+							<form:input path="uomModel" />
+							<form:errors path="uomModel" />
 						</div>
 					</div>
 
@@ -62,8 +74,8 @@
 							<label for="uomdesc">UOM Description :</label>
 						</div>
 						<div class="col-6">
-							<form:textarea path="uomdesc" />
-							<form:errors path="uomdesc" />
+							<form:textarea path="uomDesc" />
+							<form:errors path="uomDesc" />
 						</div>
 					</div>
 					<br>
@@ -71,21 +83,16 @@
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">
-							<input class="btn btn-primary" type="submit" value="CREATE UOM" />
+							<input class="btn btn-primary" type="submit" value="Edit UOM" />
 						</div>
 					</div>
 
 				</form:form>
 			</div>
 
-			<c:if test="${message != null }">
-				<div class="card-footer bg-success text-white">${message}</div>
-			</c:if>
-
-			<br> <a href="all">View UOM</a>
-
 		</div>
 
 	</div>
+
 </body>
 </html>

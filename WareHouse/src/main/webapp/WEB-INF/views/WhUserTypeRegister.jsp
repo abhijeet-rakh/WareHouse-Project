@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="card-body">
-				<form:form action="insert" method="POST" modelAttribute="whuserType">
+				<form:form action="insert" method="POST" modelAttribute="whusertype">
 
 					<div class="row">
 						<div class="col-4">

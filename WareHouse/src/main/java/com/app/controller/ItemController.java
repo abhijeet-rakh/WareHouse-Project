@@ -18,12 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.app.excelview.ItemExcelView;
 import com.app.excelview.ItemExcelViewById;
 import com.app.model.Item;
-import com.app.model.UOM;
 import com.app.pdfview.ItemPdfView;
 import com.app.pdfview.ItemPdfViewById;
 import com.app.service.IItemService;
 import com.app.service.IOrderMethodService;
-import com.app.service.IUOMTypeService;
+import com.app.service.IUnitOfMeasurementTypeService;
 import com.app.util.ItemUtility;
 import com.app.validator.ItemValidator;
 
@@ -41,9 +40,8 @@ public class ItemController {
 	private IOrderMethodService ordservice;
 	
 	@Autowired
-	private IUOMTypeService uomservice;
+	private IUnitOfMeasurementTypeService uomservice;
 	
-
 //	@Autowired
 //	private ServletContext context;
 
@@ -55,7 +53,7 @@ public class ItemController {
 		map.addAttribute("item",new Item());
 
 		//Show uom model in registration page(Module Integration) 
-		map.addAttribute("uoms",uomservice.getAllUOMtype());
+		map.addAttribute("uoms",uomservice.getAllUnitOfMeasurementtype());
 		
 		//show OrderMethod model in registration page(Module Integration)
 		map.addAttribute("ordermethods",ordservice.getAllOrderMethod());
@@ -79,8 +77,9 @@ public class ItemController {
 			// add attribute to map
 			map.addAttribute("message", msg);
 
+
 			//Show uom model in registration page(Module Integration) 
-			map.addAttribute("uoms",uomservice.getAllUOMtype());
+			map.addAttribute("uoms",uomservice.getAllUnitOfMeasurementtype());
 		
 			
 			//show OrderMethod model in registration page(Module Integration)
@@ -139,8 +138,9 @@ public class ItemController {
 
 		map.addAttribute("item", service.getItemById(itemId));
 
+
 		//Show uom model in registration page(Module Integration) 
-		map.addAttribute("uoms",uomservice.getAllUOMtype());
+		map.addAttribute("uoms",uomservice.getAllUnitOfMeasurementtype());
 
 		//show OrderMethod model in registration page(Module Integration)
 		map.addAttribute("ordermethods",ordservice.getAllOrderMethod());

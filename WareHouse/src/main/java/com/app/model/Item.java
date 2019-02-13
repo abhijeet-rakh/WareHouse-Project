@@ -18,36 +18,36 @@ public class Item {
 	
 	 @Id
 	 @GeneratedValue
-	 @Column(name="id")
+	 @Column(name="item_id")
      private Integer itemId;
 	 
-	 @Column(name="icode")
+	 @Column(name="item_code")
      private String itemCode;
 	 
-	 @Column(name="ilength")
+	 @Column(name="item_length")
      private Double itemLength;
 	 
-	 @Column(name="iwidth")
+	 @Column(name="item_width")
      private Double itemWidth;
 	 
-	 @Column(name="iheight")
+	 @Column(name="item_height")
      private Double itemHeight;
 	 
-	 @Column(name="icost")
+	 @Column(name="item_cost")
      private Double baseCost;
   
-	 @Column(name="icurrency")
+	 @Column(name="item_currency")
 	 private String baseCurrency;
 
-	 @Column(name="idesc")
+	 @Column(name="item_desc")
 	 private String itemDesc;
 	 	 
 	 @ManyToOne
-	 @JoinColumn(name="uomid")
-	 private UOM uom;
+	 @JoinColumn(name="uom_id")
+	 private UnitOfMeasurement uom;
 	 
 	 @OneToOne
-	 @JoinColumn(name="ordid")
+	 @JoinColumn(name="ord_id")
 	 private OrderMethod om;
 	 
 }

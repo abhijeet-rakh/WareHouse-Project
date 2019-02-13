@@ -39,14 +39,12 @@ public class PurchaseOrderExcelView extends AbstractXlsxView{
 		Row row = sheet.createRow(0);
 		row.createCell(0).setCellValue("ID");
 		row.createCell(1).setCellValue("Code");
-		row.createCell(2).setCellValue("Ship Mode");
-		row.createCell(3).setCellValue("Vendor");
+		row.createCell(2).setCellValue("Ship Code");
+		row.createCell(3).setCellValue("User Code");
 		row.createCell(4).setCellValue("RefNum");
 		row.createCell(5).setCellValue("QualityCheck");
 		row.createCell(6).setCellValue("OrdStatus");
-		row.createCell(7).setCellValue("UserCode");
-		row.createCell(8).setCellValue("shipCode");
-		row.createCell(9).setCellValue("Description");
+		row.createCell(7).setCellValue("Description");
 	}// setHead
 
 	private void setBody(Sheet sheet, List<PurchaseOrder> list) {
@@ -56,14 +54,12 @@ public class PurchaseOrderExcelView extends AbstractXlsxView{
 			Row row = sheet.createRow(rowNum++);
 			row.createCell(0).setCellValue(po.getOrderId());
 			row.createCell(1).setCellValue(po.getOrderCode());
-			row.createCell(2).setCellValue(po.getShipmentMode());
-			row.createCell(3).setCellValue(po.getVendor());
+			row.createCell(2).setCellValue(po.getShiptype().getShipmentCode());
+			row.createCell(3).setCellValue(po.getWhusertype().getUserCode());
 			row.createCell(4).setCellValue(po.getRefNum());
 			row.createCell(5).setCellValue(po.getQualityCheck());
 			row.createCell(6).setCellValue(po.getOrdStatus());
-			row.createCell(7).setCellValue(po.getWhusertype().getUserCode());
-			row.createCell(8).setCellValue(po.getShiptype().getShipmentCode());
-			row.createCell(9).setCellValue(po.getOrdDesc());
+			row.createCell(7).setCellValue(po.getOrdDesc());
 		}
 
 	}// setBody

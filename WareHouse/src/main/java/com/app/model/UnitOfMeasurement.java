@@ -16,21 +16,20 @@ import lombok.Setter;
 @Table(name="uom_type_tab")
 @Setter
 @Getter
-public class UOM {
+public class UnitOfMeasurement {
 
 	@Id
 	@GeneratedValue
-	@Column(name="uid")
-	private Integer uomid;
+	@Column(name="u_id")
+	private Integer uomId;
 	
 	@Column(name="uom_type")
-	private String uomtype;
+	private String uomType;
 	
 	@Column(name="uom_model")
-	private String uommodel;
+	private String uomModel;
 	
 	@Column(name="uom_desc")
-	private String uomdesc;
-	
+	private String uomDesc;
 		
 }

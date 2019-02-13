@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="UserMenu.jsp"%>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +21,8 @@
 		<div class="card">
 
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Sale Order Registration
-					Form</h1>
+				<h1 style="color: red; text-align: center;">Sale Order
+					Registration Form</h1>
 			</div>
 
 			<div class="card-body">
@@ -39,26 +39,23 @@
 					</div>
 
 					<br>
-					
+
 					<div class="row">
 						<div class="col-4">
 							<label for="shipmentMode">Shipment Mode :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="shipmentMode">
+							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="E">E</form:option>
-								<form:option value="F">F</form:option>
-								<form:option value="G">G</form:option>
-								<form:option value="H">H</form:option>
+								<form:options items="${shipmenttype}" itemLabel="shipmentMode"
+									itemValue="id" />
 							</form:select>
-							<form:errors path="shipmentMode" cssClass="err" />
 						</div>
 					</div>
 
-                    <br>
-                    
-                    <div class="row">
+					<br>
+
+					<div class="row">
 						<div class="col-4">
 							<label for="customer">Customer :</label>
 						</div>
@@ -73,22 +70,22 @@
 							<form:errors path="customer" cssClass="err" />
 						</div>
 					</div>
-                    
-                    <br>
-                    
-                    <div class="row">
+
+					<br>
+
+					<div class="row">
 						<div class="col-4">
 							<label for="refNumber">Reference Number :</label>
 						</div>
 						<div class="col-6">
-					        <form:input path="refNumber"/>		
+							<form:input path="refNumber" />
 							<form:errors path="refNumber" cssClass="err" />
 						</div>
 					</div>
-                    
-                    <br>
-                    
-                    <div class="row">
+
+					<br>
+
+					<div class="row">
 						<div class="col-4">
 							<label for="stockMode">Stock Mode :</label>
 						</div>
@@ -96,14 +93,14 @@
 							<form:radiobutton path="stockMode" value="GRADE" />
 							GRADE <br>
 							<form:radiobutton path="stockMode" value="MARGIN" />
-							MARGIN  <br>
+							MARGIN <br>
 							<form:errors path="stockMode" cssClass="err" />
 						</div>
 					</div>
-					
-                    <br>
-                    
-                    <div class="row">
+
+					<br>
+
+					<div class="row">
 						<div class="col-4">
 							<label for="stockSource">Stock Source :</label>
 						</div>
@@ -117,33 +114,33 @@
 							<form:errors path="stockSource" cssClass="err" />
 						</div>
 					</div>
-                    
-                    <br>
-                    
-                    <div class="row">
+
+					<br>
+
+					<div class="row">
 						<div class="col-4">
 							<label for="defaultStatus">Default Status :</label>
 						</div>
 						<div class="col-6">
-					        <form:input path="defaultStatus"/>		
+							<form:input path="defaultStatus" />
 							<form:errors path="defaultStatus" cssClass="err" />
 						</div>
 					</div>
-                    
-                    <br>
-                    
-                    <div class="row">
+
+					<br>
+
+					<div class="row">
 						<div class="col-4">
 							<label for="saleOrdDesc">Sale Order Description:</label>
 						</div>
 						<div class="col-6">
-					        <form:textarea path="saleOrdDesc"/>		
+							<form:textarea path="saleOrdDesc" />
 							<form:errors path="saleOrdDesc" cssClass="err" />
 						</div>
 					</div>
-                    
-                    <br>
-                    
+
+					<br>
+
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">

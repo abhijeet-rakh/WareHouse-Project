@@ -47,7 +47,7 @@
 								<tr>
 									<td><c:out value="${d.orderId}"></c:out></td>
 									<td><c:out value="${d.orderCode}"></c:out></td>
-									<td><c:out value="${d.shipmentMode}"></c:out></td>
+									<td><c:out value="${d.shiptype.shipmentMode}"></c:out></td>
 									<td><c:out value="${d.customer}"></c:out></td>
 									<td><c:out value="${d.refNumber}"></c:out></td>
 									<td><c:out value="${d.stockMode}"></c:out></td>

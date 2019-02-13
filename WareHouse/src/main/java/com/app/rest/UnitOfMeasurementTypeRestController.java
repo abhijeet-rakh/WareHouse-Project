@@ -10,45 +10,45 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.app.model.UOM;
-import com.app.service.IUOMTypeService;
+import com.app.model.UnitOfMeasurement;
+import com.app.service.IUnitOfMeasurementTypeService;
 
 @RestController
-@RequestMapping(value="/rest/uom")
-public class UOMTypeRestController {
+@RequestMapping(value="/rest/UnitOfMeasurement")
+public class UnitOfMeasurementTypeRestController {
 	
 	@Autowired
-	private IUOMTypeService service;
+	private IUnitOfMeasurementTypeService service;
 	
 	@RequestMapping(value = "/all")
-	public ResponseEntity<?> getAllUom() {
+	public ResponseEntity<?> getAllUnitOfMeasurement() {
 
-		List<UOM> list = service.getAllUOMtype();
+		List<UnitOfMeasurement> list = service.getAllUnitOfMeasurementtype();
 
 		if (list != null && list.isEmpty() == false) {
-			return new ResponseEntity<List<UOM>>(list, HttpStatus.OK);
+			return new ResponseEntity<List<UnitOfMeasurement>>(list, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("No Data Available", HttpStatus.BAD_REQUEST);
 		}
 	}
 
 	@RequestMapping(value = "/get/{id}")
-	public ResponseEntity<?> getOneUom(@PathVariable Integer id) {
+	public ResponseEntity<?> getOneUnitOfMeasurement(@PathVariable Integer id) {
 
-		UOM uom = service.getUOMtypeById(id);
+		UnitOfMeasurement UnitOfMeasurement = service.getUnitOfMeasurementtypeById(id);
 
-		if (uom != null) {
-			return new ResponseEntity<UOM>(uom, HttpStatus.OK);
+		if (UnitOfMeasurement != null) {
+			return new ResponseEntity<UnitOfMeasurement>(UnitOfMeasurement, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("No Data Available", HttpStatus.BAD_REQUEST);
 		}
 	}
 
 	@RequestMapping(value = "/delete/{id}")
-	public ResponseEntity<?> deleteUom(@PathVariable Integer id) {
+	public ResponseEntity<?> deleteUnitOfMeasurement(@PathVariable Integer id) {
 
 		try {
-			service.deleteUOMById(id);
+			service.deleteUnitOfMeasurementById(id);
 			return new ResponseEntity<String>(id + " no. Record deleted..", HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<String>("Record is not available..", HttpStatus.BAD_REQUEST);
@@ -57,10 +57,10 @@ public class UOMTypeRestController {
 	}
 
 	@PostMapping(value = "/save")
-	public ResponseEntity<?> saveUom(@RequestBody UOM uom) {
+	public ResponseEntity<?> saveUnitOfMeasurement(@RequestBody UnitOfMeasurement UnitOfMeasurement) {
 
 		try {
-			Integer id = service.saveUOMtype(uom);
+			Integer id = service.saveUnitOfMeasurementtype(UnitOfMeasurement);
 			return new ResponseEntity<String>(id + " record is added", HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(" Record not available...", HttpStatus.BAD_REQUEST);
@@ -69,11 +69,11 @@ public class UOMTypeRestController {
 
 
 	@PostMapping(value = "/update")
-	public ResponseEntity<?> updateUom(@RequestBody UOM uom) {
+	public ResponseEntity<?> updateUnitOfMeasurement(@RequestBody UnitOfMeasurement UnitOfMeasurement) {
        
 		try {
-			service.updateUOMtype(uom);
-			return new ResponseEntity<String>(uom.getUomid()+" no. Record is updated..",HttpStatus.OK);
+			service.updateUnitOfMeasurementtype(UnitOfMeasurement);
+			return new ResponseEntity<String>(UnitOfMeasurement.getUomId()+" no. Record is updated..",HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<String>(" Record not found...",HttpStatus.BAD_REQUEST);
 		}

@@ -15,22 +15,22 @@
 
       <tr>
       <td>ID</td>
-      <td>${um.uomid}</td>
+      <td>${unitmeasure.uomId}</td>
       </tr>
       
       <tr>
       <td>UOMTYPE</td>
-      <td>${um.uomtype}</td>
+      <td>${unitmeasure.uomType}</td>
       </tr>
       
       <tr>
       <td>UOMMODEL</td>
-      <td>${um.uommodel}</td>
+      <td>${unitmeasure.uomModel}</td>
       </tr>
       
       <tr>
       <td>DESCRIPTION</td>
-      <td>${um.uomdesc}</td>
+      <td>${unitmeasure.uomDesc}</td>
       </tr>
       
 	</table>

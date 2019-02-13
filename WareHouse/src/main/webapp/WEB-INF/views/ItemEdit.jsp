@@ -121,10 +121,10 @@
 							<label for="ItemUom">Item Uom :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="uom.uomid">
+							<form:select path="uom.uomId">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${uoms}" itemLabel="uommodel"
-									itemValue="uomid" />
+								<form:options items="${uoms}" itemLabel="uomModel"
+									itemValue="uomId" />
 							</form:select>
 						</div>
 					</div>

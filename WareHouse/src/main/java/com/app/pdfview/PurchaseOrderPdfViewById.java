@@ -33,25 +33,21 @@ public class PurchaseOrderPdfViewById extends AbstractPdfView{
 
 		table.addCell("ID");
 		table.addCell("Code");
-		table.addCell("Shipment Mode");
-		table.addCell("Vendor");
+		table.addCell("Shipment Code");
+		table.addCell("User Code");
 		table.addCell("RefNum");
 		table.addCell("QualityCheck");
 		table.addCell("OrdStatus");
-		table.addCell("Userid");
-		table.addCell("Shipid");
 		table.addCell("Desc");
 
 		for (PurchaseOrder po : list) {
 			table.addCell(po.getOrderId().toString());
 			table.addCell(po.getOrderCode());
-			table.addCell(po.getShipmentMode());
-			table.addCell(po.getVendor());
+			table.addCell(po.getShiptype().getShipmentCode());
+			table.addCell(po.getWhusertype().getUserCode());
 			table.addCell(po.getRefNum());
 			table.addCell(po.getQualityCheck());
 			table.addCell(po.getOrdStatus());
-			table.addCell(po.getWhusertype().getUserCode());
-			table.addCell(po.getShiptype().getShipmentCode());
 			table.addCell(po.getOrdDesc());
 		}
 		// add table to document

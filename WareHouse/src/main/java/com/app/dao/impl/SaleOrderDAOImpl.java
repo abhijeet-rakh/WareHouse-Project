@@ -22,6 +22,7 @@ public class SaleOrderDAOImpl implements ISaleOrderDAO{
 
 	@Override
 	public List<SaleOrder> getAllSaleOrder() {
+		System.out.println("all data in saleorder...");
 		return ht.loadAll(SaleOrder.class);
 	}
 

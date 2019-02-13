@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.app.model.UOM;
+import com.app.model.UnitOfMeasurement;
 import com.lowagie.text.Document;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class UOMTypePdfViewById extends AbstractPdfView {
+public class UnitOfMeasurementTypePdfViewById extends AbstractPdfView {
 
 	@Override
 	public void buildPdfDocument(Map<String, Object> model, 
@@ -25,10 +25,10 @@ public class UOMTypePdfViewById extends AbstractPdfView {
 			HttpServletResponse response) throws Exception {
 
     		//set response
-	        response.setHeader("Content-Disposition", "attachment;filename=ONE-UOMTYPE.pdf");
+	        response.setHeader("Content-Disposition", "attachment;filename=ONE-UnitOfMeasurementTYPE.pdf");
 
 		    //get the data from model contained in controller
-	       	List<UOM> list=(List<UOM>) model.get("onedata");
+	       	List<UnitOfMeasurement> list=(List<UnitOfMeasurement>) model.get("onedata");
 	       	
 	       	Paragraph ph=new Paragraph("single record of ");
 	       	
@@ -42,11 +42,11 @@ public class UOMTypePdfViewById extends AbstractPdfView {
 		       table.addCell("Model");
 		       table.addCell("Desc");
 		       
-			   for(UOM u:list) {
-				   table.addCell(u.getUomid().toString());
-				   table.addCell(u.getUomtype());
-				   table.addCell(u.getUommodel());
-				   table.addCell(u.getUomdesc());
+			   for(UnitOfMeasurement u:list) {
+				   table.addCell(u.getUomId().toString());
+				   table.addCell(u.getUomType());
+				   table.addCell(u.getUomModel());
+				   table.addCell(u.getUomDesc());
 			   }
 		    
 			//add table to doc

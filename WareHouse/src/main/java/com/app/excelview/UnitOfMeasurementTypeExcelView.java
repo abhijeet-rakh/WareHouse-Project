@@ -11,9 +11,9 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
-import com.app.model.UOM;
+import com.app.model.UnitOfMeasurement;
 
-public class UOMTypeExcelView extends AbstractXlsxView {
+public class UnitOfMeasurementTypeExcelView extends AbstractXlsxView {
 
 	
 	@Override
@@ -21,10 +21,10 @@ public class UOMTypeExcelView extends AbstractXlsxView {
 			HttpServletResponse res) throws Exception {
 
 		// get the model
-		List<UOM> list = (List<UOM>) model.get("list");
+		List<UnitOfMeasurement> list = (List<UnitOfMeasurement>) model.get("list");
 
 		// create sheet by using workbook
-		Sheet sheet = workbook.createSheet("UOM Type");
+		Sheet sheet = workbook.createSheet("UnitOfMeasurement Type");
 
 		//set Head
 		setHead(sheet);
@@ -42,16 +42,16 @@ public class UOMTypeExcelView extends AbstractXlsxView {
 		row.createCell(3).setCellValue("Desc");
 	}
      
-	private void setBody(Sheet sheet,List<UOM> list){
+	private void setBody(Sheet sheet,List<UnitOfMeasurement> list){
 		
 		int rowNum=1;
 		
-	    for(UOM uom:list) {
+	    for(UnitOfMeasurement UnitOfMeasurement:list) {
 		Row row=sheet.createRow(rowNum++);
-		row.createCell(0).setCellValue(uom.getUomid());
-        row.createCell(1).setCellValue(uom.getUomtype());
-        row.createCell(2).setCellValue(uom.getUommodel());
-        row.createCell(3).setCellValue(uom.getUomdesc());    
+		row.createCell(0).setCellValue(UnitOfMeasurement.getUomId());
+        row.createCell(1).setCellValue(UnitOfMeasurement.getUomType());
+        row.createCell(2).setCellValue(UnitOfMeasurement.getUomModel());
+        row.createCell(3).setCellValue(UnitOfMeasurement.getUomDesc());    
 	    }
 	    
 	}

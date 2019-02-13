@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -23,8 +25,9 @@ public class SaleOrder {
 	@Column(name = "ord_code")
 	private String orderCode;
 
-	@Column(name = "ship_mode")
-	private String shipmentMode;
+	@ManyToOne
+	@JoinColumn(name="ship_id")
+	private ShipmentType shiptype;
 
 	@Column(name = "customer")
 	private String customer;
@@ -43,5 +46,5 @@ public class SaleOrder {
 
 	@Column(name = "sale_ord_desc")
 	private String saleOrdDesc;
-
+	
 }

@@ -53,7 +53,7 @@ public class ItemPdfView extends AbstractPdfView {
 			table.addCell(item.getItemHeight().toString());
 			table.addCell(item.getBaseCost().toString());
 			table.addCell(item.getBaseCurrency().toString());
-			table.addCell(item.getUom().getUommodel());
+			table.addCell(item.getUom().getUomModel());
 			table.addCell(item.getOm().getOrdercode());
 			table.addCell(item.getItemDesc());
 		}

@@ -54,7 +54,7 @@ public class SaleOrderExcelView extends AbstractXlsxView{
 				Row row = sheet.createRow(rowNum++);
 				row.createCell(0).setCellValue(sale.getOrderId());
 				row.createCell(1).setCellValue(sale.getOrderCode());
-				row.createCell(2).setCellValue(sale.getShipmentMode());
+				row.createCell(2).setCellValue(sale.getShiptype().getShipmentMode());
 				row.createCell(3).setCellValue(sale.getCustomer());
 				row.createCell(4).setCellValue(sale.getRefNumber());
 				row.createCell(5).setCellValue(sale.getStockMode());

@@ -28,8 +28,8 @@ import com.app.validator.WhUserTypeValidator;
 @RequestMapping(value = "/whusertype")
 public class WhUserTypeController {
 
-	//@Autowired
-	//private WhUserTypeValidator validator;
+//	@Autowired
+//	private WhUserTypeValidator validator;
 	
 	@Autowired
 	private IWhuserTypeService service;
@@ -47,9 +47,9 @@ public class WhUserTypeController {
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String savedataWhUserType(@ModelAttribute WhUserType whuserType,Errors errors, ModelMap map) {
+	public String savedataWhUserType(@ModelAttribute WhUserType whusertype,Errors errors, ModelMap map) {
 		
-		//validator.validate(whuserType, errors);
+		//validator.validate(whusertype, errors);
 		
 		System.out.println("Errors="+errors.hasErrors());
 		System.out.println("Error count="+errors.getErrorCount());
@@ -61,13 +61,13 @@ public class WhUserTypeController {
 		     map.addAttribute("message","Please Check all Errors.....");
 		}else {
 		
-		service.saveWhusertype(whuserType);
+		service.saveWhusertype(whusertype);
 
 		// add message to map
-		map.addAttribute("message", "added " + whuserType.getWhid() + " number record");
+		map.addAttribute("message", "added " + whusertype.getWhid() + " number record");
 
 		// clean and add fresh object to map
-		map.addAttribute("whuserType", new WhUserType());
+		map.addAttribute("whusertype", new WhUserType());
 
 		}
 		return "WhUserTypeRegister";
@@ -82,7 +82,7 @@ public class WhUserTypeController {
 	@RequestMapping(value = "/viewOne")
 	public String viewUserType(@RequestParam Integer wid, ModelMap map) {
 
-		map.addAttribute("whuserType", service.getWhusertypeById(wid));
+		map.addAttribute("whusertype", service.getWhusertypeById(wid));
 
 		return "WhUserTypeView";
 	}
@@ -90,17 +90,17 @@ public class WhUserTypeController {
 	@RequestMapping("/editOne")
 	public String editUserType(@RequestParam Integer wid, ModelMap map) {
 
-		map.addAttribute("whuserType", service.getWhusertypeById(wid));
+		map.addAttribute("whusertype", service.getWhusertypeById(wid));
 
 		return "WhUserTypeEdit";
 	}
 
 	@RequestMapping("/update")
-	public String updateUserType(@ModelAttribute WhUserType whuserType, ModelMap map) {
+	public String updateUserType(@ModelAttribute WhUserType whusertype, ModelMap map) {
 
-		service.updateWhusertype(whuserType);
+		service.updateWhusertype(whusertype);
 
-		map.addAttribute("message", "Record " + whuserType.getWhid() + " updated");
+		map.addAttribute("message", "Record " + whusertype.getWhid() + " updated");
 
 		map.addAttribute("data", service.getAllWhuserType());
 

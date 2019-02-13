@@ -21,7 +21,7 @@
 
 
 			<div class="card-body">
-				<form:form action="update" method="POST" modelAttribute="whuserType">
+				<form:form action="update" method="POST" modelAttribute="whusertype">
 
 
 					<div class="row">

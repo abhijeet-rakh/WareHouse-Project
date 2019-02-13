@@ -29,13 +29,13 @@ public class PurchaseOrderValidator implements Validator {
 		}
 	
 		/*  ShipmentMode*/
-		if(!StringUtils.hasText(po.getShipmentMode())) {
-			errors.rejectValue("shipmentMode",null,"Please Enter at least one Shipment Mode...");
+		if(!StringUtils.hasText(po.getShiptype().getShipmentCode())) {
+			errors.rejectValue("shiptype",null,"Please Enter at least one Shipment Mode...");
 		}
 		
 		/* Vendor*/
-		if(!StringUtils.hasText(po.getVendor())) {
-			errors.rejectValue("vendor",null,"Please Enter at least one Vendor...");
+		if(!StringUtils.hasText(po.getWhusertype().getUserCode())) {
+			errors.rejectValue("whusertype",null,"Please Enter at least one Vendor...");
 		}
 		
 		/*Ref Number*/

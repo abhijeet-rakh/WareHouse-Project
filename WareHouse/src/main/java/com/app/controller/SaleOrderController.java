@@ -19,6 +19,7 @@ import com.app.model.SaleOrder;
 import com.app.pdfview.SaleOrderPdfView;
 import com.app.pdfview.SaleOrderPdfViewById;
 import com.app.service.ISaleOrderService;
+import com.app.service.IShipmentTypeService;
 import com.app.service.IWhuserTypeService;
 import com.app.validator.SaleOrderValidator;
 
@@ -31,6 +32,10 @@ public class SaleOrderController {
 
 	@Autowired
 	private ISaleOrderService service;
+	
+	@Autowired
+	private IShipmentTypeService shipservice;
+	
 
 //	@Autowired
 //	private ServletContext context;
@@ -42,6 +47,9 @@ public class SaleOrderController {
 	public String regSaleOrder(ModelMap map) {
 		
 		map.addAttribute("saleOrder", new SaleOrder());
+		
+		//Add Shipment Modes to sale order
+		map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
 		
 		return "SaleOrderRegister";
 	}
@@ -62,6 +70,9 @@ public class SaleOrderController {
 
 			// add attribute to map
 			map.addAttribute("message", msg);
+		
+			//Add Shipment Modes to sale order
+			map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
 			
 			// clean the object
 			map.addAttribute("saleOrder", new SaleOrder());
@@ -75,7 +86,7 @@ public class SaleOrderController {
 	public String getAllSaleOrder(ModelMap map) {
 		List<SaleOrder> list = service.getAllSaleOrder();
         map.addAttribute("data", list);
-		return "SaleOrderData";
+        return "SaleOrderData";
 	}
 
 	
@@ -114,6 +125,10 @@ public class SaleOrderController {
 
 		map.addAttribute("saleOrder", service.getSaleOrderById(orderId));
 		
+		//Add Shipment Modes to sale order
+		map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
+		
+		
 		return "SaleOrderEdit";
 	}
 
@@ -128,6 +143,10 @@ public class SaleOrderController {
 		// add to map attribute
 		map.addAttribute("message", "Record " + saleOrder.getOrderId() + " updated");
 
+
+		//Add Shipment Modes to sale order
+		map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
+		
 		// add many record to map
 		map.addAttribute("data", service.getAllSaleOrder());
 

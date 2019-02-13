@@ -42,17 +42,14 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="shipmentMode">Shipment Mode :</label>
+							<label for="ShipmentCode">Shipment Code :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="shipmentMode">
+							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="AIR">AIR</form:option>
-								<form:option value="TRUCK">TRUCK</form:option>
-								<form:option value="SHIP">SHIP</form:option>
-								<form:option value="TRAIN">TRAIN</form:option>
+								<form:options items="${shipmenttype}" itemLabel="shipmentCode"
+									itemValue="id" />
 							</form:select>
-							<form:errors path="shipmentMode" cssClass="err" />
 						</div>
 					</div>
 
@@ -60,17 +57,14 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="vendor">Vendor :</label>
+							<label for="UserCode">User Code :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="vendor">
+							<form:select path="whusertype.whid">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="A">A</form:option>
-								<form:option value="B">B</form:option>
-								<form:option value="C">C</form:option>
-								<form:option value="D">D</form:option>
+								<form:options items="${whusertype}" itemLabel="userCode"
+									itemValue="whid" />
 							</form:select>
-							<form:errors path="vendor" cssClass="err" />
 						</div>
 					</div>
 
@@ -115,35 +109,7 @@
 
 					<br>
 
-					<div class="row">
-						<div class="col-4">
-							<label for="UserCode">User Code :</label>
-						</div>
-						<div class="col-6">
-						    <form:select path="whusertype.whid">
-							<form:option value="">--SELECT--</form:option>
-							<form:options items="${whusertype}" itemLabel="userCode"
-								itemValue="whid" />
-							</form:select>
-						</div>
-					</div>
 
-                   <br>
-
-                    <div class="row">
-						<div class="col-4">
-							<label for="ShipmentCode">Shipment Code :</label>
-						</div>
-						<div class="col-6">
-						    <form:select path="shiptype.id">
-							<form:option value="">--SELECT--</form:option>
-							<form:options items="${shipmenttype}" itemLabel="shipmentCode"
-								itemValue="id" />
-							</form:select>
-						</div>
-					</div>
-                     
-					<br>
 
 					<div class="row">
 						<div class="col-4">

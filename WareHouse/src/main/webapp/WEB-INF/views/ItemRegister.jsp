@@ -107,13 +107,13 @@
 					
 					<div class="row">
 						<div class="col-4">
-							<label for="ItemUom">Item Uom :</label>
+							<label for="ItemUom">UOM Model :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="uom.uomid">
+							<form:select path="uom.uomId">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${uoms}" itemLabel="uommodel"
-									itemValue="uomid" />
+								<form:options items="${uoms}" itemLabel="uomModel"
+									itemValue="uomId" />
 							</form:select>
 							<form:errors path="uom" cssClass="err" />
 						</div>

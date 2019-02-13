@@ -13,7 +13,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UOMtypeUtility {
+public class UnitOfMeasurementtypeUtility {
 
 	public void generatePieChart(String path, List<Object[]> list) {
 
@@ -25,11 +25,11 @@ public class UOMtypeUtility {
 		}
 
 		// convert dataset to JFreeChart by using ChartFactory
-		JFreeChart jfc = ChartFactory.createPieChart3D("UOM Type", dpiedataset, true, true, false);
+		JFreeChart jfc = ChartFactory.createPieChart3D("UnitOfMeasurement Type", dpiedataset, true, true, false);
 
 		// Convert JFreeChart into image by using ChartUtilities
 		try {
-			ChartUtils.saveChartAsJPEG(new File(path + "resources/PieChart/UOMTypePie.jpg"), jfc, 250, 250);
+			ChartUtils.saveChartAsJPEG(new File(path + "resources/PieChart/UnitOfMeasurementTypePie.jpg"), jfc, 250, 250);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -42,15 +42,15 @@ public class UOMtypeUtility {
 		DefaultCategoryDataset dcdataset=new DefaultCategoryDataset();
 		
 		for(Object[] dc:list) {
-			dcdataset.setValue(new Double(dc[1].toString()),dc[0].toString(),"UOM Type");
+			dcdataset.setValue(new Double(dc[1].toString()),dc[0].toString(),"UnitOfMeasurement Type");
 		}
 		
 		//Convert DefaultCategoryDataset into JFreeChart
-		JFreeChart jfchart=ChartFactory.createBarChart("UOM TYPE", "UOM TYPE","COUNT",dcdataset,PlotOrientation.HORIZONTAL,true,true,false);
+		JFreeChart jfchart=ChartFactory.createBarChart("UnitOfMeasurement TYPE", "UnitOfMeasurement TYPE","COUNT",dcdataset,PlotOrientation.HORIZONTAL,true,true,false);
 		
 		//convert JFreeChart into image
 		try {
-			ChartUtils.saveChartAsJPEG(new File(path+"/resources/PieChart/UOMTypeBar.jpg"), jfchart, 250,250);
+			ChartUtils.saveChartAsJPEG(new File(path+"/resources/PieChart/UnitOfMeasurementTypeBar.jpg"), jfchart, 250,250);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
