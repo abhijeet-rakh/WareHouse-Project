@@ -35,6 +35,7 @@ public class UserValidator implements Validator {
 		if(StringUtils.isEmpty(user.getPassword())) {
 			errors.rejectValue("password",null,"Please Enter Password...");
 		}
+		
 
 		if(StringUtils.isEmpty(user.getRoles())) {
 			errors.rejectValue("roles",null,"Please Enter at least one Role...");
