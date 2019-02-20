@@ -2,6 +2,8 @@ package com.app.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -41,6 +43,15 @@ public class SaleOrderDAOImpl implements ISaleOrderDAO{
 	@Override
 	public void updateSaleOrder(SaleOrder so) {
 		ht.update(so);
+	}
+
+	@Override
+	public List<Object[]> getSaleOrderByCount() {
+		DetachedCriteria hql=DetachedCriteria.forClass(SaleOrder.class)
+		.setProjection(Projections.projectionList()
+		.add(Projections.groupProperty("stockMode"))
+		.add(Projections.count("stockMode")));		
+		return (List<Object[]>) ht.findByCriteria(hql);
 	}
 	
 }

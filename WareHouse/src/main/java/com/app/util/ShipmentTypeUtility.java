@@ -14,8 +14,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ShipmentTypeUtility {
+
 	public void generatePieChart(String path, List<Object[]> list) {
-		
+
 		// Convert list Object array into DataSet
 		DefaultPieDataset dpiedataset = new DefaultPieDataset();
 
@@ -52,5 +53,7 @@ public class ShipmentTypeUtility {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+         
 	}//generateBarChart
+	
 }

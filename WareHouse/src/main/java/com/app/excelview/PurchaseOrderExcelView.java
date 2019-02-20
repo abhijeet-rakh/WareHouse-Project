@@ -20,7 +20,6 @@ public class PurchaseOrderExcelView extends AbstractXlsxView{
 	public void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		
 		// get list record by using map
 		List<PurchaseOrder> list = (List<PurchaseOrder>) model.get("list");
 
@@ -55,7 +54,7 @@ public class PurchaseOrderExcelView extends AbstractXlsxView{
 			row.createCell(0).setCellValue(po.getOrderId());
 			row.createCell(1).setCellValue(po.getOrderCode());
 			row.createCell(2).setCellValue(po.getShiptype().getShipmentCode());
-			row.createCell(3).setCellValue(po.getWhusertype().getUserCode());
+			row.createCell(3).setCellValue(po.getWhusertype().getWhCode());
 			row.createCell(4).setCellValue(po.getRefNum());
 			row.createCell(5).setCellValue(po.getQualityCheck());
 			row.createCell(6).setCellValue(po.getOrdStatus());

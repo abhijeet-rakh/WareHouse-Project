@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Sale Order Register</title>
+<title>SALE ORDER REGISTER</title>
 <style type="text/css">
 .err {
 	color: Red;
@@ -21,8 +21,8 @@
 		<div class="card">
 
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Sale Order
-					Registration Form</h1>
+				<h1 style="text-align: center;font-size:x-large;font-family: monospace;">SALE ORDER
+					REGISTRTION FORM</h1>
 			</div>
 
 			<div class="card-body">
@@ -47,8 +47,7 @@
 						<div class="col-6">
 							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${shipmenttype}" itemLabel="shipmentMode"
-									itemValue="id" />
+								<form:options items="${shipmenttype}" />
 							</form:select>
 						</div>
 					</div>
@@ -62,10 +61,7 @@
 						<div class="col-6">
 							<form:select path="customer">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="A">A</form:option>
-								<form:option value="B">B</form:option>
-								<form:option value="C">C</form:option>
-								<form:option value="D">D</form:option>
+								<form:options items="${whservice}" />
 							</form:select>
 							<form:errors path="customer" cssClass="err" />
 						</div>
@@ -156,7 +152,11 @@
 				<div class="card-footer bg-success text-white">${message}</div>
 			</c:if>
 
-			<br> <a href="all">View all Item</a> <br> <br>
+              <br>
+				
+			<a href="all"><input type="button" value="ViewAll"></a>
+
+			
 		</div>
 
 	</div>

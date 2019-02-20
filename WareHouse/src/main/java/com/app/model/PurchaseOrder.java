@@ -1,5 +1,6 @@
 package com.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,12 +29,10 @@ public class PurchaseOrder {
 	@JoinColumn(name="ship_id")
 	private ShipmentType shiptype;
 
-	
 	@ManyToOne
 	@JoinColumn(name="Whuserid")
     private WhUserType whusertype;
     
-	
 	@Column(name="refNum")
 	private String refNum;
 	

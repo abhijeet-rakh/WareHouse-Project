@@ -23,7 +23,7 @@
 
 
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Order Method
+				<h1 style="text-align: center;font-size:x-large;font-family: monospace;">Order Method
 					Registration Form</h1>
 			</div>
 
@@ -54,8 +54,6 @@
 							<form:errors path="ordercode" cssClass="err" />
 						</div>
 					</div>
-
-
 
 					<br>
 
@@ -116,7 +114,8 @@
 			<c:if test="${message != null}">
 				<div class="card-footer bg-success text-white">${message}</div>
 			</c:if>
-			<br> <a href="all">View all Order method</a>
+			
+		<a href="all"><input type="button" value="ViewAll"></a>
 
 		</div>
 

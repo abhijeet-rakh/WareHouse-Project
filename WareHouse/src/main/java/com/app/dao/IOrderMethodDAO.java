@@ -12,7 +12,7 @@ public interface IOrderMethodDAO {
 	public OrderMethod getOrderMethodById(Integer id);
 	public void updateOrderMethod(OrderMethod om);
 	public List<Object[]> getOrderModeByCount();
-	
+	public boolean isCodeExist(String orderCode);
 	
 	
 }

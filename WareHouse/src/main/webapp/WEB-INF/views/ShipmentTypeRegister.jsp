@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Shipment Type Registration Form</title>
+<title>SHIPMENT TYPE REGISTRATION FORM</title>
 <style type="text/css">
 .err {
 	color: red;
@@ -20,15 +20,12 @@
 		<div class="card">
 
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Shipment Type
-					Registration Form</h1>
+				<h1 style="text-align: center;font-size:x-large;font-family: monospace;">SHIPMENT TYPE REGISTRATION FORM</h1>
 			</div>
 
 			<div class="card-body">
 				<form:form action="insert" method="POST"
 					modelAttribute="shipmentType">
-
-
 
 					<div class="row">
 						<div class="col-4">
@@ -117,7 +114,10 @@
 			<c:if test="${message != null }">
 				<div class="card-footer bg-success text-white">${message}</div>
 			</c:if>
-			<br> <a href="all">Get All Data</a>
+			
+			<br>
+			
+         <a href="all"><input type="button" value="ViewAll"></a>
 
 		</div>
 

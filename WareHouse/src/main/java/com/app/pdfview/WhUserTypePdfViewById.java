@@ -15,49 +15,50 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class WhUserTypePdfViewById extends AbstractPdfView {
+public class WhUserTypePdfViewById extends AbstractPdfView{
+
 
 	@Override
-	public void buildPdfDocument(Map<String, Object> model, 
-			Document document, 
-			PdfWriter writer,
-			HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		
-		//set response
-	    response.setHeader("Content-Disposition", "attachment;filename=One-WhUserType.pdf");
+	public void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		List<WhUserType> list=(List<WhUserType>) model.get("onedata");
-		
-        Paragraph ph=new Paragraph("Order Method");
-	    
-	    document.add(ph);
-	    
-	    PdfPTable table=new PdfPTable(8);
-	    
-	    table.addCell("ID");
-	    table.addCell("UserType");
-	    table.addCell("UserCode");
-	    table.addCell("UserFor");
-	    table.addCell("Email");
-	    table.addCell("Contact");
-	    table.addCell("IDType");
-	    table.addCell("idNumber");
-	    
-		for(WhUserType wu:list) {
-			table.addCell(wu.getWhid().toString());
-			table.addCell(wu.getUserType());
-			table.addCell(wu.getUserCode());
-			table.addCell(wu.getUserFor());
-			table.addCell(wu.getUserEmail());
-		    table.addCell(wu.getUserContact());
-		    table.addCell(wu.getUserIdType());
-		    table.addCell(wu.getIdnumber());
+		// set response
+		response.setHeader("Content-Disposition", "attachment;filename=WhUserType.pdf");
+
+		List<WhUserType> list = (List<WhUserType>) model.get("onedata");
+
+		Paragraph ph = new Paragraph("WhUser Details");
+
+		document.add(ph);
+
+		PdfPTable table = new PdfPTable(9);
+
+		table.addCell("whId");
+		table.addCell("whType");
+		table.addCell("whCode");
+		table.addCell("whFor");
+		table.addCell("whEmail");
+		table.addCell("whContact");
+		table.addCell("whIdType");
+		table.addCell("whIdOther");
+		table.addCell("whIdNumber");
+
+		for (WhUserType wu : list) {
+			table.addCell(wu.getWhId().toString());
+			table.addCell(wu.getWhType());
+			table.addCell(wu.getWhCode());
+			table.addCell(wu.getWhFor());
+			table.addCell(wu.getWhEmail());
+			table.addCell(wu.getWhContact());
+			table.addCell(wu.getWhIdType());
+			table.addCell(wu.getWhIdOther());
+			table.addCell(wu.getWhIdNumber());
 		}
-		//add table to document
+
+		// add table to document
 		document.add(table);
-		
-		//add date to document
+
+		// add date to document
 		document.add(new Paragraph(new Date().toString()));
 
 	}

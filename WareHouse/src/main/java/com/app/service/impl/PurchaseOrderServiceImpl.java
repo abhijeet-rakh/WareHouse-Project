@@ -42,4 +42,9 @@ public class PurchaseOrderServiceImpl implements IPurchaseOrderService {
          dao.updatePurchaseOrder(po);
 	}
 
+	@Transactional(readOnly=true)
+	public List<Object[]> getPurchaseOrderByCount() {
+		return dao.getPurchaseOrderByCount();
+	}
+
 }

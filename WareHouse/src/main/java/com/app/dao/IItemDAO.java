@@ -11,6 +11,6 @@ public interface IItemDAO {
 	public void deleteItem(Integer id);
 	public Item getItemById(Integer id);
 	public void updateItem(Item item);
-//	public List<Object[]> getItemByCount();
+	public List<Object[]> getItemByCount();
 
 }

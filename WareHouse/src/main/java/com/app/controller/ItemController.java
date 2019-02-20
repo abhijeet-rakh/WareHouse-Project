@@ -22,7 +22,7 @@ import com.app.pdfview.ItemPdfView;
 import com.app.pdfview.ItemPdfViewById;
 import com.app.service.IItemService;
 import com.app.service.IOrderMethodService;
-import com.app.service.IUnitOfMeasurementTypeService;
+import com.app.service.IUomService;
 import com.app.util.ItemUtility;
 import com.app.validator.ItemValidator;
 
@@ -35,41 +35,41 @@ public class ItemController {
 
 	@Autowired
 	private IItemService service;
-	
+
 	@Autowired
 	private IOrderMethodService ordservice;
-	
-	@Autowired
-	private IUnitOfMeasurementTypeService uomservice;
-	
-//	@Autowired
-//	private ServletContext context;
 
-//	@Autowired
-//	private ItemUtility utility
+	@Autowired
+	private IUomService uomservice;
+
+	@Autowired
+	private ServletContext context;
+
+	@Autowired
+	private ItemUtility utility;
 
 	@RequestMapping(value = "/register")
 	public String regItem(ModelMap map) {
-		map.addAttribute("item",new Item());
+		map.addAttribute("item", new Item());
 
-		//Show uom model in registration page(Module Integration) 
-		map.addAttribute("uoms",uomservice.getAllUnitOfMeasurementtype());
-		
-		//show OrderMethod model in registration page(Module Integration)
-		map.addAttribute("ordermethods",ordservice.getAllOrderMethod());
-		
+		// Show uom model in registration page(Module Integration)
+		map.addAttribute("uoms", uomservice.getUomIdandModel());
+
+		// show OrderMethod model in registration page(Module Integration)
+		map.addAttribute("ordermethods", ordservice.getAllOrderMethod());
+
 		return "ItemRegister";
 	}
 
-	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String saveItem(@ModelAttribute Item item, Errors errors, ModelMap map) {
 
 		validator.validate(item, errors);
 		if (errors.hasErrors()) {
-			//if Error Exists
+			// if Error Exists
 			map.addAttribute("message", "Please Check all Errors......");
-		} else {			
-			//if Error is not there
+		} else {
+			// if Error is not there
 			Integer id = service.saveItem(item);
 
 			String msg = "record inserted no is " + id;
@@ -77,24 +77,19 @@ public class ItemController {
 			// add attribute to map
 			map.addAttribute("message", msg);
 
+			// Show uom model in registration page(Module Integration)
+			map.addAttribute("uoms", uomservice.getUomIdandModel());
 
-			//Show uom model in registration page(Module Integration) 
-			map.addAttribute("uoms",uomservice.getAllUnitOfMeasurementtype());
-		
-			
-			//show OrderMethod model in registration page(Module Integration)
-			map.addAttribute("ordermethods",ordservice.getAllOrderMethod());
-			
-			
+			// show OrderMethod model in registration page(Module Integration)
+			map.addAttribute("ordermethods", ordservice.getAllOrderMethod());
+
 			// clean the object
 			map.addAttribute("item", new Item());
-			
+
 		}
 		return "ItemRegister";
 	}
 
-	
-	
 	@RequestMapping(value = "/all")
 	public String getAllItem(ModelMap map) {
 		List<Item> list = service.getAllItem();
@@ -102,7 +97,6 @@ public class ItemController {
 		map.addAttribute("data", list);
 		return "ItemData";
 	}
-
 
 	@RequestMapping(value = "/delete")
 	public String deleteItem(@RequestParam("itemId") Integer id, ModelMap map) {
@@ -121,7 +115,6 @@ public class ItemController {
 		return "ItemData";
 	}
 
-
 	@RequestMapping(value = "/viewOne")
 	public String getItemById(@RequestParam Integer itemId, ModelMap map) {
 
@@ -132,24 +125,18 @@ public class ItemController {
 		return "ItemView";
 	}
 
-	
 	@RequestMapping(value = "/editOne")
 	public String editItem(@RequestParam Integer itemId, ModelMap map) {
-
 		map.addAttribute("item", service.getItemById(itemId));
 
+		// Show uom model in registration page(Module Integration)
+		map.addAttribute("uoms", uomservice.getUomIdandModel());
 
-		//Show uom model in registration page(Module Integration) 
-		map.addAttribute("uoms",uomservice.getAllUnitOfMeasurementtype());
+		// show OrderMethod model in registration page(Module Integration)
+		map.addAttribute("ordermethods", ordservice.getAllOrderMethod());
 
-		//show OrderMethod model in registration page(Module Integration)
-		map.addAttribute("ordermethods",ordservice.getAllOrderMethod());
-		
-		
 		return "ItemEdit";
 	}
-
-	
 
 	@RequestMapping(value = "/update")
 	public String updateItem(@ModelAttribute Item item, ModelMap map) {
@@ -166,7 +153,6 @@ public class ItemController {
 		return "ItemData";
 	}
 
-	
 	@RequestMapping("/excelall")
 	public ModelAndView getAllItemExcel() {
 		List<Item> list = service.getAllItem();
@@ -178,7 +164,6 @@ public class ItemController {
 		Item item = service.getItemById(itemId);
 		return new ModelAndView(new ItemExcelViewById(), "onedata", Arrays.asList(item));
 	}
-	
 
 	@RequestMapping("/pdfExp")
 	public ModelAndView getAllItemforPdf() {
@@ -191,17 +176,14 @@ public class ItemController {
 		Item item = service.getItemById(itemId);
 		return new ModelAndView(new ItemPdfViewById(), "onedata", Arrays.asList(item));
 	}
-	
 
-/*
-	@RequestMapping("report")
+	@RequestMapping("/report")
 	public String getItemByCount() {
 		String path = context.getRealPath("/");
-		List<Object[]> list = service.getOrderModeByCount();
+		List<Object[]> list = service.getItemByCount();
 		utility.generatePieChart(path, list);
 		utility.generateBarChart(path, list);
-		return "ItemCountReport";
+		return "ItemReport";
 	}
-*/
-		
+
 }

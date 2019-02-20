@@ -53,7 +53,7 @@ public class PurchaseOrderExcelViewById extends AbstractXlsxView{
 			row.createCell(0).setCellValue(po.getOrderId());
 			row.createCell(1).setCellValue(po.getOrderCode());
 			row.createCell(2).setCellValue(po.getShiptype().getShipmentCode());
-			row.createCell(3).setCellValue(po.getWhusertype().getUserCode());
+			row.createCell(3).setCellValue(po.getWhusertype().getWhCode());
 			row.createCell(4).setCellValue(po.getRefNum());
 			row.createCell(5).setCellValue(po.getQualityCheck());
 			row.createCell(6).setCellValue(po.getOrdStatus());

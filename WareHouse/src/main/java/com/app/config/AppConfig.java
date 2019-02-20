@@ -25,9 +25,10 @@ import com.app.model.OrderMethod;
 import com.app.model.PurchaseOrder;
 import com.app.model.SaleOrder;
 import com.app.model.ShipmentType;
-import com.app.model.UnitOfMeasurement;
+import com.app.model.Uom;
 import com.app.model.User;
 import com.app.model.WhUserType;
+
 
 @ComponentScan(basePackages = "com.app")
 @EnableTransactionManagement // it is commit or rollback
@@ -56,6 +57,7 @@ public class AppConfig implements WebMvcConfigurer {
 		return bsds;
 	}
 
+	
 	// 2.SessionFactory
 	@Bean
 	public LocalSessionFactoryBean sfObj() {
@@ -71,7 +73,7 @@ public class AppConfig implements WebMvcConfigurer {
 		lsfb.setHibernateProperties(props());
 
 		// set annotated entity class to Session Factory
-		lsfb.setAnnotatedClasses(ShipmentType.class, UnitOfMeasurement.class, OrderMethod.class, WhUserType.class, User.class,
+		lsfb.setAnnotatedClasses(WhUserType.class,ShipmentType.class, Uom.class, OrderMethod.class, User.class,
 				Document.class,Item.class,PurchaseOrder.class,SaleOrder.class);
 
 		return lsfb;

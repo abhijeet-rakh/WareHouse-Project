@@ -41,4 +41,9 @@ public class ItemServiceImpl implements IItemService {
 	       dao.updateItem(item);
 	}
 
+	@Override
+	public List<Object[]> getItemByCount() {
+		return dao.getItemByCount();
+	}
+
 }

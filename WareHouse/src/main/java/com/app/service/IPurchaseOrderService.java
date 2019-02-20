@@ -11,4 +11,5 @@ public interface IPurchaseOrderService {
 	public void deletePurchaseOrder(Integer id);
 	public PurchaseOrder getPurchaseOrderById(Integer id);
 	public void updatePurchaseOrder(PurchaseOrder po);
+	public List<Object[]> getPurchaseOrderByCount();
 }

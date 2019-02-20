@@ -2,12 +2,16 @@ package com.app.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.IItemDAO;
 import com.app.model.Item;
+import com.app.model.OrderMethod;
+import com.app.model.Uom;
 
 @Repository
 public class ItemDAOImpl implements IItemDAO{
@@ -45,14 +49,20 @@ public class ItemDAOImpl implements IItemDAO{
 		ht.update(item);
 	}
 	
-/*
+
 	@Override
 	public List<Object[]> getItemByCount() {
-		String hql = "select ordermode,count(ordermode) from " + OrderMethod.class.getName() + " group by ordermode ";
-		return 
+	
+		/*
+		String hql = "select uomModel,count(uomModel) from " + Uom.class.getName() + " group by uomModel ";
+	*/	
+		DetachedCriteria hql=DetachedCriteria.forClass(Uom.class)
+				.setProjection(Projections.projectionList()
+				.add(Projections.groupProperty("uomModel"))
+				.add(Projections.count("uomModel"))
+				);
+	
+		return (List<Object[]>) ht.findByCriteria(hql);
 	}
-	
-*/
-	
 	
 }

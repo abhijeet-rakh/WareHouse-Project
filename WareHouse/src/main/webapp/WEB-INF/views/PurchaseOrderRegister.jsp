@@ -20,7 +20,7 @@
 		<div class="card">
 
 			<div class="card-header  bg-info text-white">
-				<h1 style="color: red; text-align: center;">Purchase
+				<h1 style="text-align: center;font-size:x-large;font-family: monospace;">Purchase
 					Registration Form</h1>
 			</div>
 
@@ -30,7 +30,7 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="orderCode">Order Code :</label>
+							<label for="orderCode">Purchase Order Code :</label>
 						</div>
 						<div class="col-6">
 							<form:input path="orderCode" />
@@ -47,27 +47,27 @@
 						<div class="col-6">
 							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${shipmenttype}" itemLabel="shipmentCode"
-									itemValue="id" />
+								<form:options items="${shipmenttype}"/>
 							</form:select>
+						<form:errors path="shiptype" cssClass="err"/>	
 						</div>
 					</div>
 
 					<br>
 
-					<div class="row">
+ 					<div class="row">
 						<div class="col-4">
-							<label for="UserCode">User Code :</label>
+							<label for="UserCode">Vendor :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="whusertype.whid">
+							<form:select path="whusertype.whId">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${whusertype}" itemLabel="userCode"
-									itemValue="whid" />
+								<form:options items="${whusertype}"/>
 							</form:select>
+						<form:errors path="whusertype" cssClass="err" />
 						</div>
 					</div>
-
+ 
 					<br>
 
 					<div class="row">
@@ -102,7 +102,7 @@
 							<label for="ordStatus">Order Status :</label>
 						</div>
 						<div class="col-6">
-							<form:input path="ordStatus" />
+							<form:input path="ordStatus" value="OPEN" readonly="true" />
 							<form:errors path="ordStatus" cssClass="err" />
 						</div>
 					</div>

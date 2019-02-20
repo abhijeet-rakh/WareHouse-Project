@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderMethodUtility {
+	
 	public void generatePieChart(String path,List<Object[]> list) {
 		
 		//Convert list Object array into DataSet

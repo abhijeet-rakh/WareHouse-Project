@@ -21,7 +21,7 @@
 		<div class="card">
 
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Item Registration
+				<h1 style="text-align: center;font-size:x-large;font-family: monospace;">Item Registration
 					Form</h1>
 			</div>
 
@@ -112,8 +112,7 @@
 						<div class="col-6">
 							<form:select path="uom.uomId">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${uoms}" itemLabel="uomModel"
-									itemValue="uomId" />
+								<form:options items="${uoms}"/>
 							</form:select>
 							<form:errors path="uom" cssClass="err" />
 						</div>
@@ -156,15 +155,16 @@
 								value="Register Item" />
 						</div>
 					</div>
-
 				</form:form>
 			</div>
+
 
 			<c:if test="${message != null }">
 				<div class="card-footer bg-success text-white">${message}</div>
 			</c:if>
-
-			<br> <a href="all">View all Item</a> <br> <br>
+            <br>
+            
+            <a href="all"><input type="button" value="ViewAll"></a>
 		</div>
 
 	</div>

@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -44,10 +43,10 @@ public class Item {
 	 	 
 	 @ManyToOne
 	 @JoinColumn(name="uom_id")
-	 private UnitOfMeasurement uom;
+	 private Uom uom;
 	 
-	 @OneToOne
+	 @ManyToOne
 	 @JoinColumn(name="ord_id")
 	 private OrderMethod om;
-	 
+		
 }

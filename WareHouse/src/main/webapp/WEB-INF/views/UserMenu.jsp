@@ -24,49 +24,51 @@
 		value="${fn:replace(base, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
 
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<nav
+		class="navbar navbar-expand-sm bg-success navbar-dark justify-content-center">
 		<!-- Brand -->
 		<a class="navbar-brand" href="#"><img height="30" width="30"
-			src="../resources/images/warehouse.png" /></a>
+			src="../resources/images/logo.png" /></a>
 
 		<!-- Links -->
 		<ul class="navbar-nav">
-	
+
 			<!--Uom Dropdown start -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown"> UOM </a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/uom/register">Register </a> <a
-						class="dropdown-item" href="${url}/uom/all">View All</a>
+						class="dropdown-item" href="${url}/uom/all">View All</a> 
 				</div></li>
 			<!--Uom Dropdown end -->
 
 			<!-- Order Method start-->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown"> Order Method </a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/order/register">Register
-					</a> <a class="dropdown-item" href="${url}/order/all">View All</a>
+					</a> <a class="dropdown-item" href="${url}/order/all">View All</a><a
+						class="dropdown-item" href="${url}/order/report"> View Report </a>
 				</div></li>
 			<!-- Order Method end-->
 
 			<!-- Shipment Type start-->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown"> Shipment Type </a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/shipmenttype/register">Register
-					</a> <a class="dropdown-item" href="${url}/shipmenttype/all">View
-						All</a>
+					</a> <a class="dropdown-item" href="${url}/shipmenttype/all">View All</a><a
+						class="dropdown-item" href="${url}/shipmenttype/report"> View Report </a>
 				</div></li>
 			<!-- Shipment Type end-->
 
 
 			<!-- WH USER TYPE -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown"> Warehouse User </a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/whusertype/register">Register
@@ -75,18 +77,19 @@
 
 
 			<!-- ITEM  -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown">Item</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/item/register">Register </a>
-					<a class="dropdown-item" href="${url}/item/all">View All</a>
+					<a class="dropdown-item" href="${url}/item/all">View All</a><a
+						class="dropdown-item" href="${url}/item/report"> View Report </a>
 
 
 				</div></li>
 			<!-- Employee -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown">Employee</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/employee/register">Register
@@ -95,31 +98,38 @@
 				</div></li>
 
 			<!-- Purchase Order -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown">Purchase Order</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/purchaseorder/register">Register
-					</a> <a class="dropdown-item" href="${url}/purchaseorder/all">View
-						All</a>
+					</a> <a class="dropdown-item" href="${url}/purchaseorder/all">View All</a><a 
+					class="dropdown-item" href="${url}/purchaseorder/report">View Report</a>
 				</div></li>
 
 			<!-- Sale Order -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+			<li class="nav-item dropdown bg-secondary"><a
+				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown">Sale Order</a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="${url}/sale/register">Register </a>
-					<a class="dropdown-item" href="${url}/sale/viewAll">View All</a>
+				<div class="dropdown-menu ">
+					<a class="dropdown-item " href="${url}/saleorder/register">Register
+					</a> <a class="dropdown-item " href="${url}/saleorder/all">View All</a>
+					<a class="dropdown-item " href="${url}/saleorder/report">View Report</a>
 				</div></li>
 
 			<!-- SWAGGER -->
 			<%-- <li class="nav-item"><a class="nav-link"
 			href="${url}/swagger-ui.html">Swagger</a></li> --%>
 
-			<li class="nav-item"><a class="nav-link" href="${url}/logout">logout</a></li>
-
+			<li class="nav-item bg-secondary btn-successs"><a class="nav-link text-white"
+				href="${url}/logout">logout</a></li>
 		</ul>
+		
+		<form class="form-inline" action="/action_page.php">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-success" type="submit">Search</button>
+			</form>
+		
 	</nav>
 
 </body>

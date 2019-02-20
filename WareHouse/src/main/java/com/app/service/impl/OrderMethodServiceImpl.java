@@ -46,5 +46,10 @@ public class OrderMethodServiceImpl implements IOrderMethodService {
 		return dao.getOrderModeByCount();
 	}
 
+	@Override
+	public boolean isCodeExist(String orderCode) {
+		return dao.isCodeExist(orderCode);
+	}
+
 	
 }

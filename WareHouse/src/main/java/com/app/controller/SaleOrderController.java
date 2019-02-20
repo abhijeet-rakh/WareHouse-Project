@@ -3,6 +3,8 @@ package com.app.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +22,8 @@ import com.app.pdfview.SaleOrderPdfView;
 import com.app.pdfview.SaleOrderPdfViewById;
 import com.app.service.ISaleOrderService;
 import com.app.service.IShipmentTypeService;
-import com.app.service.IWhuserTypeService;
+import com.app.service.IWhUserTypeService;
+import com.app.util.SaleOrderUtility;
 import com.app.validator.SaleOrderValidator;
 
 @Controller
@@ -36,12 +39,15 @@ public class SaleOrderController {
 	@Autowired
 	private IShipmentTypeService shipservice;
 	
+	@Autowired
+	private IWhUserTypeService whservice;
+	
+	
+	@Autowired
+	private ServletContext context;
 
-//	@Autowired
-//	private ServletContext context;
-
-//	@Autowired
-//	private SaleOrderUtility utility;
+	@Autowired
+	private SaleOrderUtility utility;
 
 	@RequestMapping(value = "/register")
 	public String regSaleOrder(ModelMap map) {
@@ -49,8 +55,11 @@ public class SaleOrderController {
 		map.addAttribute("saleOrder", new SaleOrder());
 		
 		//Add Shipment Modes to sale order
-		map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
+		map.addAttribute("shipmenttype", shipservice.getEnableShipmentMode());
 		
+		//Add WareHouseUser Type to sale order
+		map.addAttribute("whservice", whservice.getVendors());
+				
 		return "SaleOrderRegister";
 	}
 
@@ -72,7 +81,10 @@ public class SaleOrderController {
 			map.addAttribute("message", msg);
 		
 			//Add Shipment Modes to sale order
-			map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
+			map.addAttribute("shipmenttype", shipservice.getEnableShipmentMode());
+		
+			//Add WareHouseUser Type to sale order
+			map.addAttribute("whservice", whservice.getVendors());
 			
 			// clean the object
 			map.addAttribute("saleOrder", new SaleOrder());
@@ -122,12 +134,13 @@ public class SaleOrderController {
 	
 	@RequestMapping(value = "/editOne")
 	public String editSaleOrder(@RequestParam Integer orderId, ModelMap map) {
-
 		map.addAttribute("saleOrder", service.getSaleOrderById(orderId));
 		
 		//Add Shipment Modes to sale order
-		map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
+		map.addAttribute("shipmenttype", shipservice.getEnableShipmentMode());
 		
+		//Add WareHouseUser Type to sale order
+		map.addAttribute("whservice", whservice.getVendors());
 		
 		return "SaleOrderEdit";
 	}
@@ -143,9 +156,11 @@ public class SaleOrderController {
 		// add to map attribute
 		map.addAttribute("message", "Record " + saleOrder.getOrderId() + " updated");
 
-
 		//Add Shipment Modes to sale order
-		map.addAttribute("shipmenttype", shipservice.getAllShipmentType());
+		map.addAttribute("shipmenttype", shipservice.getEnableShipmentMode());
+		
+		//Add WareHouseUser Type to sale order
+		map.addAttribute("whservice", whservice.getVendors());
 		
 		// add many record to map
 		map.addAttribute("data", service.getAllSaleOrder());
@@ -182,16 +197,16 @@ public class SaleOrderController {
 		return new ModelAndView(new SaleOrderPdfViewById(), "onedata", Arrays.asList(SaleOrder));
 	}
 	
-/*
-	@RequestMapping("report")
+
+	@RequestMapping("/report")
 	public String getSaleOrderByCount() {
 		String path = context.getRealPath("/");
-		List<Object[]> list = service.getOrderModeByCount();
+		List<Object[]> list = service.getSaleOrderByCount();
 		utility.generatePieChart(path, list);
 		utility.generateBarChart(path, list);
-		return "SaleOrderCountReport";
+		return "SaleOrderReport";
 	}
-*/
+
 
          
 	

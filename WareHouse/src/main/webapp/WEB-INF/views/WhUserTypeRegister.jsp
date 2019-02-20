@@ -6,32 +6,34 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>WareHouse Registration form</title>
+<title>WAREHOUSE USER TYPE REGISTER PAGE</title>
+<style type="text/css">
+.err {
+	color: red;
+}
+</style>
 </head>
 <body>
 
 	<div class="container">
-
 		<div class="card">
-
 			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center">Registration form of
-					Warehouse UserType</h1>
+				<h1 style="text-align: center;font-size:x-large;font-family: monospace;">WAREHOUSE USER TYPE REGISTER PAGE</h1>
 			</div>
 
 			<div class="card-body">
-				<form:form action="insert" method="POST" modelAttribute="whusertype">
+				<form:form action="insert" method="post" modelAttribute="whUserType">
 
 					<div class="row">
 						<div class="col-4">
-							<label for="userType">User Type :</label>
+							<label for="whType">User Type:</label>
 						</div>
 						<div class="col-6">
-							<form:radiobutton path="userType" value="VENDOR" />
-							Vendor
-							<form:radiobutton path="userType" value="WhUserType" />
-							WhUserType
-							<form:errors path="userType" />
+							<form:radiobutton path="whType" value="VENDOR" />
+							VENDOR <br>
+							<form:radiobutton path="whType" value="CUSTOMER" />
+							CUSTOMER <br>
+							<form:errors path="whType" cssClass="err"/>
 						</div>
 					</div>
 
@@ -39,11 +41,11 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="userCode">User Code :</label>
+							<label for="whCode">User Code:</label>
 						</div>
 						<div class="col-6">
-							<form:input path="userCode" />
-							<form:errors path="userCode" />
+							<form:input path="whCode" />
+							<form:errors path="whCode" cssClass="err"/>
 						</div>
 					</div>
 
@@ -51,53 +53,15 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="userFor">User For :</label>
+							<label for="whFor">User FOR:</label>
 						</div>
 						<div class="col-6">
-							<form:input path="userFor" />
-							<form:errors path="userFor" />
-						</div>
-					</div>
-
-					<br>
-
-					<div class="row">
-						<div class="col-4">
-							<label for="userEmail">User Email :</label>
-						</div>
-						<div class="col-6">
-							<form:input path="userEmail" />
-							<form:errors path="userEmail" />
-						</div>
-					</div>
-
-					<br>
-
-					<div class="row">
-						<div class="col-4">
-							<label for="userContact">User Contact :</label>
-						</div>
-						<div class="col-6">
-							<form:input path="userContact" />
-							<form:errors path="userContact" />
-						</div>
-					</div>
-
-					<br>
-
-					<div class="row">
-						<div class="col-4">
-							<label for="userContact">User IDType :</label>
-						</div>
-						<div class="col-6">
-							<form:select path="userIdType">
-								<form:option value="">--select--</form:option>
-								<form:option value="PAN CARD">PAN CARD</form:option>
-								<form:option value="AADHAR">AADHAR</form:option>
-								<form:option value="VOTERID">VOTERID</form:option>
-								<form:option value="OTHER">OTHER</form:option>
+							<form:select path="whFor">
+								<form:option value="">--Select--</form:option>
+								<form:option value="PURCHASE">Purchase</form:option>
+								<form:option value="SALE">Sale</form:option>
 							</form:select>
-							<form:errors path="userIdType" />
+							<form:errors path="whFor" cssClass="err"/>
 						</div>
 					</div>
 
@@ -105,11 +69,65 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="userContact">ID Number :</label>
+							<label for="whEmail">User Email:</label>
 						</div>
 						<div class="col-6">
-							<form:input path="idnumber" />
-							<form:errors path="idnumber" />
+							<form:input path="whEmail" />
+							<form:errors path="whEmail" cssClass="err"/>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="whContact">User Contact:</label>
+						</div>
+						<div class="col-6">
+							<form:input path="whContact" />
+							<form:errors path="whContact" cssClass="err"/>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="whIdType">User ID Type:</label>
+						</div>
+						<div class="col-6">
+							<form:select path="whIdType">
+								<form:option value="">--select--</form:option>
+								<form:option value="PANCARD">PAN-CARD</form:option>
+								<form:option value="AADHAR">AADHAR</form:option>
+								<form:option value="VOTERID">VOTER-ID</form:option>
+								<form:option value="OTHER">OTHER-CARD</form:option>
+							</form:select>
+							<form:errors path="whIdType" cssClass="err"/>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="whIdOther">If Other:</label>
+						</div>
+						<div class="col-6">
+							<form:input path="whIdOther" />
+							<form:errors path="whIdOther" cssClass="err"/>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-4">
+							<label for="whIdNumber">Id Number:</label>
+						</div>
+						<div class="col-6">
+							<form:input path="whIdNumber" />
+							<form:errors path="whIdNumber" cssClass="err"/>
 						</div>
 					</div>
 
@@ -118,24 +136,22 @@
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">
-							<input class="btn btn-primary" type="submit"
-								value="CREATE WAREHOUSE USER TYPE">
+							<input class="btn btn-primary" type="submit" value="Create User" />
 						</div>
 					</div>
 				</form:form>
 			</div>
-			<br>
+
+			<!-- card body close -->
 			<c:if test="${message != null }">
 				<div class="card-footer bg-success text-white">${message}</div>
 			</c:if>
 
-			<br> <a href="all">View all WH User Type</a>
-
-		</div>
-		<!-- card Ended -->
-
+            <a href="all"><input type="button" value="ViewAll"></a>
+            		
+         </div>
+		<!-- card end -->
 	</div>
-	<!-- container ended -->
-
+	<!-- container end -->
 </body>
 </html>

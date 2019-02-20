@@ -54,7 +54,6 @@ public class ItemPdfViewById extends AbstractPdfView {
 			table.addCell(item.getUom().getUomModel());
 			table.addCell(item.getOm().getOrdercode());
 			table.addCell(item.getItemDesc());
-			
 		}
 		// add table to document
 		document.add(table);

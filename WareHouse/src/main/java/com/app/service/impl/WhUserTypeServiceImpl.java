@@ -1,49 +1,60 @@
 package com.app.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.dao.IWhuserTypeDAO;
+import com.app.dao.IWhUserTypeDao;
 import com.app.model.WhUserType;
-import com.app.service.IWhuserTypeService;
+import com.app.service.IWhUserTypeService;
 
 @Service
-public class WhUserTypeServiceImpl implements IWhuserTypeService{
-	
+public class WhUserTypeServiceImpl implements IWhUserTypeService{
+
 	@Autowired
-	private IWhuserTypeDAO dao;
+	private IWhUserTypeDao dao;
 
 	@Transactional
-	public Integer saveWhusertype(WhUserType wut) {
-		return dao.saveWhusertype(wut);
-	}
-
-	@Transactional
-	public void deleteWhusertype(Integer id) {
-		dao.deleteWhusertype(id);
+	public Integer saveWhUserType(WhUserType w) {
+		return dao.saveWhUserType(w);
 	}
 
 	@Transactional
-	public void updateWhusertype(WhUserType wut) {
-		dao.updateWhusertype(wut);
+	public void updateWhUserType(WhUserType w) {
+		dao.updateWhUserType(w);
+	}
+
+	@Transactional
+	public void deleteWhUserType(Integer id) {
+		dao.deleteWhUserType(id);
 	}
 
 	@Transactional(readOnly=true)
-	public WhUserType getWhusertypeById(Integer id) {
-		return dao.getWhusertypeById(id);
+	public WhUserType getWhUserTypeById(Integer id) {
+		return dao.getWhUserTypeById(id);
 	}
 
 	@Transactional(readOnly=true)
-	public List<WhUserType> getAllWhuserType() {
-		return dao.getAllWhuserType();
+	public List<WhUserType> getAllWhUserTypes() {
+		return dao.getAllWhUserTypes();
 	}
 
 	@Transactional(readOnly=true)
-	public List<Object[]> getWhUserTypeCount() {
-		return dao.getWhUserTypeCount();
+	public Map<Integer, String> getVendors() {
+		return dao.getVendors();
+	}
+
+	@Transactional(readOnly=true)
+	public boolean isWhUserCodeExist(String usercode) {
+		return dao.isWhUserCodeExist(usercode);
+	}
+
+	@Transactional(readOnly=true)
+	public boolean isEmailOrMobileExists(String userEmailOrMobile) {
+		return dao.isEmailOrMobileExists(userEmailOrMobile);
 	}
 	
 }

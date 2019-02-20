@@ -77,7 +77,7 @@ public class ShipmentTypeController {
 		return "ShipmentTypeData";
 	}
 
-	@RequestMapping(value = "delete")
+	@RequestMapping(value = "/delete")
 	public String deleteShipmentType(@RequestParam("sid") Integer id, ModelMap map) {
 		service.deleteShipmentType(id);
 
@@ -94,7 +94,7 @@ public class ShipmentTypeController {
 		return "ShipmentTypeData";
 	}
 
-	@RequestMapping("viewOne")
+	@RequestMapping("/viewOne")
 	public String viewShipmentType(@RequestParam Integer sid, ModelMap map) {
 		ShipmentType shiptype = service.getShipmentTypeById(sid);
 
@@ -103,7 +103,7 @@ public class ShipmentTypeController {
 		return "ShipmentTypeView";
 	}
 
-	@RequestMapping(value = "editOne")
+	@RequestMapping(value = "/editOne")
 	public String editShipmentType(@RequestParam Integer sid, ModelMap map) {
 
 		ShipmentType st = service.getShipmentTypeById(sid);
@@ -113,7 +113,7 @@ public class ShipmentTypeController {
 		return "ShipmentTypeEdit";
 	}
 
-	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateShipmentType(@ModelAttribute ShipmentType shipmentType, ModelMap map) {
 
 		// update record
@@ -126,31 +126,31 @@ public class ShipmentTypeController {
 		return "ShipmentTypeData";
 	}
 
-	@RequestMapping(value = "excelExp")
+	@RequestMapping(value = "/excelExp")
 	public ModelAndView getAllShipmentinExcel() {
 		List<ShipmentType> list = service.getAllShipmentType();
 		return new ModelAndView(new ShipmentTypeExcelView(), "excellist", list);
 	}
 
-	@RequestMapping("excelOne")
+	@RequestMapping("/excelOne")
 	public ModelAndView getShipmentExcelById(@RequestParam Integer sid) {
 		ShipmentType shipment = service.getShipmentTypeById(sid);
 		return new ModelAndView(new ShipmentTypeExcelViewById(), "excel", Arrays.asList(shipment));
 	}
 
-	@RequestMapping("pdfExp")
+	@RequestMapping("/pdfExp")
 	public ModelAndView getAllShipmentTypePdf() {
 		List<ShipmentType> list = service.getAllShipmentType();
 		return new ModelAndView(new ShipmentTypePdfView(), "list", list);
 	}
 
-	@RequestMapping("pdfOne")
+	@RequestMapping("/pdfOne")
 	public ModelAndView getShipmentTypePdfById(@RequestParam Integer sid) {
 		ShipmentType shipment = service.getShipmentTypeById(sid);
 		return new ModelAndView(new ShipmentTypePdfViewById(), "onedata", Arrays.asList(shipment));
 	}
 
-	@RequestMapping("report")
+	@RequestMapping("/report")
 	public String getShipmentTypeCount() {
 		String path = context.getRealPath("/");
 		List<Object[]> list = service.getShipmentTypeCount();

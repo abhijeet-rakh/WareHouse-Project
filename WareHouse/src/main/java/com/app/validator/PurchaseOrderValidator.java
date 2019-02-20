@@ -20,29 +20,29 @@ public class PurchaseOrderValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		PurchaseOrder po=(PurchaseOrder) target;
-		
-		/*validation for Order Code*/
+	
+		/*validation for Purchase Order Code*/
 		if(!StringUtils.hasText(po.getOrderCode())) {
-			errors.rejectValue("orderCode",null,"Please Enter OrderCode...");
-		}else if(po.getOrderCode().length()>4 && po.getOrderCode().length()<6){
-			errors.rejectValue("orderCode",null,"Please Enter 4 to 6 chars only...");
+			errors.rejectValue("orderCode",null,"Please Enter Purchase OrderCode...");
+		}else if(!Pattern.matches("[A-Z]{4,6}",po.getOrderCode())){
+			errors.rejectValue("orderCode",null,"Please Enter 4 to 6 chars in Uppercase only...");
 		}
 	
 		/*  ShipmentMode*/
-		if(!StringUtils.hasText(po.getShiptype().getShipmentCode())) {
-			errors.rejectValue("shiptype",null,"Please Enter at least one Shipment Mode...");
+		if(StringUtils.isEmpty(po.getShiptype())) {
+			errors.rejectValue("shiptype",null,"Please Enter at least one Shipment Code...");
 		}
 		
 		/* Vendor*/
-		if(!StringUtils.hasText(po.getWhusertype().getUserCode())) {
+		if(StringUtils.isEmpty(po.getWhusertype())) {
 			errors.rejectValue("whusertype",null,"Please Enter at least one Vendor...");
 		}
 		
 		/*Ref Number*/
 		if(!StringUtils.hasText(po.getRefNum())) {
 			errors.rejectValue("refNum",null,"Please Enter RefNum...");
-		}else if((!Pattern.matches("[A-Z]", po.getRefNum())) && (po.getRefNum().length()>8 && po.getRefNum().length()<12)) {
-			errors.rejectValue("refNum",null,"Please Enter RefNum in uppercase and 8 to 12 chars only...");
+		}else if(!Pattern.matches("[0-9]{6,8}",po.getRefNum())) {
+			errors.rejectValue("refNum",null,"Please Enter RefNum in Number and 6 to 8 chars only...");
 		}
 		
 		/*qualityCheck*/
@@ -52,8 +52,6 @@ public class PurchaseOrderValidator implements Validator {
 		
 		if(!StringUtils.hasText(po.getOrdDesc())) {
 			errors.rejectValue("ordDesc",null,"Please Enter OrderDesc...");
-		}else if(po.getOrdDesc().length()>10 && po.getOrdDesc().length()<100){
-			errors.rejectValue("ordDesc",null,"Please Enter 10 to 100 chars...");
 		}
 		
 	}

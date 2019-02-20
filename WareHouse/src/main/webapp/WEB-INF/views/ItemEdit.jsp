@@ -123,8 +123,7 @@
 						<div class="col-6">
 							<form:select path="uom.uomId">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${uoms}" itemLabel="uomModel"
-									itemValue="uomId" />
+								<form:options items="${uoms}"/>
 							</form:select>
 						</div>
 					</div>

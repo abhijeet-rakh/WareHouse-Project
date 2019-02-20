@@ -1,8 +1,7 @@
 package com.app.service.impl;
 
 import java.util.List;
-
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,5 +48,14 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 		return dao.getShipmentTypeCount();
 	}
 
+	@Transactional(readOnly=true)
+	public Map<Integer, String> getEnableShipments() {
+		return dao.getEnableShipments();
+	}
+
+	@Transactional(readOnly=true)
+	public Map<Integer, String> getEnableShipmentMode() {
+		return dao.getEnableShipmentMode();
+	}
 	
 }

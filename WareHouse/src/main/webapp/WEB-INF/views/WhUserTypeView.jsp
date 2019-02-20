@@ -1,54 +1,77 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@include file="UserMenu.jsp" %>    
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>WareHouse User Type View</title>
 </head>
 <body>
+
+<div class="container">
+
+		<div class="card">
+
+              <div class="card-header bg-info text-white">
+              <h1 style="text-align: center;font-size:x-large;font-family: monospace;">VIEW WH-USER-TYPE DATA</h1>
+              </div>
+              
+             
 <table border="1">
 
+
+
 <tr>
-<td>ID</td>
-<td>${whuserType.whid}</td>
+<th>ID</th>
+<td>${li.whId}</td>
 </tr>
 
 <tr>
-<td>User Type</td>
-<td>${whuserType.userType}</td>
+<th>TYPE</th>
+<td>${li.whType}</td>
 </tr>
 
 <tr>
-<td>User Code</td>
-<td>${whuserType.userCode}</td>
+<th>CODE</th>
+<td>${li.whCode}</td>
 </tr>
 
 <tr>
-<td>User For</td>
-<td>${whuserType.userFor}</td>
+<th>WH-FOR</th>
+<td>${li.whFor}</td>
 </tr>
 
 <tr>
-<td>User Email</td>
-<td>${whuserType.userEmail}</td>
+<th>WH-EMAIL</th>
+<td>${li.whEmail}</td>
 </tr>
 
 <tr>
-<td>User Contact</td>
-<td>${whuserType.userContact}</td>
+<th>WH_CONTACT</th>
+<td>${li.whContact}</td>
 </tr>
 
 <tr>
-<td>User Id Type</td>
-<td>${whuserType.userIdType}</td>
+<th>WH-ID-TYPE</th>
+<td>${li.whIdType}</td>
 </tr>
 
 <tr>
-<td>IdNumber</td>
-<td>${whuserType.idnumber}</td>
+<th>WH-ID-OTHER</th>
+<td>${li.whIdOther}</td>
 </tr>
 
+
+<tr>
+<th>WH-ID-NUMBER</th>
+<td>${li.whIdNumber}</td>
+</tr>
 </table>
+
+</div>
+
+</div>
 </body>
 </html>

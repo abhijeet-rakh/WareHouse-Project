@@ -71,7 +71,7 @@ public class OrderMethodController {
 		return "OrderMethodRegister";
 	}
 
-	@RequestMapping(value = "all")
+	@RequestMapping(value = "/all")
 	public String getAllOrderMethod(ModelMap map) {
 		List<OrderMethod> list = service.getAllOrderMethod();
 
@@ -79,7 +79,7 @@ public class OrderMethodController {
 		return "OrderMethodData";
 	}
 
-	@RequestMapping(value = "delete")
+	@RequestMapping(value = "/delete")
 	public String deleteOrderMethod(@RequestParam("oid") Integer id, ModelMap map) {
 		service.deleteOrderMethod(id);
 
@@ -96,7 +96,7 @@ public class OrderMethodController {
 		return "OrderMethodData";
 	}
 
-	@RequestMapping(value = "viewOne")
+	@RequestMapping(value = "/viewOne")
 	public String getOrderMethodById(@RequestParam Integer oid, ModelMap map) {
 
 		OrderMethod ordermeth = service.getOrderMethodById(oid);
@@ -106,7 +106,7 @@ public class OrderMethodController {
 		return "OrderMethodView";
 	}
 
-	@RequestMapping(value = "editOne")
+	@RequestMapping(value = "/editOne")
 	public String editOrderMethod(@RequestParam Integer oid, ModelMap map) {
 
 		map.addAttribute("orderMethod", service.getOrderMethodById(oid));
@@ -114,7 +114,7 @@ public class OrderMethodController {
 		return "OrderMethodEdit";
 	}
 
-	@RequestMapping(value = "update")
+	@RequestMapping(value = "/update")
 	public String updateOrderMethod(@ModelAttribute OrderMethod orderMethod, ModelMap map) {
 
 		// call service
@@ -129,31 +129,31 @@ public class OrderMethodController {
 		return "OrderMethodData";
 	}
 
-	@RequestMapping("excelall")
+	@RequestMapping("/excelall")
 	public ModelAndView getAllOrderMethodExcel() {
 		List<OrderMethod> list = service.getAllOrderMethod();
 		return new ModelAndView(new OrderMethodExcelView(), "list", list);
 	}
 
-	@RequestMapping("excelOne")
+	@RequestMapping("/excelOne")
 	public ModelAndView getOrderMethodById(@RequestParam Integer oid) {
 		OrderMethod om = service.getOrderMethodById(oid);
 		return new ModelAndView(new OrderMethodExcelViewById(), "onedata", Arrays.asList(om));
 	}
 
-	@RequestMapping("pdfExp")
+	@RequestMapping("/pdfExp")
 	public ModelAndView getAllOrderMethodforPdf() {
 		List<OrderMethod> list = service.getAllOrderMethod();
 		return new ModelAndView(new OrderMethodPdfView(), "list", list);
 	}
 
-	@RequestMapping("pdfOne")
+	@RequestMapping("/pdfOne")
 	public ModelAndView getOrderMethodPdfById(@RequestParam Integer oid) {
 		OrderMethod om = service.getOrderMethodById(oid);
 		return new ModelAndView(new OrderMethodPdfViewById(), "onedata", Arrays.asList(om));
 	}
 
-	@RequestMapping("report")
+	@RequestMapping("/report")
 	public String getOrderMethodByCount() {
 		String path = context.getRealPath("/");
 		List<Object[]> list = service.getOrderModeByCount();

@@ -3,6 +3,8 @@ package com.app.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,15 +22,16 @@ import com.app.pdfview.PurchaseOrderPdfView;
 import com.app.pdfview.PurchaseOrderPdfViewById;
 import com.app.service.IPurchaseOrderService;
 import com.app.service.IShipmentTypeService;
-import com.app.service.IWhuserTypeService;
+import com.app.service.IWhUserTypeService;
+import com.app.util.PurchaseOrderUtility;
 import com.app.validator.PurchaseOrderValidator;
 
 @Controller
 @RequestMapping(value="/purchaseorder")
 public class PurchaseOrderController {
 
-//	@Autowired
-//	private PurchaseOrderValidator validator;
+	@Autowired
+	private PurchaseOrderValidator validator;
 
 	@Autowired
 	private IPurchaseOrderService service;
@@ -37,13 +40,13 @@ public class PurchaseOrderController {
 	private IShipmentTypeService shipservice;
 
 	@Autowired
-	private IWhuserTypeService whuserservice;
+	private IWhUserTypeService whuserservice;
 
-//	@Autowired
-//	private ServletContext context;
+	@Autowired
+	private ServletContext context;
 
-//	@Autowired
-//	private PurchaseOrderUtility utility;
+	@Autowired
+	private PurchaseOrderUtility utility;
 
 	@RequestMapping(value = "/register")
 	public String regPurchaseOrder(ModelMap map) {
@@ -51,18 +54,20 @@ public class PurchaseOrderController {
 		map.addAttribute("purchaseOrder", new PurchaseOrder());
 		
 		//get all WareHouseusertype in Purchase order
-		map.addAttribute("whusertype",whuserservice.getAllWhuserType());
+		map.addAttribute("whusertype",whuserservice.getVendors());
 		
 		//get all Shipmenttype Mode in purchase order
-		map.addAttribute("shipmenttype",shipservice.getAllShipmentType());
-				
+		map.addAttribute("shipmenttype",shipservice.getEnableShipments());
+	
 		return "PurchaseOrderRegister";
 	}
 
+	
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
 	public String savePurchaseOrder(@ModelAttribute PurchaseOrder purchaseOrder, Errors errors, ModelMap map) {
 
-	//	validator.validate(purchaseOrder, errors);
+		validator.validate(purchaseOrder, errors);
+		
 		if (errors.hasErrors()) {
 			//if Error Exists
 			map.addAttribute("message", "Please Check all Errors......");
@@ -74,19 +79,22 @@ public class PurchaseOrderController {
 
 			// add attribute to map
 			map.addAttribute("message", msg);
-
-			//get all WareHouseusertype in Purchase order
-			map.addAttribute("whusertype",whuserservice.getAllWhuserType());
-	
-			//get all Shipmenttype Mode in purchase order
-			map.addAttribute("shipmenttype",shipservice.getAllShipmentType());
 			
 			// clean the object
 			map.addAttribute("purchaseOrder", new PurchaseOrder());
 		}
+
+		//get all WareHouseusertype in Purchase order
+		map.addAttribute("whusertype",whuserservice.getVendors());
+
+		//get all Shipmenttype Mode in purchase order
+		map.addAttribute("shipmenttype",shipservice.getEnableShipments());
+
+		
 		return "PurchaseOrderRegister";
 	}
 
+	
 	@RequestMapping(value = "/all")
 	public String getAllPurchaseOrder(ModelMap map) {
 		System.out.println("data all.........................");
@@ -95,7 +103,7 @@ public class PurchaseOrderController {
         return "PurchaseOrderData";
 	}
 
-	
+
 	@RequestMapping(value = "/delete")
 	public String deletePurchaseOrder(@RequestParam("orderId") Integer id, ModelMap map) {
 		
@@ -114,6 +122,8 @@ public class PurchaseOrderController {
 		return "PurchaseOrderData";
 	}
 	
+	
+	
 	@RequestMapping(value = "/viewOne")
 	public String getPurchaseOrderById(@RequestParam Integer orderId, ModelMap map) {
 
@@ -131,16 +141,15 @@ public class PurchaseOrderController {
 		map.addAttribute("purchaseOrder", service.getPurchaseOrderById(orderId));
 
 		//get all WareHouseusertype in Purchase order
-		map.addAttribute("whusertype",whuserservice.getAllWhuserType());
+		map.addAttribute("whusertype",whuserservice.getVendors());
 		
 		//get all Shipmenttype Mode in purchase order
-		map.addAttribute("shipmenttype",shipservice.getAllShipmentType());
+		map.addAttribute("shipmenttype",shipservice.getEnableShipments());
 		
 		return "PurchaseOrderEdit";
 	}
 
 	
-
 	@RequestMapping(value = "/update")
 	public String updatePurchaseOrder(@ModelAttribute PurchaseOrder purchaseOrder, ModelMap map) {
 
@@ -183,15 +192,16 @@ public class PurchaseOrderController {
 	}
 
 
-/*
-	@RequestMapping("report")
+
+	@RequestMapping("/report")
 	public String getPurchaseOrderByCount() {
 		String path = context.getRealPath("/");
-		List<Object[]> list = service.getOrderModeByCount();
+		List<Object[]> list = service.getPurchaseOrderByCount();
 		utility.generatePieChart(path, list);
 		utility.generateBarChart(path, list);
-		return "PurchaseOrderCountReport";
+		return "PurchaseOrderReport";
 	}
-*/
+
+	
 	
 }

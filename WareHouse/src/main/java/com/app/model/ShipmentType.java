@@ -15,8 +15,6 @@ import lombok.Data;
 public class ShipmentType {
 
 	@Id
-//	@GenericGenerator(name = "custom_id", strategy = "com.app.generator.WareHouseIdGenerator")
-//	@GeneratedValue(generator = "custom_id")
 	@GeneratedValue
 	@Column(name = "sid")
 	private Integer id;

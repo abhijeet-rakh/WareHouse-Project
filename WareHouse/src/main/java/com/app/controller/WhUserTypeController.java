@@ -2,8 +2,7 @@ package com.app.controller;
 
 import java.util.Arrays;
 import java.util.List;
-
-import javax.servlet.ServletContext;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,144 +14,111 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.app.excelview.WhUserTypeUserTypeExcelView;
-import com.app.excelview.WhUserTypeUserTypeExcelViewById;
+import com.app.excelview.WhUserTypeExcelView;
+import com.app.excelview.WhUserTypeExcelViewById;
 import com.app.model.WhUserType;
 import com.app.pdfview.WhUserTypePdfView;
 import com.app.pdfview.WhUserTypePdfViewById;
-import com.app.service.IWhuserTypeService;
-import com.app.util.WhUserTypeUtility;
+import com.app.service.IWhUserTypeService;
 import com.app.validator.WhUserTypeValidator;
 
 @Controller
-@RequestMapping(value = "/whusertype")
+@RequestMapping("/wtype")
 public class WhUserTypeController {
 
-//	@Autowired
-//	private WhUserTypeValidator validator;
-	
 	@Autowired
-	private IWhuserTypeService service;
+	private WhUserTypeValidator validator;
 
 	@Autowired
-	private ServletContext context;
+	private IWhUserTypeService service;
 
-	@Autowired
-	private WhUserTypeUtility utility;
-
-	@RequestMapping(value = "/register")
-	public String showregformWhUserType(ModelMap map) {
-		map.addAttribute("whuserType", new WhUserType());
+	// show Register Page
+	@RequestMapping("/register")
+	public String showReg(ModelMap map) {
+		map.addAttribute("whUserType",new WhUserType());
 		return "WhUserTypeRegister";
 	}
-
+	
+	//2. insert data
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String savedataWhUserType(@ModelAttribute WhUserType whusertype,Errors errors, ModelMap map) {
-		
-		//validator.validate(whusertype, errors);
-		
-		System.out.println("Errors="+errors.hasErrors());
-		System.out.println("Error count="+errors.getErrorCount());
-		
+	public String save(@ModelAttribute WhUserType whUserType,Errors errors, ModelMap map) {
+		//calling validator
+	  	validator.validate(whUserType, errors);
+		//b- check for errors
 		if(errors.hasErrors()) {
-			
-			System.out.println(errors.hasErrors());
-			
-		     map.addAttribute("message","Please Check all Errors.....");
+			//if error exist
+			map.addAttribute("message","Please check all Errors");
 		}else {
-		
-		service.saveWhusertype(whusertype);
-
-		// add message to map
-		map.addAttribute("message", "added " + whusertype.getWhid() + " number record");
-
-		// clean and add fresh object to map
-		map.addAttribute("whusertype", new WhUserType());
-
+			//no errors
+			int wwid = service.saveWhUserType(whUserType);
+			map.addAttribute("message","Saved with Id:"+wwid);
+			// call service layer save method.
+			map.addAttribute("whUserType",new WhUserType());
 		}
 		return "WhUserTypeRegister";
 	}
-
-	@RequestMapping(value = "/all")
-	public String getAllWhUserType(ModelMap map) {
-		map.addAttribute("data", service.getAllWhuserType());
+	
+	//3.retrieve the data
+	@RequestMapping(value="/all")
+	public String getAll(ModelMap map) {
+		List<WhUserType> list = service.getAllWhUserTypes();		
+		map.addAttribute("data",list);
 		return "WhUserTypeData";
 	}
-
-	@RequestMapping(value = "/viewOne")
-	public String viewUserType(@RequestParam Integer wid, ModelMap map) {
-
-		map.addAttribute("whusertype", service.getWhusertypeById(wid));
-
+	
+	
+	//4.delete data by Id
+	@RequestMapping(value="/delete")
+	public String deleteWhUser(@RequestParam Integer wid,ModelMap map) {
+		service.deleteWhUserType(wid);
+		map.addAttribute("data", service.getAllWhUserTypes());
+		map.addAttribute("message",wid+" Number Record Deleted");
+		return "WhUserTypeData";
+	}
+	
+	
+	//5.View data by Id
+	@RequestMapping(value="/viewOne")
+	public String viewWhUser(@RequestParam Integer wid,ModelMap map) {
+		map.addAttribute("li",service.getWhUserTypeById(wid));		
 		return "WhUserTypeView";
 	}
-
-	@RequestMapping("/editOne")
-	public String editUserType(@RequestParam Integer wid, ModelMap map) {
-
-		map.addAttribute("whusertype", service.getWhusertypeById(wid));
-
+	
+	@RequestMapping(value="/editOne")
+	public String editWhUser(@RequestParam Integer wid,ModelMap map) {
+		map.addAttribute("whUserType",service.getWhUserTypeById(wid));
 		return "WhUserTypeEdit";
 	}
-
-	@RequestMapping("/update")
-	public String updateUserType(@ModelAttribute WhUserType whusertype, ModelMap map) {
-
-		service.updateWhusertype(whusertype);
-
-		map.addAttribute("message", "Record " + whusertype.getWhid() + " updated");
-
-		map.addAttribute("data", service.getAllWhuserType());
-
+	
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String updateWhUser(@ModelAttribute  WhUserType whUserType,ModelMap map) {
+	    service.updateWhUserType(whUserType);
+		map.addAttribute("data",service.getAllWhUserTypes());
 		return "WhUserTypeData";
 	}
-
-	@RequestMapping("/delete")
-	public String deleteUserType(@RequestParam Integer wid, ModelMap map) {
-
-		service.deleteWhusertype(wid);
-
-		map.addAttribute("data", service.getAllWhuserType());
-
-		map.addAttribute("message", "deleted " + wid + " Record");
-
-		return "WhUserTypeData";
+	
+	@RequestMapping(value="/excelOne")
+	public ModelAndView excelOneWhUserType(@RequestParam Integer wid) {
+		WhUserType wu=service.getWhUserTypeById(wid);
+		return new ModelAndView(new WhUserTypeExcelViewById(),"onedata",Arrays.asList(wu));
 	}
-
-	@RequestMapping("/excelAll")
-	public ModelAndView getAllWhUserTypeforExcel() {
-		List<WhUserType> list = service.getAllWhuserType();
-
-		return new ModelAndView(new WhUserTypeUserTypeExcelView(), "list", list);
+	
+	@RequestMapping(value="/excelall")
+	public ModelAndView excelAllWhUserType() {
+		List<WhUserType> list=service.getAllWhUserTypes();
+		return new ModelAndView(new WhUserTypeExcelView(),"list",list);
 	}
-
-	@RequestMapping("/excelOne")
-	public ModelAndView getWhUserTypeByIdforExcel(@RequestParam Integer wid) {
-		WhUserType wut = service.getWhusertypeById(wid);
-
-		return new ModelAndView(new WhUserTypeUserTypeExcelViewById(), "wut", Arrays.asList(wut));
+	
+	@RequestMapping(value="/pdfOne")
+	public ModelAndView pdfOneWhUserType(@RequestParam Integer wid) {
+		WhUserType wut=service.getWhUserTypeById(wid);
+		return new ModelAndView(new WhUserTypePdfViewById(),"onedata",Arrays.asList(wut));
 	}
-
-	@RequestMapping("/pdfExp")
-	public ModelAndView getAllWhUserTypeforPdf() {
-		List<WhUserType> list = service.getAllWhuserType();
-		return new ModelAndView(new WhUserTypePdfView(), "list", list);
+	
+	@RequestMapping(value="/pdfall")
+	public ModelAndView pdfAllWhUserType() {
+		List<WhUserType> list=service.getAllWhUserTypes();
+		return new ModelAndView(new WhUserTypePdfView(),"list",list);
 	}
-
-	@RequestMapping("/pdfOne")
-	public ModelAndView getWhUserTypeByIdById(@RequestParam Integer wid) {
-		WhUserType wut = service.getWhusertypeById(wid);
-
-		return new ModelAndView(new WhUserTypePdfViewById(), "onedata", Arrays.asList(wut));
-	}
-
-	@RequestMapping("/report")
-	public String getWhUserType() {
-		String path = context.getRealPath("/");
-		List<Object[]> list = service.getWhUserTypeCount();
-		utility.generatePieChart(path, list);
-		utility.generateBarChart(path, list);
-		return "WhUserTypeReport";
-	}
-
+	
 }

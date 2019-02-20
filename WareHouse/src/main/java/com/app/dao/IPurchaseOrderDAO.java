@@ -11,7 +11,7 @@ public interface IPurchaseOrderDAO {
 	public void deletePurchaseOrder(Integer id);
 	public PurchaseOrder getPurchaseOrderById(Integer id);
 	public void updatePurchaseOrder(PurchaseOrder po);
-//	public List<Object[]> getPurchaseOrderByCount();
+	public List<Object[]> getPurchaseOrderByCount();
 
 	
 

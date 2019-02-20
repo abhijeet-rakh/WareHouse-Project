@@ -6,39 +6,41 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Table(name="WH_USER_TYPE")
-@Setter
-@Getter
+@Table (name="whtype")
+@Data
 public class WhUserType {
 	
 	@Id
 	@GeneratedValue
-	@Column(name="id")
-	private Integer whid;
+	@Column(name="uid")
+	private Integer whId;
 	
-	@Column(name="user_type")
-	private String userType;
+	@Column(name="utype")
+	private String whType;
 	
-	@Column(name="user_code")
-    private String userCode;
+	@Column(name="ucode")
+	private String whCode;
 	
-	@Column(name="user_for")
-	private String userFor;
+	@Column(name="ufor")
+	private String whFor;
 	
-	@Column(name="user_mail")
-	private String userEmail;
+	@Column(name="uemail")
+	private String whEmail;
 	
-	@Column(name="user_contact")
-	private String userContact;
+	@Column(name="ucontact")
+	private String whContact;
 	
-	@Column(name="user_id_type")
-	private String userIdType;
+	@Column(name="uidtype")
+	private String whIdType;
 	
-	@Column(name="id_number")
-	private String idnumber;
+	@Column(name="uidother")
+	private String whIdOther;
+	
+	@Column(name="uidnumber")
+	private String whIdNumber;
+	
 	
 }

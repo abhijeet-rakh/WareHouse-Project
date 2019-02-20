@@ -41,4 +41,9 @@ public class SaleOrderServiceImpl implements ISaleOrderService{
 		dao.updateSaleOrder(so);
 	}
 
+	@Transactional(readOnly=true)
+	public List<Object[]> getSaleOrderByCount() {
+		return dao.getSaleOrderByCount();
+	}
+	
 }

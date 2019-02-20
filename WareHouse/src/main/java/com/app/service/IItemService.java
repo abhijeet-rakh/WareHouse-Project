@@ -11,7 +11,6 @@ public interface IItemService {
 	public void deleteItem(Integer id);
 	public Item getItemById(Integer id);
 	public void updateItem(Item item);
-	//public List<Object[]> getOrderModeByCount();
-	
+	public List<Object[]> getItemByCount();
 
 }

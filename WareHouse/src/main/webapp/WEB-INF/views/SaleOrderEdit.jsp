@@ -58,30 +58,23 @@
 							<label for="shipmentMode">Shipment Mode :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="shipmentMode">
+							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="E">E</form:option>
-								<form:option value="F">F</form:option>
-								<form:option value="G">G</form:option>
-								<form:option value="H">H</form:option>
+								<form:options items="${shipmenttype}" />
 							</form:select>
-							<form:errors path="shipmentMode" cssClass="err" />
 						</div>
 					</div>
 
-                    <br>
-                    
-                    <div class="row">
+					<br>
+
+					<div class="row">
 						<div class="col-4">
 							<label for="customer">Customer :</label>
 						</div>
 						<div class="col-6">
 							<form:select path="customer">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="A">A</form:option>
-								<form:option value="B">B</form:option>
-								<form:option value="C">C</form:option>
-								<form:option value="D">D</form:option>
+								<form:options items="${whservice}" />
 							</form:select>
 							<form:errors path="customer" cssClass="err" />
 						</div>

@@ -103,6 +103,7 @@
 					</div>
 
 					<br>
+					
 					<div class="row">
 						<div class="col-4">
 							<label for="ordStatus">Order Status :</label>
@@ -127,6 +128,7 @@
 							</form:select>
 						</div>
 					</div>
+	
 				
 					<br>
 
@@ -154,13 +156,13 @@
 							<form:errors path="ordDesc" cssClass="err" />
 						</div>
 					</div>
+				
 					<br>
-					<br>
-
+				
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">
-							<input class="btn btn-primary" type="submit" value="Edit Item" />
+							<input class="btn btn-primary" type="submit" value="Edit Purchase Order" />
 						</div>
 					</div>
 
