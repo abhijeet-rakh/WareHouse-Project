@@ -47,7 +47,9 @@
 							<form:errors path="mail" cssClass="err" />
 						</div>
 					</div>
+					
 					<br>
+					
 					<div class="row">
 						<div class="col-4">
 							<label for="mobile">User Mobile No. :</label>
@@ -95,6 +97,7 @@
 								value="Register User">
 						</div>
 					</div>
+					
 				</form:form>
 
 			</div>

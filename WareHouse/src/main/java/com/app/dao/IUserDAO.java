@@ -10,4 +10,8 @@ public interface IUserDAO {
     public void deleteUser(Integer id);
     public List<User> getAllUser();
     public User getUserById(Integer id);
+    public boolean isEmailExist(String type, String userEmail);
+    public boolean isMobileExist(String type, String userMobile);
+    public User findByUserEmail(String username);
+   
 }

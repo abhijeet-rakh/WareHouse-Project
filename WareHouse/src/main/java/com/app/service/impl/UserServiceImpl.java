@@ -2,10 +2,10 @@ package com.app.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.IUserDAO;
 import com.app.model.User;
@@ -32,14 +32,24 @@ public class UserServiceImpl implements IUserService {
 		dao.deleteUser(id);
 	}
 
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<User> getAllUser() {
 		return dao.getAllUser();
 	}
 
-	@Transactional
+	@Transactional(readOnly=true)
 	public User getUserById(Integer id) {
 		return dao.getUserById(id);
+	}
+
+	@Transactional(readOnly=true)
+	public boolean isEmailExist(String type, String userEmail) {
+		return dao.isEmailExist(type, userEmail);
+	}
+
+	@Transactional(readOnly=true)
+	public boolean isMobileExist(String type, String userMobile) {
+		return dao.isMobileExist(type, userMobile);
 	}
 
 }

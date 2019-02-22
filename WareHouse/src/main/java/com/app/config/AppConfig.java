@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -29,14 +30,13 @@ import com.app.model.Uom;
 import com.app.model.User;
 import com.app.model.WhUserType;
 
-
 @ComponentScan(basePackages = "com.app")
 @EnableTransactionManagement // it is commit or rollback
 @EnableWebMvc // it is a spring web mvc config
 @Configuration
 @PropertySource(value = "Classpath:app.properties")
 public class AppConfig implements WebMvcConfigurer {
-
+	
 	@Autowired
 	private Environment env;
 
@@ -53,7 +53,7 @@ public class AppConfig implements WebMvcConfigurer {
 		bsds.setUrl(env.getProperty("url"));
 		bsds.setUsername(env.getProperty("un"));
 		bsds.setPassword(env.getProperty("pwd"));
-
+		
 		return bsds;
 	}
 
@@ -139,16 +139,40 @@ public class AppConfig implements WebMvcConfigurer {
 		return irvr;
 	}
 
+	//Configure Resource Handler
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry reg) {
 		reg.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	
+		
 	//Configure CommonsMultipartResolver 
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver cm = new CommonsMultipartResolver();
 		return cm;
 	}
-		
+	
+	//configure mail properties
+	@Bean
+	public JavaMailSenderImpl mailSender() {
+		JavaMailSenderImpl jm=new JavaMailSenderImpl();
+		jm.setHost(env.getProperty("email.host"));
+		jm.setPort(env.getProperty("email.port",Integer.class));
+		jm.setUsername(env.getProperty("email.usr"));
+		jm.setPassword(env.getProperty("email.pwd"));
+		jm.setJavaMailProperties(eprops());
+		return jm;
+	}
+	
+	//configure properties
+	public Properties eprops() {
+		Properties p=new Properties();
+		p.put("mail.smtp.auth",env.getProperty("email.auth"));
+		p.put("mail.smtp.starttls.enable",env.getProperty("email.ssl.enbl"));
+		return p;
+	}
+	
+	
+
+
 }

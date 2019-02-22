@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import com.app.model.User;
 import com.app.pdfview.UserPdfView;
 import com.app.pdfview.UserPdfViewById;
 import com.app.service.IUserService;
+import com.app.util.EmailUtil;
 import com.app.validator.UserValidator;
 
 @Controller
@@ -29,6 +31,9 @@ public class UserController {
 
 	@Autowired
 	private UserValidator validator;
+
+	@Autowired
+	private EmailUtil emailUtil;
 
 	@RequestMapping(value = "/register")
 	public String regUser(ModelMap map) {
@@ -52,6 +57,31 @@ public class UserController {
 
 			String msg = "record inserted no is " + id;
 
+			/*email start*/
+             String text="<!doctype html>"
+			 +"<html lang='en'>" 
+             + "<body>"
+             +"<h5 style='color:red;'>Hello,</h5>"
+			 +"<b>Greetings!</b>"
+			 +"<p>You are just a step away from accessing your Maharashtra WareHouse account</p>" 
+			 +"<p>Thanks for Registration with Maharashtra WareHouse</p>\r\n" 
+			 +"<p>Mail Id : "+user.getMail()+"</p>"
+			 +"<p>Username :<b>"+user.getUserName()+"</b></p>"
+             +"<p>Password :<b>"+user.getPassword()+"</b></p>"
+             +"<p>Role :"+user.getRoles()+"</p>"
+             +"<p>On Date :"+new Date()+"</p>"
+             +"<p>Note : Please do not reply back to this mail. This is sent from an unattended mail box. Please mark all your queries / responses to rakh.abhiraja.2@gmail.com</p>" 
+             +"</body>"
+             +"</html>";
+
+             boolean flag=emailUtil.sendEmail(user.getMail(),"Welcome to WareHouse..", text); 
+			
+             if(flag) {
+            	 msg+="Email Sent Successfully...";
+             }else {
+            	 msg+="Email sending failed...";
+             }
+			
 			// add attribute to map
 			map.addAttribute("message", msg);
 

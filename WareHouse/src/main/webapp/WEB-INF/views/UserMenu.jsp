@@ -71,8 +71,8 @@
 				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown"> Warehouse User </a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="${url}/whusertype/register">Register
-					</a> <a class="dropdown-item" href="${url}/whusertype/all">View All</a>
+					<a class="dropdown-item" href="${url}/wtype/register">Register
+					</a> <a class="dropdown-item" href="${url}/wtype/all">View All</a>
 				</div></li>
 
 
