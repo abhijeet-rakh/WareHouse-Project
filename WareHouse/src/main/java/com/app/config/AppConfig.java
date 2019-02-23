@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -35,6 +37,7 @@ import com.app.model.WhUserType;
 @EnableWebMvc // it is a spring web mvc config
 @Configuration
 @PropertySource(value = "Classpath:app.properties")
+@Import(SecurityConfig.class)
 public class AppConfig implements WebMvcConfigurer {
 	
 	@Autowired
@@ -139,20 +142,20 @@ public class AppConfig implements WebMvcConfigurer {
 		return irvr;
 	}
 
-	//Configure Resource Handler
+	// 7.Configure Resource Handler
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry reg) {
 		reg.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 		
-	//Configure CommonsMultipartResolver 
+	// 8.Configure CommonsMultipartResolver 
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver cm = new CommonsMultipartResolver();
 		return cm;
 	}
 	
-	//configure mail properties
+	// 9.configure mail properties
 	@Bean
 	public JavaMailSenderImpl mailSender() {
 		JavaMailSenderImpl jm=new JavaMailSenderImpl();
@@ -164,7 +167,7 @@ public class AppConfig implements WebMvcConfigurer {
 		return jm;
 	}
 	
-	//configure properties
+	// 10.configure properties
 	public Properties eprops() {
 		Properties p=new Properties();
 		p.put("mail.smtp.auth",env.getProperty("email.auth"));
@@ -172,7 +175,10 @@ public class AppConfig implements WebMvcConfigurer {
 		return p;
 	}
 	
+	//11.passwordEncoder
+	@Bean
+	public BCryptPasswordEncoder pwdEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 	
-
-
 }

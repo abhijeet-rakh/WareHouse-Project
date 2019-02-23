@@ -33,10 +33,10 @@ public class UserController {
 	@Autowired
 	private UserValidator validator;
 
+
 //	@Autowired
 //	private EmailUtil emailUtil;
 
-	
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	
@@ -45,6 +45,7 @@ public class UserController {
 		map.addAttribute("user", new User());
 		return "UserRegister";
 	}
+
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String saveUser(@ModelAttribute User user, Errors errors, ModelMap map) {
@@ -106,7 +107,7 @@ public class UserController {
 		}
 		return "UserRegister";
 	}
-
+	
 	@RequestMapping(value = "/all")
 	public String getAllUser(ModelMap map) {
 		List<User> list = service.getAllUser();
