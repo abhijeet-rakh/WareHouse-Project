@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
@@ -32,9 +33,13 @@ public class UserController {
 	@Autowired
 	private UserValidator validator;
 
-	@Autowired
-	private EmailUtil emailUtil;
+//	@Autowired
+//	private EmailUtil emailUtil;
 
+	
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	
 	@RequestMapping(value = "/register")
 	public String regUser(ModelMap map) {
 		map.addAttribute("user", new User());
@@ -52,7 +57,14 @@ public class UserController {
 
 			System.out.println(" " + user.getUserid() + "  " + user.getUserName() + " " + user.getPassword() + "  "
 					+ user.getMobile() + "  " + user.getMail() + " " + user.getRoles().toString());
-
+            
+			/*Password Encryption starts here*/
+			passwordEncoder=new BCryptPasswordEncoder();
+			String pwd=user.getPassword();
+			String encodedpwd=passwordEncoder.encode(pwd);
+			user.setPassword(encodedpwd);
+			/*Password Encryption ends here*/
+			
 			Integer id = service.saveUser(user);
 
 			String msg = "record inserted no is " + id;
@@ -67,13 +79,14 @@ public class UserController {
 			 +"<p>Thanks for Registration with Maharashtra WareHouse</p>\r\n" 
 			 +"<p>Mail Id : "+user.getMail()+"</p>"
 			 +"<p>Username :<b>"+user.getUserName()+"</b></p>"
-             +"<p>Password :<b>"+user.getPassword()+"</b></p>"
+             +"<p>Password :<b>"+pwd+"</b></p>"
              +"<p>Role :"+user.getRoles()+"</p>"
              +"<p>On Date :"+new Date()+"</p>"
              +"<p>Note : Please do not reply back to this mail. This is sent from an unattended mail box. Please mark all your queries / responses to rakh.abhiraja.2@gmail.com</p>" 
              +"</body>"
              +"</html>";
 
+             /*
              boolean flag=emailUtil.sendEmail(user.getMail(),"Welcome to WareHouse..", text); 
 			
              if(flag) {
@@ -81,7 +94,10 @@ public class UserController {
              }else {
             	 msg+="Email sending failed...";
              }
-			
+	        */ 
+             
+             /*Email End*/
+             
 			// add attribute to map
 			map.addAttribute("message", msg);
 
