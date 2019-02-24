@@ -17,22 +17,29 @@ import com.app.model.User;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
+	
+	
 	@Autowired
 	private IUserDAO dao;
 		
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
+    
+		System.out.println("username="+username);
+		
 		//find username by using Email
 		User user=dao.findByUserEmail(username);
-		
+	
+		System.out.println("UserName="+user.getUserName()+"Email="+user.getMail()+"Password="+user.getPassword()+"Mobile="+user.getMobile()+"Role="+user.getRoles());
+	
 		//set GrantedAuthority inset collection
 		Set<GrantedAuthority> grantedauthorities=new HashSet<>();
-		
+	
+	
 		//set the roles of username in SimpleGrantedAuthority
 		for(String role:user.getRoles()) {
 			grantedauthorities.add(new SimpleGrantedAuthority(role));
+			System.out.println("role="+role);
 		}
 		
 		return new org.springframework.security.core.userdetails.User(user.getUserName(),user.getPassword(), grantedauthorities);

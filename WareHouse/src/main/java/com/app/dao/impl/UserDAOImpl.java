@@ -63,6 +63,7 @@ public class UserDAOImpl implements IUserDAO {
 		}
 		
 		return count>0?true:false;
+		
 	}
 
 	@Override
@@ -91,12 +92,14 @@ public class UserDAOImpl implements IUserDAO {
 		DetachedCriteria hql=DetachedCriteria.forClass(User.class)
 				.add(Restrictions.eq("mail",username));
 		
+		@SuppressWarnings("unchecked")
 		List<User> list=(List<User>) ht.findByCriteria(hql);
 		
-		if(list!=null && list.isEmpty()) {
+		if(list!=null && !list.isEmpty()) {
 			user=list.get(0);
-		}
+			System.out.println("user="+user);
+		}	
 		return user;
 	}
-
+	
 }

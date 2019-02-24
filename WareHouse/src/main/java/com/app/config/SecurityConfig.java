@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -25,11 +24,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userdetailsservice)
 		.passwordEncoder(passwordEncoder);
+		System.out.println("configure(AuthenticationManagerBuilder auth):SecurityConfig"+userdetailsservice);
+		System.out.println("PasswortEncoder="+passwordEncoder);
 	}
 	
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
+		
+		System.out.println("configure(HttpSecurity http)");
 		
 		http.authorizeRequests()
 		.antMatchers("/user/**","/login").permitAll()
@@ -40,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.loginPage("/login")
 		.loginProcessingUrl("/signin")
 		.defaultSuccessUrl("/shipmenttype/register",true)
-		.failureUrl("/login?/error=true")
+		.failureUrl("/login?error=true")
 		.permitAll()
 		
 		.and()
@@ -53,8 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.exceptionHandling()
 		.accessDeniedPage("/denied")
-		
 		;	
+		
+		
 	}
 
 }
