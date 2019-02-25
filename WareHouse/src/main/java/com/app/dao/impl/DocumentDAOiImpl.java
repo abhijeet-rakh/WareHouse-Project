@@ -6,7 +6,6 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.security.web.authentication.DelegatingAuthenticationFailureHandler;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.IDocumentDAO;
@@ -23,6 +22,7 @@ public class DocumentDAOiImpl implements IDocumentDAO {
 		return (Integer) ht.save(doc);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getObjectIdAndNames() {		
 	    

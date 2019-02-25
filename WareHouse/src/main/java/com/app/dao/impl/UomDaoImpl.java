@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +48,7 @@ public class UomDaoImpl implements IUomDao {
 		ht.update(u);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isUomModelExists(String UomModel) {
 		long count = 0;
@@ -72,6 +72,7 @@ public class UomDaoImpl implements IUomDao {
 		return count > 0 ? true : false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<Integer, String> getUomIdandModel() {
 		/*

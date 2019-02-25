@@ -30,7 +30,7 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="userName">User Name :</label>
+							<form:label path="userName">User Name :</form:label>
 						</div>
 						<div class="col-6">
 							<form:input path="userName" />
@@ -40,7 +40,7 @@
 					<br>
 					<div class="row">
 						<div class="col-4">
-							<label for="mail">User Email :</label>
+							<form:label path="mail">User Email :</form:label>
 						</div>
 						<div class="col-6">
 							<form:input path="mail" />
@@ -52,7 +52,7 @@
 					
 					<div class="row">
 						<div class="col-4">
-							<label for="mobile">User Mobile No. :</label>
+							<form:label path="mobile">User Mobile No. :</form:label>
 						</div>
 						<div class="col-6">
 							<form:input path="mobile" />
@@ -64,7 +64,7 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="password">User Password :</label>
+						<form:label path="password">User Password :</form:label>
 						</div>
 						<div class="col-6">
 							<form:password path="password" />
@@ -76,17 +76,21 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="roles">Roles :</label>
+							<form:label path="roles"></form:label>
 						</div>
 						<div class="col-6">
-							<form:checkbox path="roles" value="ADMIN" />
-							ADMIN
-							<form:checkbox path="roles" value="APP USER" />
-							APP USER
-							<form:errors path="roles" cssClass="err" />
+							<form:checkbox path="roles" value="ADMIN" />ADMIN
+							<form:checkbox path="roles" value="APP USER" />APP USER							
 						</div>
 					</div>
-
+					
+					<div class="row">
+						<div class="col-4"></div>
+						<div class="col-6">
+							<form:errors path="roles" cssClass="err" />
+						</div>
+                     </div>
+                     
 					<br>
 
 

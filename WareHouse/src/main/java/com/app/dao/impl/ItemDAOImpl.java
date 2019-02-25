@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.IItemDAO;
 import com.app.model.Item;
-import com.app.model.OrderMethod;
 import com.app.model.Uom;
 
 @Repository
@@ -50,6 +49,7 @@ public class ItemDAOImpl implements IItemDAO{
 	}
 	
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getItemByCount() {
 	

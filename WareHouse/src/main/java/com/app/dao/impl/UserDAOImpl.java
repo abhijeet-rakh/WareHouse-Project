@@ -45,15 +45,17 @@ public class UserDAOImpl implements IUserDAO {
 		return ht.get(User.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public boolean isEmailExist(String type, String userEmail) {
+	public boolean isEmailExist(String userEmail) {
 
 		long count=0;
-		
+
+		System.out.println("isEmailExist():UserDAOImpl");
 		DetachedCriteria hql=DetachedCriteria.forClass(User.class)
 				.setProjection(Projections.projectionList()
-				.add(Projections.count("type")))
-				.add(Restrictions.eq("type",userEmail));
+				.add(Projections.count("mail")))
+				.add(Restrictions.eq("mail",userEmail));
 		
 		List<Long>  list=(List<Long>) ht.findByCriteria(hql);
 		        
@@ -66,14 +68,16 @@ public class UserDAOImpl implements IUserDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public boolean isMobileExist(String type, String userMobile) {
+	public boolean isMobileExist(String userMobile) {
 		long count=0;
 		
+		System.out.println("isMobileExist:UserDAOImpl");
 		DetachedCriteria hql=DetachedCriteria.forClass(User.class)
 				.setProjection(Projections.projectionList()
-				.add(Projections.count("type")))
-				.add(Restrictions.eq("type",userMobile));
+				.add(Projections.count("mobile")))
+				.add(Restrictions.eq("mobile",userMobile));
 		
 		List<Long>  list=(List<Long>) ht.findByCriteria(hql);
 		        
@@ -100,6 +104,25 @@ public class UserDAOImpl implements IUserDAO {
 			System.out.println("user="+user);
 		}	
 		return user;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isuserNameExist(String UserName) {
+	
+		long count=0;
+		
+		DetachedCriteria hql=DetachedCriteria.forClass(User.class)
+				.setProjection(Projections.projectionList()
+				.add(Projections.count("userName")))
+			    .add(Restrictions.eq("userName",UserName));
+		
+		List<Long> list=(List<Long>) ht.findByCriteria(hql);
+		
+		if(list!=null && !list.isEmpty()) {
+			count=list.get(0);   
+		}
+		return count>0?true:false;
 	}
 	
 }

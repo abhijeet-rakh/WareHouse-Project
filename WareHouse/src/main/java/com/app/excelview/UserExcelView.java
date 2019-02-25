@@ -15,6 +15,7 @@ import com.app.model.User;
 
 public class UserExcelView extends AbstractXlsxView{
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void buildExcelDocument(Map<String, Object> model, 
 			Workbook workbook, 

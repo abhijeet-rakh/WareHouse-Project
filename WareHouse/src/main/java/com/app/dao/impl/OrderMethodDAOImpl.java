@@ -45,6 +45,7 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 		ht.update(om);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getOrderModeByCount() {
 		/*
@@ -59,6 +60,7 @@ public class OrderMethodDAOImpl implements IOrderMethodDAO {
 		return (List<Object[]>) ht.findByCriteria(hql);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isCodeExist(String orderCode) {
 

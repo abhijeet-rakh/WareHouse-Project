@@ -123,7 +123,9 @@
 
 			<li class="nav-item bg-secondary btn-successs"><a class="nav-link text-white"
 				href="${url}/logout">logout</a></li>
+
 		</ul>
+
 		
 		<form class="form-inline" action="/action_page.php">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search">

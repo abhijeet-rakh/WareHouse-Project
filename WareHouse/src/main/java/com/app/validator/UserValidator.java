@@ -17,6 +17,8 @@ public class UserValidator implements Validator {
 	@Autowired
 	private IUserService service;
 
+	private static final String PASSWORD_PATTERN ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\\\S+$).{8,}$";
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return User.class.equals(clazz);
@@ -30,27 +32,44 @@ public class UserValidator implements Validator {
 			errors.rejectValue("userName",null,"Please Enter Username...");
 		}else if(!Pattern.matches("[a-z]{4,8}",user.getUserName())) {
 			errors.rejectValue("userName",null,"Please Enter username in lowercase having 4 to 8 letters...");
+		}else if(service.isuserNameExist(user.getUserName())){
+			errors.rejectValue("userName",null,"Username already Exists Please Enter another...");
 		}
 		
 		if(StringUtils.isEmpty(user.getMail())) {
 			errors.rejectValue("mail",null,"Please Enter mail...");
+		}else if(service.isEmailExist(user.getMail())) {
+			errors.rejectValue("mail",null,"Email already Exists...");
 		}
-		
-		/*else if(service.isEmailExist("mail",user.getMail())) {
-			errors.rejectValue("mail",null,"Already Email Exists...");
-		}*/
 		
 		if(StringUtils.isEmpty(user.getMobile())) {
 			errors.rejectValue("mobile",null,"Please Enter mobile...");
+		}else if(service.isMobileExist(user.getMobile())){
+			errors.rejectValue("mobile",null,"Mobile already Exists...");
 		}
 		
-		/*else if(service.isMobileExist("mobile",user.getMobile())){
-			errors.rejectValue("mobile",null,"Please Enter mobile...");
-		}*/
+		/*
+		^                 # start-of-string
+		(?=.*[0-9])       # a digit must occur at least once
+		(?=.*[a-z])       # a lower case letter must occur at least once
+		(?=.*[A-Z])       # an upper case letter must occur at least once
+		(?=.*[@#$%^&+=])  # a special character must occur at least once
+		(?=\S+$)          # no whitespace allowed in the entire string
+		.{8,20}             # anything, at least eight places and max 20 places
+		$                 # end-of-string
 		
+		?= – means apply the assertion condition, meaningless by itself, always work with other combination
+		
+		*/
 		if(StringUtils.isEmpty(user.getPassword())) {
 			errors.rejectValue("password",null,"Please Enter Password...");
 		}
+		/*else if(!Pattern.matches(PASSWORD_PATTERN,user.getPassword())) {
+			errors.rejectValue("password",null,"Please Enter atleast one digit,lowercase letter,uppercase letter,special character,no whitesapces and 8 alphanumeric characters...");
+		}
+		*/
+		
+		System.out.println("roles="+user.getRoles());
 		
 		if(StringUtils.isEmpty(user.getRoles())) {
 			errors.rejectValue("roles",null,"Please Enter at least one Role...");

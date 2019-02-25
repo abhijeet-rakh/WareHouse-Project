@@ -1,6 +1,5 @@
 package com.app.util;
 
-import java.util.Date;
 
 import javax.mail.internet.MimeMessage;
 

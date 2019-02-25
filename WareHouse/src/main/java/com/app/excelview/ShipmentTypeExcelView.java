@@ -15,11 +15,11 @@ import com.app.model.ShipmentType;
 
 public class ShipmentTypeExcelView extends AbstractXlsxView {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void buildExcelDocument(Map<String, Object> model, 
 			Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
 		
 		//set header
 		response.setHeader("Content-Disposition","attachment;filename-SHIPMENTS.xlsx");

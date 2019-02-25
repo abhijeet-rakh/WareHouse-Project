@@ -54,6 +54,7 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 		ht.update(st);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getShipmentTypeCount() {
 		/*
@@ -70,6 +71,7 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 		return (List<Object[]>) ht.findByCriteria(hql);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<Integer, String> getEnableShipments() {
 	   /* 
@@ -86,6 +88,7 @@ public class ShipmentTypeDAOImpl implements IShipmentTypeDAO {
 	    return map;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<Integer,String> getEnableShipmentMode(){
 		DetachedCriteria hql=DetachedCriteria.forClass(ShipmentType.class)

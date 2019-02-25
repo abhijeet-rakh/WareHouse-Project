@@ -15,6 +15,7 @@ import com.app.model.OrderMethod;
 
 public class OrderMethodExcelView extends AbstractXlsxView {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void buildExcelDocument(Map<String, Object> model, 
 			Workbook workbook, HttpServletRequest request,

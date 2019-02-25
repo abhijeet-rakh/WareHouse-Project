@@ -15,6 +15,7 @@ import com.app.model.ShipmentType;
 
 public class ShipmentTypeExcelViewById extends AbstractXlsxView {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -46,7 +47,6 @@ public class ShipmentTypeExcelViewById extends AbstractXlsxView {
 			}
 			
 			private void setBody(Sheet sheet,List<ShipmentType> list) {
-				
 				int rowNum=1;
 				
 				for(ShipmentType s:list) {

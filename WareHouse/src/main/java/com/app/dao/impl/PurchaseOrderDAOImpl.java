@@ -45,6 +45,7 @@ public class PurchaseOrderDAOImpl implements IPurchaseOrderDAO {
         ht.update(po);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getPurchaseOrderByCount() {
 	    DetachedCriteria hql=DetachedCriteria.forClass(PurchaseOrder.class)

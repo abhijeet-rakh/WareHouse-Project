@@ -15,6 +15,7 @@ import com.app.model.SaleOrder;
 
 public class SaleOrderExcelView extends AbstractXlsxView{
 
+	@SuppressWarnings("unchecked")
 	@Override
 		public void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
@@ -45,8 +46,7 @@ public class SaleOrderExcelView extends AbstractXlsxView{
 			row.createCell(7).setCellValue("DefaultStatus");
 			row.createCell(8).setCellValue("SaleOrdDesc");
 		}// setHead
-		
-		
+				
 		private void setBody(Sheet sheet, List<SaleOrder> list) {
 			int rowNum = 1;
 

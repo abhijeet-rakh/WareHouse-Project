@@ -15,6 +15,7 @@ import com.app.model.PurchaseOrder;
 
 public class PurchaseOrderExcelViewById extends AbstractXlsxView{
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

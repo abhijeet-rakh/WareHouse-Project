@@ -45,6 +45,7 @@ public class SaleOrderDAOImpl implements ISaleOrderDAO{
 		ht.update(so);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getSaleOrderByCount() {
 		DetachedCriteria hql=DetachedCriteria.forClass(SaleOrder.class)

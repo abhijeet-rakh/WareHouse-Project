@@ -17,6 +17,7 @@ import com.lowagie.text.pdf.PdfWriter;
 
 public class WhUserTypePdfView extends AbstractPdfView {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {

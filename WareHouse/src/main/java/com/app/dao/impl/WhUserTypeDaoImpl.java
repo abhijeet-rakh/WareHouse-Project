@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +52,7 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<Integer, String> getVendors() {
 	System.out.println("getVendors___");
@@ -62,12 +62,15 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 				.add(Projections.property("whId"))
 				.add(Projections.property("whCode"))
 				).add(Restrictions.eq("whType","VENDOR"));
+	
 	  List<Object[]> list=(List<Object[]>) ht.findByCriteria(hql);
+	  
 	  Map<Integer,String> map=IWhUserTypeUtility.ConversionListToMap(list);
 		return map;
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isWhUserCodeExist(String usercode) {
 		/*
@@ -93,6 +96,7 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isEmailOrMobileExists(String userEmailOrMobile) {
 		

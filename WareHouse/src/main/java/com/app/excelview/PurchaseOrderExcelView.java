@@ -11,11 +11,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
-import com.app.model.Item;
 import com.app.model.PurchaseOrder;
 
 public class PurchaseOrderExcelView extends AbstractXlsxView{
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

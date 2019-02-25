@@ -43,13 +43,18 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Transactional(readOnly=true)
-	public boolean isEmailExist(String type, String userEmail) {
-		return dao.isEmailExist(type, userEmail);
+	public boolean isEmailExist(String userEmail) {
+		return dao.isEmailExist(userEmail);
 	}
 
 	@Transactional(readOnly=true)
-	public boolean isMobileExist(String type, String userMobile) {
-		return dao.isMobileExist(type, userMobile);
+	public boolean isMobileExist(String userMobile) {
+		return dao.isMobileExist(userMobile);
+	}
+
+	@Transactional(readOnly=true)
+	public boolean isuserNameExist(String UserName) {
+		return dao.isuserNameExist(UserName);
 	}
 
 }

@@ -15,7 +15,8 @@ import com.app.model.SaleOrder;
 
 public class SaleOrderExcelViewById extends AbstractXlsxView{
 
-	    @Override
+	    @SuppressWarnings("unchecked")
+		@Override
 		public void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
 
@@ -64,6 +65,5 @@ public class SaleOrderExcelViewById extends AbstractXlsxView{
 			}
 
 		}// setBody
-		
-		
+	
 }
