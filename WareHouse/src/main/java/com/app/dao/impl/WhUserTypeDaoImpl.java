@@ -54,7 +54,7 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Map<Integer, String> getVendors() {
+	public Map<Integer, String> getVendors() { 
 	System.out.println("getVendors___");
 	//	String hql=" select whId,whType from "+WhUserType.class.getName()+" where whType=? ";
 	  DetachedCriteria hql=DetachedCriteria.forClass(WhUserType.class)
