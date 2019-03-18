@@ -36,10 +36,7 @@
 								<th>ShipmentMode</th>
 								<th>Vendor</th>
 						        <th>Reference Number</th>
-                           <!-- <th>Quality Check</th> 
-                                <th>Order Status</th>
-                                <th>Order Desc</th>-->
-								<th colspan="5">OPERATION</th>
+         						<th colspan="5">OPERATION</th>
 							</tr>
 							<c:forEach items="${data}" var="d">
 								<tr>
@@ -48,10 +45,7 @@
 									<td><c:out value="${d.shipmentMode}"></c:out></td>
 									<td><c:out value="${d.vendor}"></c:out></td>
 							        <td><c:out value="${d.refNum}"></c:out></td>
-                                <%--<td><c:out value="${d.qualityCheck}"></c:out></td>
-                                    <td><c:out value="${d.ordStatus}"></c:out></td>
-                                    <td><c:out value="${d.ordDesc}"></c:out></td> --%>
-
+         
 									<td><a href="delete?orderId=${d.orderId}"> <img
 											src="../resources/images/delete.png" height="30" width="30">
 									</a></td>

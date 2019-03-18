@@ -61,7 +61,6 @@ public class UomController {
 	public String viewAll(ModelMap map) {
 		List<Uom> obs = service.getAllUom();
 		map.addAttribute("list", obs);
-
 		return "UomData";
 	}
 

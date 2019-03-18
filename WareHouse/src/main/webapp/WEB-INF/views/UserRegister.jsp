@@ -76,7 +76,7 @@
 
 					<div class="row">
 						<div class="col-4">
-							<form:label path="roles"></form:label>
+							<form:label path="roles">Roles :</form:label>
 						</div>
 						<div class="col-6">
 							<form:checkbox path="roles" value="ADMIN" />ADMIN
@@ -91,11 +91,11 @@
 						</div>
                      </div>
                      
-					<br>
+					<br><div class="col-4"></div>
 
 
 					<div class="row">
-						<div class="col-4"></div>
+						
 						<div class="col-6">
 							<input class="btn btn-primary" type="submit"
 								value="Register User">

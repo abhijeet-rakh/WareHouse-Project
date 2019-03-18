@@ -79,7 +79,5 @@ public class OrderMethodRestController {
 			return new ResponseEntity<String>(" Record not found...",HttpStatus.BAD_REQUEST);
 		}
 	}
-	
-	
-	
+		
 }

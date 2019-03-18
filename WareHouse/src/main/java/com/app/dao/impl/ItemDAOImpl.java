@@ -65,4 +65,5 @@ public class ItemDAOImpl implements IItemDAO{
 		return (List<Object[]>) ht.findByCriteria(hql);
 	}
 	
+	
 }

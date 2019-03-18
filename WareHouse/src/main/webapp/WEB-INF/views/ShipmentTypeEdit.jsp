@@ -35,7 +35,7 @@
 							<label for="id">Shipment Id :</label>
 						</div>
 						<div class="col-6">
-							<form:input path="id" />
+							<form:input path="id" readonly="true"/>
 							<form:errors path="id" cssClass="err" />
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 						<div class="col-4"></div>
 						<div class="col-6">
 							<input class="btn btn-primary" type="submit"
-								value="Register Shipment">
+								value="Update Shipment">
 						</div>
 					</div>
 				</form:form>

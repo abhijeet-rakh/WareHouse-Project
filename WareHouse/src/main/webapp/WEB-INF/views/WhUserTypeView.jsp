@@ -15,7 +15,7 @@
 		<div class="card">
 
               <div class="card-header bg-info text-white">
-              <h1 style="text-align: center;font-size:x-large;font-family: monospace;">VIEW WH-USER-TYPE DATA</h1>
+              <h1 style="text-align: center;font-size:x-large;font-family: serif;">VIEW WH-USER-TYPE DATA</h1>
               </div>
               
              
@@ -73,5 +73,8 @@
 </div>
 
 </div>
+
+<br>
+	<a href="all">Back</a>
 </body>
 </html>

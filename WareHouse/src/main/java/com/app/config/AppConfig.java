@@ -37,7 +37,7 @@ import com.app.model.WhUserType;
 @EnableWebMvc // it is a spring web mvc config
 @Configuration
 @PropertySource(value = "Classpath:app.properties")
-@Import(SecurityConfig.class)
+//@Import(SecurityConfig.class)
 public class AppConfig implements WebMvcConfigurer {
 	
 	@Autowired

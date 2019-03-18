@@ -150,7 +150,7 @@
 						<div class="col-4"></div>
 						<div class="col-6">
 							<input class="btn btn-primary" type="submit"
-								value="Register Item" />
+								value="Update Item" />
 						</div>
 					</div>
 

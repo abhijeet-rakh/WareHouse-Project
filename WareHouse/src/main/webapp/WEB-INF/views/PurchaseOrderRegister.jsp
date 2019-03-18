@@ -137,7 +137,7 @@
 				<div class="card-footer bg-success text-white">${message}</div>
 			</c:if>
 
-			<br> <a href="all">View all Purchase Order</a> <br> <br>
+			<br> <a href="all"><input type="button" value="ViewAll"></a>
 		</div>
 
 	</div>

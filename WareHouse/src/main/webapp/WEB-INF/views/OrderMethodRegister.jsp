@@ -104,7 +104,7 @@
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">
-							<input class="btn btn-primary" type="submit" value="Create Item" />
+							<input class="btn btn-primary" type="submit" value="Create Order" />
 						</div>
 					</div>
 					<br>

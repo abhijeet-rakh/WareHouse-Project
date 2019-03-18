@@ -43,7 +43,7 @@
 					</div>
 
 					<br>
-				
+
 					<div class="row">
 						<div class="col-4">
 							<label for="shipmentMode">Shipment Mode :</label>
@@ -51,7 +51,8 @@
 						<div class="col-6">
 							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-		                        <form:options items="${shipmenttype}" itemLabel="shipmentMode" itemValue="id" />
+								<form:options items="${shipmenttype}" itemLabel="shipmentMode"
+									itemValue="id" />
 							</form:select>
 							<form:errors path="shipmentMode" cssClass="err" />
 
@@ -103,7 +104,7 @@
 					</div>
 
 					<br>
-					
+
 					<div class="row">
 						<div class="col-4">
 							<label for="ordStatus">Order Status :</label>
@@ -128,8 +129,8 @@
 							</form:select>
 						</div>
 					</div>
-	
-				
+
+
 					<br>
 
 					<div class="row">
@@ -156,13 +157,14 @@
 							<form:errors path="ordDesc" cssClass="err" />
 						</div>
 					</div>
-				
+
 					<br>
-				
+
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">
-							<input class="btn btn-primary" type="submit" value="Edit Purchase Order" />
+							<input class="btn btn-primary" type="submit"
+								value="Update Purchase Order" />
 						</div>
 					</div>
 

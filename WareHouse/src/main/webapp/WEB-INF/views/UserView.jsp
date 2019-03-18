@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ include file="UserMenu.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,34 +9,52 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 style="color:red;text-align:center">User Information</h1>
 
-<table border="1">
-<tr>
-<td>ID</td>
-<td>${user.userid}</td>
-</tr>
+	<div class="container">
 
-<tr>
-<td>Name</td>
-<td>${user.userName}</td>
-</tr>
+		<div class="card">
+			<div class="card-header bg-info text-white">
+				<h1
+					style="text-align: center; font-size: x-large; font-family: serif;">VIEW
+					USER DATA</h1>
+			</div>
 
-<tr>
-<td>Mail</td>
-<td>${user.mail}</td>
-</tr>
 
-<tr>
-<td>Mobile</td>
-<td>${user.mobile}</td>
-</tr>
+			<table border="1">
+				<tr>
+					<th>ID</th>
+					<td>${user.userid}</td>
+				</tr>
 
-<tr>
-<td>roles</td>
-<td>${user.roles}</td>
-</tr>
+				<tr>
+					<th>Name</th>
+					<td>${user.userName}</td>
+				</tr>
 
-</table>
+				<tr>
+					<th>Mail</th>
+					<td>${user.mail}</td>
+				</tr>
+
+				<tr>
+					<th>Mobile</th>
+					<td>${user.mobile}</td>
+				</tr>
+
+				<tr>
+					<th>roles</th>
+					<td>${user.roles}</td>
+				</tr>
+
+			</table>
+
+		</div>
+         <!-- close container -->
+	</div>
+	<!-- close card -->
+<br>
+	<a href="all">Back</a>
+
+
 </body>
 </html>

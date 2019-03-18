@@ -1,64 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ include file="UserMenu.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Sale Order View</title>
 </head>
 <body>
-	<h1 style="color: red; text-align: center;">SaleOrder Detail</h1>
 
-	<table border="1">
+	<div class="container">
 
-		<tr>
-			<td>OrderId</td>
-			<td>${saleOrder.orderId}</td>
-		</tr>
+		<div class="card">
 
-		<tr>
-			<td>OrderCode</td>
-			<td>${saleOrder.orderCode}</td>
-		</tr>
+			<table border="1">
 
-		<tr>
-			<td>Shipment Mode</td>
-			<td>${saleOrder.shipmentMode}</td>
-		</tr>
+				<tr>
+					<th>OrderId</th>
+					<td>${saleOrder.orderId}</td>
+				</tr>
 
-		<tr>
-			<td>Customer</td>
-			<td>${saleOrder.customer}</td>
-		</tr>
+				<tr>
+					<th>OrderCode</th>
+					<td>${saleOrder.orderCode}</td>
+				</tr>
 
-		<tr>
-			<td>refNumber</td>
-			<td>${saleOrder.refNumber}</td>
-		</tr>
+				<tr>
+					<th>Shipment Mode</th>
+					<td>${saleOrder.shipmentMode}</td>
+				</tr>
 
-		<tr>
-			<td>stockMode</td>
-			<td>${saleOrder.stockMode}</td>
-		</tr>
+				<tr>
+					<th>Customer</th>
+					<td>${saleOrder.customer}</td>
+				</tr>
 
-       <tr>
-			<td>Stock Source</td>
-			<td>${saleOrder.stockSource}</td>
-		</tr>
-       
-       <tr>
-			<td>Default Status</td>
-			<td>${saleOrder.defaultStatus}</td>
-		</tr>
-       
-        <tr>
-			<td>Sale ord Desc</td>
-			<td>${saleOrder.saleOrdDesc}</td>
-		</tr>
-	</table>
+				<tr>
+					<th>refNumber</th>
+					<td>${saleOrder.refNumber}</td>
+				</tr>
 
-<br><br><br>
-<a href="all">Back</a>
+				<tr>
+					<th>stockMode</th>
+					<td>${saleOrder.stockMode}</td>
+				</tr>
+
+				<tr>
+					<th>Stock Source</th>
+					<td>${saleOrder.stockSource}</td>
+				</tr>
+
+				<tr>
+					<th>Default Status</th>
+					<td>${saleOrder.defaultStatus}</td>
+				</tr>
+
+				<tr>
+					<th>Sale ord Desc</th>
+					<td>${saleOrder.saleOrdDesc}</td>
+				</tr>
+			</table>
+
+		</div>
+
+	</div>
+
+	<br>
+	<a href="all">Back</a>
 
 
 

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="org.apache.catalina.Session" %>
-
+<%@include file="UserMenu.jsp"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -11,28 +11,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>UOM Data Page</title>
 </head>
-<%-- 
-<body bgcolor="skyblue">
-	<center>
-	
-			<h2>
-				<b><div style="cue-after: none; color: maroon;">WELCOME TO UOM DATA PAGE</b>
-			</h2>
-			<img  src="../resources/imgs/bg.jpg" width="1400"
-				height="350">
- --%>
+
 <body>
-	<%@include file="UserMenu.jsp"%>
 	<div class="container">
 
 		<div class="card">
 
 
 			<div class="card-header bg-primary text-white">
-				<h2>WELCOME TO UOM DATA PAGE</h2>
+				<h1 style="text-align: center;">UOM Data Detail</h1>
 			</div>
-			<!-- card header end -->
 
+
+            <a style="text-align: right;" href="excelall">Get all UOM in Excel</a> 
+			<a style="text-align: right;" href="pdfExp">Get all UOM in pdf</a> <br>
+            
+
+			<!-- card header end -->
 			<div class="card-body">
 
 				<c:choose>
@@ -41,13 +36,13 @@
 					</c:when>
 					<c:otherwise>
 					
-						<table class="table table-bordered table-hover table table-striped table-dark bg-success">
-							<tr class="thead-dark">
+						<table class="table table-bordered table-hover table-striped">
+							<tr>
 								<th>ID</th>
 								<th>UOMTYPE</th>
 								<th>UOMMODEL</th>
 								<th>DESCRIPTION</th>
-								<th>OPRATIONS</th>
+								<th colspan="5">OPRATIONS</th>
 
 							</tr>
 							<c:forEach items="${list}" var="st">
@@ -59,15 +54,25 @@
 									<td><c:out value="${st.uomDsc}" /></td>
 									
 									<td><a href="delete?id=${st.uomId}"> <img
-											src="../resources/imgs/delete.png" width="35" height="30" /></a>
-										<a href="viewone?id=${st.uomId}"> <img
-											src="../resources/imgs/view.png" width="35" height="30" /></a> <a
-										href="editone?id=${st.uomId}"><img
-											src="../resources/imgs/edit.png" width="30" height="30" /></a>  <a
-										href="exportExcelOne?id=${st.uomId}"><img
-											src="../resources/imgs/excel.jpg" width="30" height="30" /></a>
-										<a href="exportPdfOne?id=${st.uomId}"><img
-											src="../resources/imgs/pdf.png" height="20" width="20" /> </a></td>
+											src="../resources/images/delete.png" width="30" height="30" />
+									</a></td>
+										
+									<td><a href="viewone?id=${st.uomId}"> <img
+											src="../resources/images/view.png" width="30" height="30" />
+								    </a></td>
+								     
+									<td><a href="editone?id=${st.uomId}"><img
+											src="../resources/images/edit.png" width="30" height="30" />
+									</a></td>
+									  
+									<td><a href="exportExcelOne?id=${st.uomId}"><img
+											src="../resources/images/excel.png" width="30" height="30" />
+									</a></td>
+									
+									<td><a href="exportPdfOne?id=${st.uomId}"><img
+											src="../resources/images/pdf.png" height="30" width="30" /> 
+									</a></td>
+	
 								</tr>
 
 							</c:forEach>

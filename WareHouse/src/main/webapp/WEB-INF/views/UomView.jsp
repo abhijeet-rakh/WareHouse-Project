@@ -1,32 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="ISO-8859-1"%>
+<%@include file="UserMenu.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>View page</title>
 </head>
-<body bgcolor="lightgreen">
-<center>
-<h2><b>WELCOME TO UOM VIEW  PAGE </b></h2>
-<table border="1">
+<body>
 
-<tr>
-<td>ID</td><td>${st.uomId}</td>
-</tr> 
-<tr>
-<td>MODE</td><td>${st.uomType}</td>
-</tr> 
-<tr>
-<td>CODE</td><td>${st.uomModel}</td>
-</tr> 
-<tr>
-<td>ENABLE</td><td>${st.uomDsc}</td>
-</tr> 
+<div class="container">
 
+<div class="card">
+       
+              <div class="card-header bg-info text-white">
+              <h1 style="text-align: center;font-size:x-large;font-family: serif;">VIEW UOM DATA</h1>
+              </div>
+	
+		<table border="1">
 
-</table><br><br>
-<a href="all"><input type="button" value="BackViewAll"></a>
+			<tr>
+				<th>ID</th>
+				<td>${st.uomId}</td>
+			</tr>
+			<tr>
+				<th>MODE</th>
+				<td>${st.uomType}</td>
+			</tr>
+			<tr>
+				<th>CODE</th>
+				<td>${st.uomModel}</td>
+			</tr>
+			<tr>
+				<th>ENABLE</th>
+				<td>${st.uomDsc}</td>
+			</tr>
+
+		</table>
+		
+		</div>
+		<!-- close container class -->
+		</div>
+		<!-- close card class-->
+		<br>
+<a href="all">Back</a>
+
 </body>
 </html>

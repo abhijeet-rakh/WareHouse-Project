@@ -38,10 +38,7 @@
 								<th>Customer</th>
 								<th>RefNumber</th>
 								<th>StockMode</th>
-								<!-- <th>stockSource</th>
-                                <th>defaultStatus</th>
-                                 <th>saleOrdDesc</th>-->
-								<th colspan="5">OPERATION</th>
+								<th colspan="5">OPERATIONS</th>
 							</tr>
 							<c:forEach items="${data}" var="d">
 								<tr>
@@ -51,10 +48,7 @@
 									<td><c:out value="${d.customer.}"></c:out></td>
 									<td><c:out value="${d.refNumber}"></c:out></td>
 									<td><c:out value="${d.stockMode}"></c:out></td>
-									<%-- <td><c:out value="${d.stockSource}"></c:out></td>
-      								<td><c:out value="${d.defaultStatus}"></c:out></td>
-      								<td><c:out value="${d.saleOrdDesc}"></c:out></td> --%>
-
+							
 									<td><a href="delete?orderId=${d.orderId}"> <img
 											src="../resources/images/delete.png" height="30" width="30">
 									</a></td>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="UserMenu.jsp" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,28 +10,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form:form action="update" method="POST" modelAttribute="user">
-<pre>
+	<form:form action="update" method="POST" modelAttribute="user">
+		<pre>
 
-User Id : <form:input path="userid" readonly="true"/>
+User Id : <form:input path="userid" readonly="true" />
 
-User Name :<form:input path="userName" readonly="true"/>
+User Name :<form:input path="userName" readonly="true" />
 
-User Email :<form:input path="mail"/>
+User Email :<form:input path="mail" />
 
 User Password :<form:input path="password" />
 
-User Mobile No. :<form:input path="mobile"/>
+User Mobile No. :<form:input path="mobile" />
 
-Roles :<form:checkbox path="roles" value="ADMIN"/> ADMIN
-       <form:checkbox path="roles" value="APP USER"/> APP USER
+Roles :<form:checkbox path="roles" value="ADMIN" /> ADMIN
+       <form:checkbox path="roles" value="APP USER" /> APP USER
 
 <input type="submit" value="Update User">
 
 </pre>
-</form:form>
+	</form:form>
 
 </body>
 </html>

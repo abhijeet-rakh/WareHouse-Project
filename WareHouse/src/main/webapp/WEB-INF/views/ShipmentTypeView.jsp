@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ include file="UserMenu.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,42 +9,54 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 style="color: red; text-align: center">Shipment Type Detail</h1>
-	<br>
-	<br>
+
+<div class="container">
+
+		<div class="card">
+
+              <div class="card-header bg-info text-white">
+              <h1 style="text-align: center;font-size:x-large;font-family: serif;">VIEW SHIPMENT-TYPE DATA</h1>
+              </div>
+
+
 	<table border="1">
 		<tr>
-			<td>ID</td>
+			<th>ID</th>
 			<td>${st.id}</td>
 		</tr>
 
 		<tr>
-			<td>MODE</td>
+			<th>MODE</th>
 			<td>${st.shipmentMode}</td>
 		</tr>
 
 		<tr>
-			<td>CODE</td>
+			<th>CODE</th>
 			<td>${st.shipmentCode}</td>
 		</tr>
 
 		<tr>
-			<td>ENABLE SHIPMENT</td>
+			<th>ENABLE SHIPMENT</th>
 			<td>${st.enableShipment}</td>
 		</tr>
 
 		<tr>
-			<td>GRADE</td>
+			<th>GRADE</th>
 			<td>${st.shipmentGrade}</td>
 		</tr>
 
 		<tr>
-			<td>DESCRIPTION</td>
+			<th>DESCRIPTION</th>
 			<td>${st.desc}</td>
 		</tr>
 
 	</table>
-	<br><br><br>
+	
+	</div>
+	
+	</div>
+	
+	<br>
 	<a href="all">Back</a>
 </body>
 </html>

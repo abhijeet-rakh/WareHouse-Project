@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@include file="UserMenu.jsp" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,64 +9,76 @@
 <title>Item View</title>
 </head>
 <body>
-<h1 style="color: red; text-align: center;">Item Detail</h1>
 
+<div class="container">
+
+<div class="card">
+
+              <div class="card-header bg-info text-white">
+              <h1 style="text-align: center;font-size:x-large;font-family: serif;">VIEW ITEM DATA</h1>
+              </div>
+	
 	<table border="1">
 
 		<tr>
-			<td>ID</td>
+			<th>ID</th>
 			<td>${item.itemId}</td>
 		</tr>
 
 		<tr>
-			<td>CODE</td>
+			<th>CODE</th>
 			<td>${item.itemCode}</td>
 		</tr>
 
 		<tr>
-			<td>Length</td>
+			<th>Length</th>
 			<td>${item.itemLength}</td>
 		</tr>
 
 		<tr>
-			<td>Width</td>
+			<th>Width</th>
 			<td>${item.itemWidth}</td>
 		</tr>
 
 		<tr>
-			<td>Height</td>
+			<th>Height</th>
 			<td>${item.itemHeight}</td>
 		</tr>
 
 		<tr>
-			<td>BaseCost</td>
+			<th>BaseCost</th>
 			<td>${item.baseCost}</td>
 		</tr>
 
         <tr>
-			<td>BaseCurrency</td>
+			<th>BaseCurrency</th>
 			<td>${item.baseCurrency}</td>
 		</tr>
         
         <tr>
-			<td>Description</td>
+			<th>Description</th>
 			<td>${item.itemDesc}</td>
 		</tr>
         
           <tr>
-			<td>uomid</td>
-			<td>${item.uom.uomid}</td>
+			<th>uomId</th>
+			<td>${item.uom.uomId}</td>
 		</tr>
         
          <tr>
-			<td>ordid</td>
+			<th>ordId</th>
 			<td>${item.om.oid}</td>
 		</tr>
         
         
 	</table>
 
-<br><br><br>
+</div>
+<!-- close container -->
+</div>
+<!-- close card -->
+
+<br>
 <a href="all">Back</a>
 
 

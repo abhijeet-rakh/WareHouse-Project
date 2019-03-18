@@ -1,49 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@include file="UserMenu.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="ISO-8859-1">
 <title>Order Method View</title>
 </head>
+
 <body>
-	<h1 style="color: red; text-align: center;">OrderMethod Detail</h1>
+
+<div class="container">
+
+<div class="card">
+
+              <div class="card-header bg-info text-white">
+              <h1 style="text-align: center;font-size:x-large;font-family: serif;">VIEW ORDER-METHOD DATA</h1>
+              </div>
 
 	<table border="1">
 
 		<tr>
-			<td>ID</td>
+			<th>ID</th>
 			<td>${orderMethod.oid}</td>
 		</tr>
 
 		<tr>
-			<td>MODE</td>
+			<th>MODE</th>
 			<td>${orderMethod.ordermode}</td>
 		</tr>
 
 		<tr>
-			<td>CODE</td>
+			<th>CODE</th>
 			<td>${orderMethod.ordercode}</td>
 		</tr>
 
 		<tr>
-			<td>EXECUTETYPE</td>
+			<th>EXECUTETYPE</th>
 			<td>${orderMethod.executetype}</td>
 		</tr>
 
 		<tr>
-			<td>DESCRIPTION</td>
+			<th>DESCRIPTION</th>
 			<td>${orderMethod.orderdesc}</td>
 		</tr>
 
 		<tr>
-			<td>ORDERACCEPT</td>
+			<th>ORDERACCEPT</th>
 			<td>${orderMethod.orderaccept}</td>
 		</tr>
 
 	</table>
 
-<br><br><br>
+</div>
+
+</div>
+<br>
 <a href="all">Back</a>
 
 

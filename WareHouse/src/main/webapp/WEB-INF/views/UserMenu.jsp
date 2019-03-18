@@ -84,45 +84,46 @@
 					<a class="dropdown-item" href="${url}/item/register">Register </a>
 					<a class="dropdown-item" href="${url}/item/all">View All</a><a
 						class="dropdown-item" href="${url}/item/report"> View Report </a>
-
-
-				</div></li>
+				</div>
+			</li>
+			
 			<!-- Employee -->
 			<li class="nav-item dropdown bg-secondary"><a
 				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
-				data-toggle="dropdown">Employee</a>
+				data-toggle="dropdown">User</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="${url}/employee/register">Register
-					</a> <a class="dropdown-item" href="${url}/employee/all">View All</a>
-
-				</div></li>
+					<a class="dropdown-item" href="${url}/user/register">Register</a> 
+				</div>
+			</li>
 
 			<!-- Purchase Order -->
 			<li class="nav-item dropdown bg-secondary"><a
 				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown">Purchase Order</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="${url}/purchaseorder/register">Register
-					</a> <a class="dropdown-item" href="${url}/purchaseorder/all">View All</a><a 
-					class="dropdown-item" href="${url}/purchaseorder/report">View Report</a>
-				</div></li>
+					<a class="dropdown-item" href="${url}/purchaseorder/register">Register </a>
+					<a class="dropdown-item" href="${url}/purchaseorder/all">View All</a><a
+						class="dropdown-item" href="${url}/purchaseorder/report"> View Report </a>
+				</div>
+			</li>
 
 			<!-- Sale Order -->
 			<li class="nav-item dropdown bg-secondary"><a
 				class="nav-link dropdown-toggle text-white" href="#" id="navbardrop"
 				data-toggle="dropdown">Sale Order</a>
 				<div class="dropdown-menu ">
-					<a class="dropdown-item " href="${url}/saleorder/register">Register
-					</a> <a class="dropdown-item " href="${url}/saleorder/all">View All</a>
+					<a class="dropdown-item " href="${url}/saleorder/register">Register</a> 
+					<a class="dropdown-item " href="${url}/saleorder/all">View All</a>
 					<a class="dropdown-item " href="${url}/saleorder/report">View Report</a>
-				</div></li>
+				</div>
+			</li>
 
 			<!-- SWAGGER -->
 			<%-- <li class="nav-item"><a class="nav-link"
 			href="${url}/swagger-ui.html">Swagger</a></li> --%>
 
-			<li class="nav-item bg-secondary btn-successs"><a class="nav-link text-white"
-				href="${url}/logout">logout</a></li>
+			<li class="nav-item bg-secondary btn-successs">
+			<a class="nav-link text-white" href="${url}/logout">logout</a></li>
 
 		</ul>
 
@@ -130,7 +131,7 @@
 		<form class="form-inline" action="/action_page.php">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search">
 				<button class="btn btn-success" type="submit">Search</button>
-			</form>
+		</form>
 		
 	</nav>
 

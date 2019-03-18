@@ -37,10 +37,7 @@
 								<th>ItemLength</th>
 								<th>ItemWidth</th>
 						        <th>ItemHeight</th>
-                           <!-- <th>BaseCost</th> 
-                                <th>BaseCurrency</th>
-                                <th>ItemDesc</th>-->
-								<th colspan="5">OPERATION</th>
+        						<th colspan="5">OPERATION</th>
 							</tr>
 							<c:forEach items="${data}" var="d">
 								<tr>
@@ -49,10 +46,7 @@
 									<td><c:out value="${d.itemLength}"></c:out></td>
 									<td><c:out value="${d.itemWidth}"></c:out></td>
 							        <td><c:out value="${d.itemHeight}"></c:out></td>
-                                <%--<td><c:out value="${d.baseCost}"></c:out></td>
-                                    <td><c:out value="${d.baseCurrency}"></c:out></td>
-                                    <td><c:out value="${d.itemDesc}"></c:out></td> --%>
-
+        
 									<td><a href="delete?itemId=${d.itemId}"> <img
 											src="../resources/images/delete.png" height="30" width="30">
 									</a></td>
