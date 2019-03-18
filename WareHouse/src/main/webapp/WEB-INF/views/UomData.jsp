@@ -65,11 +65,11 @@
 											src="../resources/images/edit.png" width="30" height="30" />
 									</a></td>
 									  
-									<td><a href="exportExcelOne?id=${st.uomId}"><img
+									<td><a href="excelOne?id=${st.uomId}"><img
 											src="../resources/images/excel.png" width="30" height="30" />
 									</a></td>
 									
-									<td><a href="exportPdfOne?id=${st.uomId}"><img
+									<td><a href="pdfOne?id=${st.uomId}"><img
 											src="../resources/images/pdf.png" height="30" width="30" /> 
 									</a></td>
 	

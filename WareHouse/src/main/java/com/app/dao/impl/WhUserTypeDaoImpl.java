@@ -24,27 +24,23 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 	public Integer saveWhUserType(WhUserType w) {
 		return (Integer) ht.save(w);
 	}
-
 	
 	@Override
 	public void updateWhUserType(WhUserType w) {
 		ht.update(w);
 	}
 
-	
 	@Override
 	public void deleteWhUserType(Integer id) {
 		WhUserType wut = new WhUserType();
 		wut.setWhId(id);
 		ht.delete(wut);
 	}
-
 	
 	@Override
 	public WhUserType getWhUserTypeById(Integer id) {
 		return ht.get(WhUserType.class, id);
 	}
-
 	
 	@Override
 	public List<WhUserType> getAllWhUserTypes() {
@@ -69,6 +65,26 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 		return map;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<Integer, String> getCustomers() { 
+	System.out.println("getCustomers___");
+	//	String hql=" select whId,whType from "+WhUserType.class.getName()+" where whType=? ";
+	  DetachedCriteria hql=DetachedCriteria.forClass(WhUserType.class)
+		.setProjection(Projections.projectionList()
+				.add(Projections.property("whId"))
+				.add(Projections.property("whCode"))
+				).add(Restrictions.eq("whType","CUSTOMER"));
+	
+	  List<Object[]> list=(List<Object[]>) ht.findByCriteria(hql);
+	  
+	  Map<Integer,String> map=IWhUserTypeUtility.ConversionListToMap(list);
+		return map;
+	}
+
+	
+	
+	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -115,6 +131,19 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 	       System.out.println("isEmailOrMobileExists");
 	       
 		return count>0?true:false;
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> getWhTypeByCount() {
+		
+		DetachedCriteria hql=DetachedCriteria.forClass(WhUserType.class)
+				.setProjection(Projections.projectionList()
+				.add(Projections.groupProperty("whType"))
+				.add(Projections.count("whType")));
+		return (List<Object[]>) ht.findByCriteria(hql);
+		
 	}
 	
 }

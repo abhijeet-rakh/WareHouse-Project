@@ -12,8 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.app.excelview.UnitOfMeasurementExcelView;
+import com.app.excelview.UnitOfMeasurementExcelViewById;
 import com.app.model.Uom;
+import com.app.pdfview.UnitOfMeasurementPdfView;
+import com.app.pdfview.UnitOfMeasurementPdfViewById;
 import com.app.service.IUomService;
 import com.app.validator.UomValidator;
 
@@ -109,7 +114,7 @@ public class UomController {
 		return "UomData";
 	}
 
-	//8.get all UOM
+	// 8.get all UOM
 	@RequestMapping("/getAll")
 	public String getAllUom() {
 		service.getAllUom();
@@ -117,7 +122,30 @@ public class UomController {
 	}
 
 	// 8. Export Data to Excel
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/excelOne")
+	public ModelAndView getOneExcel(@RequestParam Integer id) {
+		List<Uom> list = (List<Uom>) service.getUombyId(id);
+		return new ModelAndView(new UnitOfMeasurementExcelViewById(), "oneData", list);
+	}
 
-	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/pdfOne")
+	public ModelAndView getOnePdf(@RequestParam Integer id) {
+		List<Uom> oneData = (List<Uom>) service.getUombyId(id);
+		return new ModelAndView(new UnitOfMeasurementPdfViewById(), "oneData", oneData);
+	}
+
+	@RequestMapping(value = "/excelall")
+	public ModelAndView getAllExcel() {
+		List<Uom> list = service.getAllUom();
+		return new ModelAndView(new UnitOfMeasurementExcelView(), "listdata", list);
+	}
+
+	@RequestMapping(value = "/pdfExp")
+	public ModelAndView getAllPdf() {
+		List<Uom> list = service.getAllUom();
+        return new ModelAndView(new UnitOfMeasurementPdfView(),"data",list);
+	}
 	
 }

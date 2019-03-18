@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="UserMenu.jsp"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>

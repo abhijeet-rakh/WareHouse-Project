@@ -3,6 +3,8 @@ package com.app.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +21,7 @@ import com.app.model.WhUserType;
 import com.app.pdfview.WhUserTypePdfView;
 import com.app.pdfview.WhUserTypePdfViewById;
 import com.app.service.IWhUserTypeService;
+import com.app.util.WhUserTypeUtility;
 import com.app.validator.WhUserTypeValidator;
 
 @Controller
@@ -31,6 +34,13 @@ public class WhUserTypeController {
 	@Autowired
 	private IWhUserTypeService service;
 
+	@Autowired
+	private ServletContext context;
+	
+	@Autowired
+	private WhUserTypeUtility utility;
+	
+	
 	// show Register Page
 	@RequestMapping("/register")
 	public String showReg(ModelMap map) {
@@ -119,6 +129,16 @@ public class WhUserTypeController {
 	public ModelAndView pdfAllWhUserType() {
 		List<WhUserType> list=service.getAllWhUserTypes();
 		return new ModelAndView(new WhUserTypePdfView(),"list",list);
+	}
+	
+
+	@RequestMapping("/report")
+	public String getWhTypeByCount() {
+		String path = context.getRealPath("/");
+		List<Object[]> list = service.getWhTypeByCount();
+		utility.generatePieChart(path, list);
+		utility.generateBarChart(path, list);
+		return "WhUserTypeReport";
 	}
 	
 }

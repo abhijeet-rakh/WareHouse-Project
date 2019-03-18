@@ -73,6 +73,7 @@
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/wtype/register">Register
 					</a> <a class="dropdown-item" href="${url}/wtype/all">View All</a>
+					<a class="dropdown-item" href="${url}/wtype/report">View Report</a>
 				</div></li>
 
 

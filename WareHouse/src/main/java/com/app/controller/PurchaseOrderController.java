@@ -75,7 +75,7 @@ public class PurchaseOrderController {
 			//if Error is not there
 			Integer id = service.savePurchaseOrder(purchaseOrder);
 
-			String msg = "record inserted no is" + id;
+			String msg = "record inserted no is " + id;
 
 			// add attribute to map
 			map.addAttribute("message", msg);

@@ -77,16 +77,16 @@ public class ItemController {
 			// add attribute to map
 			map.addAttribute("message", msg);
 
-			// Show uom model in registration page(Module Integration)
-			map.addAttribute("uoms", uomservice.getUomIdandModel());
-
-			// show OrderMethod model in registration page(Module Integration)
-			map.addAttribute("ordermethods", ordservice.getAllOrderMethod());
-
 			// clean the object
 			map.addAttribute("item", new Item());
-
 		}
+
+		// Show uom model in registration page(Module Integration)
+		map.addAttribute("uoms", uomservice.getUomIdandModel());
+
+		// show OrderMethod model in registration page(Module Integration)
+		map.addAttribute("ordermethods", ordservice.getAllOrderMethod());
+
 		return "ItemRegister";
 	}
 

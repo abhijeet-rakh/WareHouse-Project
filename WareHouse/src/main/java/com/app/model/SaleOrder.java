@@ -29,8 +29,9 @@ public class SaleOrder {
 	@JoinColumn(name="ship_id")
 	private ShipmentType shiptype;
 
-	@Column(name = "customer")
-	private String customer;
+	@ManyToOne
+	@JoinColumn(name="Customer_id")
+	private WhUserType whusertype;
 
 	@Column(name = "Ref_Number")
 	private Integer refNumber;

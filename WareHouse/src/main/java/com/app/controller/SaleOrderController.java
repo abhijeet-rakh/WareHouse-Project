@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.app.excelview.SaleOrderExcelView;
 import com.app.excelview.SaleOrderExcelViewById;
+import com.app.model.PurchaseOrder;
 import com.app.model.SaleOrder;
 import com.app.pdfview.SaleOrderPdfView;
 import com.app.pdfview.SaleOrderPdfViewById;
@@ -58,7 +59,7 @@ public class SaleOrderController {
 		map.addAttribute("shipmenttype", shipservice.getEnableShipmentMode());
 		
 		//Add WareHouseUser Type to sale order
-		map.addAttribute("whservice", whservice.getVendors());
+		map.addAttribute("whservice", whservice.getCustomers());
 				
 		return "SaleOrderRegister";
 	}
@@ -80,16 +81,16 @@ public class SaleOrderController {
 			// add attribute to map
 			map.addAttribute("message", msg);
 		
-			//Add Shipment Modes to sale order
-			map.addAttribute("shipmenttype", shipservice.getEnableShipmentMode());
-		
-			//Add WareHouseUser Type to sale order
-			map.addAttribute("whservice", whservice.getVendors());
-			
 			// clean the object
-			map.addAttribute("saleOrder", new SaleOrder());
+			map.addAttribute("saleOrder", new SaleOrder());					
 		}
 	
+		//Add Shipment Modes to sale order
+		map.addAttribute("shipmenttype", shipservice.getEnableShipmentMode());
+	
+		//Add WareHouseUser Type to sale order
+		map.addAttribute("whservice", whservice.getCustomers());
+		
 		return "SaleOrderRegister";
 	}
 

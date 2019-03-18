@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="UserMenu.jsp"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +36,12 @@
 
 				<tr>
 					<th>Shipment Mode</th>
-					<td>${po.shipmentMode}</td>
+					<td>${po.shiptype.shipmentCode}</td>
 				</tr>
 
 				<tr>
 					<th>Vendor</th>
-					<td>${po.vendor}</td>
+					<td>${po.whusertype.whCode}</td>
 				</tr>
 
 				<tr>
@@ -59,13 +60,8 @@
 				</tr>
 
 				<tr>
-					<th>Purchase Order</th>
-					<td>${po.ordStatus}</td>
-				</tr>
-
-				<tr>
 					<th>Order Description</th>
-					<td>${po.whusertype.whid}</td>
+					<td>${po.ordDesc}</td>
 				</tr>
 
 			</table>
@@ -77,9 +73,6 @@
 	<!-- close card class -->
 	<br>
 	<a href="all">Back</a>
-
-
-
 
 </body>
 </html>

@@ -48,6 +48,11 @@ public class WhUserTypeServiceImpl implements IWhUserTypeService{
 	}
 
 	@Transactional(readOnly=true)
+	public Map<Integer, String> getCustomers(){
+		return dao.getCustomers();
+	}
+	
+	@Transactional(readOnly=true)
 	public boolean isWhUserCodeExist(String usercode) {
 		return dao.isWhUserCodeExist(usercode);
 	}
@@ -55,6 +60,11 @@ public class WhUserTypeServiceImpl implements IWhUserTypeService{
 	@Transactional(readOnly=true)
 	public boolean isEmailOrMobileExists(String userEmailOrMobile) {
 		return dao.isEmailOrMobileExists(userEmailOrMobile);
+	}
+
+	@Override
+	public List<Object[]> getWhTypeByCount() {
+		return dao.getWhTypeByCount();
 	}
 	
 }

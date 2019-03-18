@@ -30,12 +30,12 @@ public class PurchaseOrderPdfViewById extends AbstractPdfView{
 
 		document.add(ph);
 
-		PdfPTable table = new PdfPTable(10);
+		PdfPTable table = new PdfPTable(8);
 
 		table.addCell("ID");
 		table.addCell("Code");
 		table.addCell("Shipment Code");
-		table.addCell("User Code");
+		table.addCell("Vendor");
 		table.addCell("RefNum");
 		table.addCell("QualityCheck");
 		table.addCell("OrdStatus");

@@ -46,7 +46,7 @@ public class ShipmentTypeValidator implements Validator {
 		
 		if(StringUtils.isEmpty(st.getDesc())) {
 			errors.rejectValue("desc",null,"Enter the Description...");
-		}else if(st.getDesc().length()>5 && st.getDesc().length()<10){
+		}else if(!Pattern.matches("[a-z]{3,10}",st.getDesc())){
 			errors.rejectValue("desc",null,"Enter 5 to 10 letters in text...");
 		}
 		

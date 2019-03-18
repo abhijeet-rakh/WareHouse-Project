@@ -24,11 +24,11 @@ public class PurchaseOrder {
 	private String orderCode;
 
 	@ManyToOne
-	@JoinColumn(name="ship_id")
+	@JoinColumn(name="Ship_id")
 	private ShipmentType shiptype;
 
 	@ManyToOne
-	@JoinColumn(name="Whuserid")
+	@JoinColumn(name="Vendor_id")
     private WhUserType whusertype;
     
 	@Column(name="refNum")

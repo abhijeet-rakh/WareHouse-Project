@@ -12,7 +12,10 @@ public interface IWhUserTypeDao {
 	public WhUserType getWhUserTypeById(Integer id);
 	public List<WhUserType> getAllWhUserTypes();	
 	public Map<Integer,String> getVendors();
+	public Map<Integer, String> getCustomers();
 	public boolean isWhUserCodeExist(String usercode);
 	public boolean isEmailOrMobileExists(String userEmailOrMobile);
+	public List<Object[]> getWhTypeByCount();
+	
 	
 }

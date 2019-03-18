@@ -53,15 +53,6 @@ public class WhUserTypeValidator implements Validator{
 			errors.rejectValue("whContact", null, "Number must be between 7-10 digit !!");
 		}
 
-		/** Test input */
-		//a. Empty check     (b). pattern check
-		if(!StringUtils.hasText(whUserType.getWhIdNumber())) {
-			errors.rejectValue("whIdNumber", null, "Enter Reference Number !!");
-		}
-		else if(!Pattern.matches("[0-9]{5,16}",whUserType.getWhIdNumber())) {
-			errors.rejectValue("whIdNumber", null, "Number must be 5-16 digit !!");
-		}
-
 		/** DropDown empty checks*/
 		if(StringUtils.isEmpty(whUserType.getWhFor())) {
 			errors.rejectValue("whFor",null,"Please choose one !!");

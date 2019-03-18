@@ -42,8 +42,8 @@
 								<tr>
 									<td><c:out value="${d.orderId}"></c:out></td>
 									<td><c:out value="${d.orderCode}"></c:out></td>
-									<td><c:out value="${d.shipmentMode}"></c:out></td>
-									<td><c:out value="${d.vendor}"></c:out></td>
+									<td><c:out value="${d.shiptype.shipmentCode}"></c:out></td>
+									<td><c:out value="${d.whusertype.whCode}"></c:out></td>
 							        <td><c:out value="${d.refNum}"></c:out></td>
          
 									<td><a href="delete?orderId=${d.orderId}"> <img

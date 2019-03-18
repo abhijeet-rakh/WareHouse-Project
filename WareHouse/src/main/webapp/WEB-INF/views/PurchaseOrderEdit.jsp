@@ -10,31 +10,36 @@
 <title>Item Edit Page</title>
 </head>
 <body>
+
+
 	<div class="container">
+
 		<div class="card">
-			<div class="card-header bg-info text-white">
-				<h1 style="color: red; text-align: center;">Purchase Order Edit
-					Form</h1>
+
+			<div class="card-header  bg-info text-white">
+				<h1
+					style="text-align: center; font-size: x-large; font-family: monospace;">Purchase
+					Registration Form</h1>
 			</div>
 
 			<div class="card-body">
-				<form:form action="update" method="post"
+				<form:form action="insert" method="post"
 					modelAttribute="purchaseOrder">
 
 					<div class="row">
 						<div class="col-4">
-							<label for="orderId">Order Id :</label>
+							<label for="orderId">Purchase Order Id :</label>
 						</div>
 						<div class="col-6">
-							<form:input path="orderId" readonly="true" />
-							<form:errors path="orderId" cssClass="err" />
+							<form:input path="orderId" readonly="true"/>
 						</div>
 					</div>
 
-					<br>
+                    <br>
+
 					<div class="row">
 						<div class="col-4">
-							<label for="orderCode">Order Code :</label>
+							<label for="orderCode">Purchase Order Code :</label>
 						</div>
 						<div class="col-6">
 							<form:input path="orderCode" />
@@ -46,16 +51,14 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="shipmentMode">Shipment Mode :</label>
+							<label for="ShipmentCode">Shipment Code :</label>
 						</div>
 						<div class="col-6">
 							<form:select path="shiptype.id">
 								<form:option value="">--SELECT--</form:option>
-								<form:options items="${shipmenttype}" itemLabel="shipmentMode"
-									itemValue="id" />
+								<form:options items="${shipmenttype}" />
 							</form:select>
-							<form:errors path="shipmentMode" cssClass="err" />
-
+							<form:errors path="shiptype" cssClass="err" />
 						</div>
 					</div>
 
@@ -63,21 +66,19 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="vendor">Vendor :</label>
+							<label for="UserCode">Vendor :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="vendor">
+							<form:select path="whusertype.whId">
 								<form:option value="">--SELECT--</form:option>
-								<form:option value="A">A</form:option>
-								<form:option value="B">B</form:option>
-								<form:option value="C">C</form:option>
-								<form:option value="D">D</form:option>
+								<form:options items="${whusertype}" />
 							</form:select>
-							<form:errors path="vendor" cssClass="err" />
+							<form:errors path="whusertype" cssClass="err" />
 						</div>
 					</div>
 
 					<br>
+
 					<div class="row">
 						<div class="col-4">
 							<label for="refNum">Reference Number :</label>
@@ -110,43 +111,14 @@
 							<label for="ordStatus">Order Status :</label>
 						</div>
 						<div class="col-6">
-							<form:input path="ordStatus" />
+							<form:input path="ordStatus" value="OPEN" readonly="true" />
 							<form:errors path="ordStatus" cssClass="err" />
 						</div>
 					</div>
 
 					<br>
 
-					<div class="row">
-						<div class="col-4">
-							<label for="UserCode">User Code :</label>
-						</div>
-						<div class="col-6">
-							<form:select path="whusertype.whid">
-								<form:option value="">--SELECT--</form:option>
-								<form:options items="${whusertype}" itemLabel="userCode"
-									itemValue="whid" />
-							</form:select>
-						</div>
-					</div>
 
-
-					<br>
-
-					<div class="row">
-						<div class="col-4">
-							<label for="ShipmentMode">Shipment Code :</label>
-						</div>
-						<div class="col-6">
-							<form:select path="shiptype.id">
-								<form:option value="">--SELECT--</form:option>
-								<form:options items="${shipmenttype}" itemLabel="shipmentCode"
-									itemValue="id" />
-							</form:select>
-						</div>
-					</div>
-
-					<br>
 
 					<div class="row">
 						<div class="col-4">
@@ -157,22 +129,26 @@
 							<form:errors path="ordDesc" cssClass="err" />
 						</div>
 					</div>
-
 					<br>
 
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-6">
-							<input class="btn btn-primary" type="submit"
-								value="Update Purchase Order" />
+							<input class="btn btn-primary" type="submit" value="Update Item" />
 						</div>
 					</div>
 
 				</form:form>
 			</div>
 
+			<c:if test="${message != null }">
+				<div class="card-footer bg-success text-white">${message}</div>
+			</c:if>
+
+			<br> <a href="all"><input type="button" value="ViewAll"></a>
 		</div>
 
 	</div>
+
 </body>
 </html>

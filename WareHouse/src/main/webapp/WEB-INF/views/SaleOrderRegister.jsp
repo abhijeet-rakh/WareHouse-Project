@@ -56,14 +56,13 @@
 
 					<div class="row">
 						<div class="col-4">
-							<label for="customer">Customer :</label>
+							<label for="whusertype">Customer :</label>
 						</div>
 						<div class="col-6">
-							<form:select path="customer">
+							<form:select path="whusertype.whId">
 								<form:option value="">--SELECT--</form:option>
 								<form:options items="${whservice}" />
 							</form:select>
-							<form:errors path="customer" cssClass="err" />
 						</div>
 					</div>
 
