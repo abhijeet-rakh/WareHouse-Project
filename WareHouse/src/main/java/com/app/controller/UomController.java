@@ -2,7 +2,10 @@ package com.app.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +23,7 @@ import com.app.model.Uom;
 import com.app.pdfview.UnitOfMeasurementPdfView;
 import com.app.pdfview.UnitOfMeasurementPdfViewById;
 import com.app.service.IUomService;
+import com.app.util.UomTypeUtility;
 import com.app.validator.UomValidator;
 
 @Controller
@@ -32,6 +36,13 @@ public class UomController {
 	@Autowired
 	private UomValidator validator;
 
+    @Autowired
+	private ServletContext context;
+	
+    @Autowired
+    private UomTypeUtility utility;
+    
+	
 	// 1.show Register page
 	@RequestMapping("/register")
 	public String regUom(ModelMap map) {
@@ -125,15 +136,15 @@ public class UomController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/excelOne")
 	public ModelAndView getOneExcel(@RequestParam Integer id) {
-		List<Uom> list = (List<Uom>) service.getUombyId(id);
-		return new ModelAndView(new UnitOfMeasurementExcelViewById(), "oneData", list);
+		Uom list = service.getUombyId(id);
+		return new ModelAndView(new UnitOfMeasurementExcelViewById(), "oneData", Arrays.asList(list));
 	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/pdfOne")
 	public ModelAndView getOnePdf(@RequestParam Integer id) {
-		List<Uom> oneData = (List<Uom>) service.getUombyId(id);
-		return new ModelAndView(new UnitOfMeasurementPdfViewById(), "oneData", oneData);
+		Uom oneData = service.getUombyId(id);
+		return new ModelAndView(new UnitOfMeasurementPdfViewById(), "oneData", Arrays.asList(oneData));
 	}
 
 	@RequestMapping(value = "/excelall")
@@ -148,4 +159,13 @@ public class UomController {
         return new ModelAndView(new UnitOfMeasurementPdfView(),"data",list);
 	}
 	
+	@RequestMapping(value="/report")
+	public String getUomTypeCount() {
+      String path=context.getRealPath("/");
+      List<Object[]> list = service.getUomTypeCount();
+      utility.generateBarChart(path, list);
+      utility.generatePieChart(path, list);
+      return "UomReport";        
+	}
+
 }

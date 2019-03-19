@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,7 @@ public class UomDaoImpl implements IUomDao {
 		return count > 0 ? true : false;
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public Map<Integer, String> getUomIdandModel() {
@@ -88,6 +90,17 @@ public class UomDaoImpl implements IUomDao {
 		List<Object[]> list = (List<Object[]>) ht.findByCriteria(hql);
 	
 		return IUomUtility.ConvertListtoMap(list);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> getUomTypeCount() {
+	    DetachedCriteria hql=DetachedCriteria.forClass(Uom.class)
+        .setProjection(Projections.projectionList()
+        .add(Projections.groupProperty("uomType"))
+        .add(Projections.count("uomType")));
+	    
+		return (List<Object[]>) ht.findByCriteria(hql);
 	}
 	
 }

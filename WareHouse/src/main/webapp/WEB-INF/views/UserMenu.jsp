@@ -39,7 +39,8 @@
 				data-toggle="dropdown"> UOM </a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${url}/uom/register">Register </a> <a
-						class="dropdown-item" href="${url}/uom/all">View All</a> 
+						class="dropdown-item" href="${url}/uom/all">View All</a><a
+						class="dropdown-item" href="${url}/uom/report">View Report</a>  
 				</div></li>
 			<!--Uom Dropdown end -->
 

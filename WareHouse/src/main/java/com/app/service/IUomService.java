@@ -14,5 +14,6 @@ public interface IUomService {
 	public void updateUom(Uom u);
 	public boolean isUomModelExist(String uomModel);
 	public Map<Integer,String> getUomIdandModel();
-
+	public List<Object[]> getUomTypeCount();
+	
 }

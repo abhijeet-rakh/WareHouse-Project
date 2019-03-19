@@ -52,5 +52,10 @@ public class UomServiceImpl implements IUomService {
 	public Map<Integer, String> getUomIdandModel() {
 		return dao.getUomIdandModel();
 	}
+
+	@Override
+	public List<Object[]> getUomTypeCount() {
+		return dao.getUomTypeCount();
+	}
 	
 }

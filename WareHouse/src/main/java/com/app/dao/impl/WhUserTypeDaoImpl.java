@@ -137,13 +137,11 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getWhTypeByCount() {
-		
 		DetachedCriteria hql=DetachedCriteria.forClass(WhUserType.class)
 				.setProjection(Projections.projectionList()
 				.add(Projections.groupProperty("whType"))
 				.add(Projections.count("whType")));
 		return (List<Object[]>) ht.findByCriteria(hql);
-		
 	}
 	
 }

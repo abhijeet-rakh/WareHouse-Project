@@ -45,8 +45,8 @@ public class WhUserTypeUtility {
 		 //Convert DefaultCategoryDataset to JFreeChart
 		 JFreeChart jfchart=ChartFactory.createBarChart("Wh User Type","WH User Type","count", dcdataset, PlotOrientation.HORIZONTAL, true, true,false);
 		 
-		 //Convert JFreeChart into image Using ChartUtils
 		 try {
+			//Convert JFreeChart into image Using ChartUtils
 			ChartUtils.saveChartAsJPEG(new File(path+"/resources/PieChart/WhUserTypeBarChart.jpg"),jfchart, 250, 250);
 		} catch (IOException e) {
 			e.printStackTrace();

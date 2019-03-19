@@ -14,6 +14,7 @@ public interface IUomDao {
 	public void updateUom(Uom u);
     public boolean isUomModelExists(String UomModel);
     public Map<Integer,String> getUomIdandModel();
+    public List<Object[]> getUomTypeCount();
     
     
 }
